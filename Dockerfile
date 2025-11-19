@@ -25,7 +25,13 @@ RUN . /opt/venv/bin/activate && pip install -r backend/crewai_agents/requirement
 # Copy application code
 COPY . .
 
-# Build frontend
+# Build arguments for Vite environment variables (injected at build time)
+ARG VITE_SUPABASE_URL
+ARG VITE_SUPABASE_ANON_KEY
+
+# Build frontend with environment variables
+ENV VITE_SUPABASE_URL=$VITE_SUPABASE_URL
+ENV VITE_SUPABASE_ANON_KEY=$VITE_SUPABASE_ANON_KEY
 RUN npm run build
 
 # Expose port (Railway will override with $PORT)
