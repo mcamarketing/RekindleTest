@@ -35,5 +35,5 @@ EXPOSE 8081
 WORKDIR /app
 
 # Use exec form with sh to properly expand PORT environment variable
-# Run uvicorn with full module path to support relative imports
-CMD ["/bin/sh", "-c", "/opt/venv/bin/uvicorn backend.crewai_agents.api_server:app --host 0.0.0.0 --port ${PORT:-8081}"]
+# Activate venv and run uvicorn via python -m to avoid permission issues
+CMD ["/bin/sh", "-c", ". /opt/venv/bin/activate && python -m uvicorn backend.crewai_agents.api_server:app --host 0.0.0.0 --port ${PORT:-8081}"]
