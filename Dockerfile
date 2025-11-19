@@ -34,5 +34,5 @@ WORKDIR /app/backend/crewai_agents
 # Expose port (Railway will override with $PORT)
 EXPOSE 8081
 
-# Use shell form to allow environment variable expansion
-CMD /opt/venv/bin/uvicorn api_server:app --host 0.0.0.0 --port ${PORT:-8081}
+# Use exec form with sh to properly expand PORT environment variable
+CMD ["/bin/sh", "-c", "/opt/venv/bin/uvicorn api_server:app --host 0.0.0.0 --port ${PORT:-8081}"]
