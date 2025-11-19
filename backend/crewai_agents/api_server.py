@@ -86,7 +86,7 @@ app.state.limiter = limiter
 app.add_exception_handler(RateLimitExceeded, _rate_limit_exceeded_handler)
 
 # CORS configuration
-ALLOWED_ORIGINS = os.getenv("ALLOWED_ORIGINS", "http://localhost:5173,https://rekindle.ai").split(",")
+ALLOWED_ORIGINS = os.getenv("ALLOWED_ORIGINS", "http://localhost:5173,https://rekindle.ai,https://rekindle-api-production.up.railway.app").split(",")
 app.add_middleware(
     CORSMiddleware,
     allow_origins=ALLOWED_ORIGINS,
@@ -1633,7 +1633,7 @@ async def serve_frontend_root():
     """Serve the React frontend at root path."""
     index_path = STATIC_DIR / "index.html"
     if index_path.exists():
-        return FileResponse(str(index_path))
+        return FileResponse(str(index_path), media_type="text/html")
     else:
         return {"status": "online", "service": "Rekindle API", "version": "1.0.0", "note": "Frontend not built"}
 
@@ -1652,7 +1652,7 @@ async def serve_spa_routes(full_path: str):
     # Serve index.html for SPA routes
     index_path = STATIC_DIR / "index.html"
     if index_path.exists():
-        return FileResponse(str(index_path))
+        return FileResponse(str(index_path), media_type="text/html")
     else:
         raise HTTPException(status_code=404, detail="Page not found")
 
