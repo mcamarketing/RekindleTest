@@ -28,11 +28,12 @@ COPY . .
 # Build frontend
 RUN npm run build
 
-# Set working directory to backend
-WORKDIR /app/backend/crewai_agents
-
 # Expose port (Railway will override with $PORT)
 EXPOSE 8081
 
+# Keep WORKDIR at /app to support Python package imports
+WORKDIR /app
+
 # Use exec form with sh to properly expand PORT environment variable
-CMD ["/bin/sh", "-c", "/opt/venv/bin/uvicorn api_server:app --host 0.0.0.0 --port ${PORT:-8081}"]
+# Run uvicorn with full module path to support relative imports
+CMD ["/bin/sh", "-c", "/opt/venv/bin/uvicorn backend.crewai_agents.api_server:app --host 0.0.0.0 --port ${PORT:-8081}"]
