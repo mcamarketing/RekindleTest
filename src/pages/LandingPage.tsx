@@ -23,6 +23,8 @@ import {
   Target,
   TrendingUp
 } from 'lucide-react';
+import { SupernovaHero } from '../components/SupernovaHero';
+import { PricingLockGuarantee, AnimatedStat } from '../components/SupernovaEnhancements';
 
 const COLORS = {
   primary: '#FF6B35',
@@ -300,6 +302,7 @@ export function LandingPage() {
   const roi = (revenue / monthlyCost).toFixed(1);
   const profit = revenue - monthlyCost;
 
+  // EMOTIONAL TRIGGER: EMPOWERMENT - "I CONTROL MULTI-CHANNEL OUTREACH"
   const channels = [
     {
       id: 'email',
@@ -339,19 +342,6 @@ export function LandingPage() {
       activeBorder: 'border-emerald-500',
       iconColor: 'text-emerald-400',
       stats: { open: '95%', reply: '18%', meeting: '4.5%' }
-    },
-    {
-      id: 'push',
-      name: 'Push',
-      icon: Bell,
-      color: 'purple',
-      shortDesc: 'Mobile alerts',
-      description: 'Mobile alerts (if applicable via integration). Instant delivery, high visibility when the lead is most engaged with mobile device.',
-      gradient: 'from-purple-900/30 to-purple-800/20',
-      border: 'border-purple-700/50',
-      activeBorder: 'border-purple-500',
-      iconColor: 'text-purple-400',
-      stats: { open: '87%', reply: '8%', meeting: '1.8%' }
     },
     {
       id: 'voicemail',
@@ -412,167 +402,8 @@ export function LandingPage() {
 
       <main className="pt-20">
 
-        {/* SECTION 1: PREMIUM HERO */}
-        <section className="relative pt-40 pb-4 px-4 overflow-hidden flex items-center">
-          {/* Premium animated background */}
-          <div className="absolute inset-0 bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950" />
-
-          {/* Aurora effect orbs */}
-          <div className="absolute top-1/4 left-10 w-96 h-96 bg-gradient-to-br from-orange-500/30 via-orange-600/20 to-transparent rounded-full blur-[100px] animate-aurora" />
-          <div className="absolute bottom-1/4 right-10 w-[500px] h-[500px] bg-gradient-to-br from-orange-400/20 via-orange-500/10 to-transparent rounded-full blur-[120px] animate-aurora" style={{ animationDelay: '2s' }} />
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-gradient-to-br from-orange-600/10 via-transparent to-orange-400/10 rounded-full blur-[150px] animate-aurora" style={{ animationDelay: '4s' }} />
-
-          {/* Radial gradient overlay */}
-          <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(255,107,53,0.15),transparent_70%)]" />
-
-          {/* Dot grid pattern */}
-          <div className="absolute inset-0 opacity-30" style={{
-            backgroundImage: 'radial-gradient(circle, rgba(255,255,255,0.05) 1px, transparent 1px)',
-            backgroundSize: '40px 40px'
-          }} />
-
-          <div className="relative max-w-7xl mx-auto text-center">
-            {/* EXCLUSIVE PILOT/BETA PROGRAM BADGE - PROFESSIONAL */}
-            <div className="inline-flex items-center gap-3 px-6 py-3 glass-card rounded-full mb-10 animate-fade-in-up opacity-0 hover:scale-105 transition-all duration-300 border-2 border-orange-500/40">
-              <span className="relative flex h-3 w-3">
-                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-orange-400 opacity-75"></span>
-                <span className="relative inline-flex rounded-full h-3 w-3 bg-orange-500"></span>
-              </span>
-              <span className="text-sm text-white font-bold tracking-wide">🎯 EXCLUSIVE PILOT PROGRAM</span>
-              <span className="text-xs text-orange-300 font-semibold bg-orange-500/20 px-3 py-1 rounded-full">Limited Beta Access</span>
-            </div>
-
-            {/* KENNEDY/BRUNSON/ARBUQUERQUE OPTIMIZED HEADLINE - PROFESSIONAL */}
-            <h1 className="text-5xl md:text-6xl lg:text-7xl xl:text-[84px] font-black leading-[1.05] mb-8 tracking-tight animate-fade-in-up delay-100 opacity-0">
-              <span className="block mb-4">
-                <span className="bg-gradient-to-r from-red-400 via-red-500 to-orange-500 bg-clip-text text-transparent drop-shadow-[0_0_30px_rgba(255,107,53,0.4)]">
-                  Warning:{' '}
-                </span>
-                <span className="bg-gradient-to-r from-white via-slate-100 to-white bg-clip-text text-transparent drop-shadow-[0_0_30px_rgba(255,255,255,0.3)]">
-                  You're Sitting On £500K-£2M in{' '}
-                  <span className="bg-gradient-to-r from-red-400 via-red-500 to-red-600 bg-clip-text text-transparent">
-                    DEAD
-                  </span>{' '}
-                  Pipeline...
-                </span>
-              </span>
-              <span className="block mb-4 text-4xl md:text-5xl lg:text-6xl">
-                <span className="text-white">
-                  And Your Board{' '}
-                  <span className="bg-gradient-to-r from-red-400 via-red-500 to-orange-500 bg-clip-text text-transparent">
-                    Has No Idea
-                  </span>
-                </span>
-              </span>
-              <span className="block text-3xl md:text-4xl lg:text-5xl text-gray-200 leading-snug">
-                <span className="bg-gradient-to-r from-orange-400 via-orange-500 to-orange-600 bg-clip-text text-transparent animate-gradient drop-shadow-[0_0_40px_rgba(255,107,53,0.5)] font-black">
-                  In The Next 72 Hours
-                </span>
-                <span className="text-white">, We'll Prove We Can Resurrect Your "Lost Cause" Leads Into </span>
-                <span className="text-green-400 font-black">5-10 Booked Meetings</span>
-                <span className="text-white">—Or You Pay </span>
-                <span className="bg-gradient-to-r from-red-400 to-red-500 bg-clip-text text-transparent font-black">NOTHING. Ever.</span>
-              </span>
-            </h1>
-
-            {/* KENNEDY-LEVEL SUBHEADLINE - 3-PHASE OFFER STRUCTURE */}
-            <p className="text-2xl md:text-3xl lg:text-4xl text-white max-w-5xl mx-auto mb-6 leading-tight animate-fade-in-up delay-200 opacity-0 font-bold">
-              Phase 1: <span className="text-blue-400">FREE 72-Hour CRM Analysis</span> (See Your £500K)<br />
-              Phase 2: <span className="text-green-400">30-Day Performance-Only Pilot</span> (£0 Unless We Deliver)<br />
-              Phase 3: <span className="text-orange-400">Lock In 50% Off Forever</span>
-            </p>
-            <p className="text-lg md:text-xl text-gray-300 max-w-4xl mx-auto mb-8 leading-relaxed animate-fade-in-up delay-300 opacity-0">
-              <span className="text-white font-semibold">EXCLUSIVE PILOT OFFER:</span> We analyze your dead leads for <span className="text-green-400 font-bold">FREE</span>. Then you pay <span className="text-orange-400 font-bold">ONLY 2.5% of ACV per booked meeting</span> (Example: £10K deal = £250 fee). <span className="text-red-400 font-bold">Zero meetings = Zero cost. Forever.</span> After pilot, lock in <span className="text-white font-bold">50% off platform fee for life</span> (<span className="text-orange-400">£9.99-£249/mo</span> vs <span className="line-through text-gray-400">£19-£499/mo</span>). <span className="text-emerald-400 font-bold">Guarantee: 5+ meetings in 30 days or we refund 100% + £500 cash.</span>
-            </p>
-
-            {/* PREMIUM COMPLIANCE BADGES & SOCIAL PROOF */}
-            <div className="flex flex-wrap justify-center items-center gap-6 text-sm mb-8 animate-fade-in-up delay-300 opacity-0">
-              {/* SOC 2 Badge - ENTERPRISE SECURITY */}
-              <div className="flex items-center gap-3 glass-card px-5 py-3 rounded-xl border border-green-500/40 shadow-lg shadow-green-500/10 hover:border-green-500/60 transition-all">
-                <ShieldCheck className="w-7 h-7 text-green-400" />
-                <div className="text-left">
-                  <div className="text-white font-bold text-base">SOC 2 Type II</div>
-                  <div className="text-xs text-green-300">Enterprise Security</div>
-                </div>
-              </div>
-
-              {/* GDPR Badge - EU DATA PROTECTION */}
-              <div className="flex items-center gap-3 glass-card px-5 py-3 rounded-xl border border-blue-500/40 shadow-lg shadow-blue-500/10 hover:border-blue-500/60 transition-all">
-                <Shield className="w-7 h-7 text-blue-400" />
-                <div className="text-left">
-                  <div className="text-white font-bold text-base">GDPR Compliant</div>
-                  <div className="text-xs text-blue-300">EU Data Protection</div>
-                </div>
-              </div>
-
-              {/* PILOT PROGRAM STATUS - NO FABRICATED SOCIAL PROOF */}
-              <div className="flex items-center gap-3 glass-card px-5 py-3 rounded-xl border border-orange-500/40 shadow-lg">
-                <div className="p-2 bg-orange-500/20 rounded-lg">
-                  <Shield className="w-5 h-5 text-orange-400" />
-                </div>
-                <div className="text-left">
-                  <div className="text-white font-bold text-sm">Invite-Only Pilot</div>
-                  <div className="text-xs text-orange-300">Qualified B2B teams only</div>
-                </div>
-              </div>
-            </div>
-
-            {/* Premium CTA buttons */}
-            <div className="flex flex-col sm:flex-row gap-5 justify-center items-center mb-6 animate-fade-in-up delay-400 opacity-0">
-              <a
-                href="/pilot-application"
-                onClick={(e) => { e.preventDefault(); navigate('/pilot-application'); }}
-                className="group relative btn-shimmer bg-gradient-to-r from-orange-500 via-orange-600 to-orange-500 bg-size-200 text-white px-12 py-6 rounded-full font-bold text-lg shadow-[0_0_50px_rgba(255,107,53,0.3)] hover:shadow-[0_0_80px_rgba(255,107,53,0.6),0_0_120px_rgba(255,107,53,0.4)] transition-all duration-500 hover:scale-105 animate-glow-pulse"
-              >
-                <span className="relative z-10 flex items-center gap-3">
-                  <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
-                  </svg>
-                  🔥 Show Me My £500K—Get FREE CRM Analysis
-                  <svg className="w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
-                  </svg>
-                </span>
-                <span className="relative z-10 block text-xs mt-2 text-orange-100 opacity-90">
-                  72-hour turnaround • No credit card • See exactly what we'd recover
-                </span>
-              </a>
-
-              <button className="group flex items-center gap-4 px-10 py-6 rounded-full font-bold text-lg glass-card text-white hover:bg-white/10 hover:border-orange-500/30 transition-all duration-300 hover:scale-105">
-                <div className="w-14 h-14 rounded-full bg-gradient-to-br from-orange-500/20 to-orange-600/20 flex items-center justify-center group-hover:from-orange-500/40 group-hover:to-orange-600/40 transition-all border border-orange-500/20">
-                  <svg className="w-6 h-6 text-orange-400 group-hover:scale-110 transition-transform" fill="currentColor" viewBox="0 0 24 24">
-                    <path d="M8 5v14l11-7z"/>
-                  </svg>
-                </div>
-                Watch 2-Min Demo
-              </button>
-            </div>
-
-            {/* Premium subtext */}
-            <div className="flex flex-wrap justify-center items-center gap-4 text-sm text-gray-500 animate-fade-in-up delay-500 opacity-0">
-              <div className="flex items-center gap-2">
-                <svg className="w-4 h-4 text-green-400" fill="currentColor" viewBox="0 0 20 20">
-                  <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
-                </svg>
-                <span>No Credit Card Required</span>
-              </div>
-              <span className="text-gray-700">•</span>
-              <div className="flex items-center gap-2">
-                <svg className="w-4 h-4 text-green-400" fill="currentColor" viewBox="0 0 20 20">
-                  <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
-                </svg>
-                <span>10-minute setup</span>
-              </div>
-              <span className="text-gray-700">•</span>
-              <div className="flex items-center gap-2">
-                <svg className="w-4 h-4 text-green-400" fill="currentColor" viewBox="0 0 20 20">
-                  <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
-                </svg>
-                <span>Cancel anytime</span>
-              </div>
-            </div>
-          </div>
-        </section>
+        {/* SECTION 1: SUPERNOVA HERO - Maximum Conversion Impact */}
+        <SupernovaHero />
 
         {/* PREMIUM STAT CARDS - Stripe Dashboard Quality */}
         <div className="relative -mt-32 px-4 mb-0 z-10">
@@ -726,7 +557,7 @@ export function LandingPage() {
           </div>
         </div>
 
-        {/* SECTION 2: PREMIUM PROBLEM SECTION */}
+        {/* SECTION 2: EMOTIONAL TRIGGER - "I'M LOSING MONEY EVERY DAY" */}
         <section className="relative -mt-64 pt-20 pb-20 px-4 overflow-hidden">
           {/* Dramatic background */}
           <div className="absolute inset-0 bg-gradient-to-b from-[#1A1F2E] via-[#242938] to-[#1A1F2E]" />
@@ -738,21 +569,22 @@ export function LandingPage() {
                 <svg className="w-5 h-5 text-red-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
                 </svg>
-                <span className="text-sm text-white font-semibold tracking-wide">THE PROBLEM</span>
+                <span className="text-sm text-white font-semibold tracking-wide">THE PROBLEM NOBODY TALKS ABOUT</span>
               </div>
 
+              {/* EMOTIONAL TRIGGER: COMPETITOR THREAT */}
               <h2 className="text-5xl md:text-6xl lg:text-7xl font-extrabold text-white mb-8 leading-tight tracking-tight">
-                Here's What <span className="bg-gradient-to-r from-red-400 via-red-500 to-orange-500 bg-clip-text text-transparent">Nobody Tells You</span>
-                <br />(But Your CRM Data Screams)
+                Every Day You Wait, Your Competitors Are Stealing{' '}
+                <span className="bg-gradient-to-r from-red-400 via-red-500 to-orange-500 bg-clip-text text-transparent">YOUR</span> Customers.
+                <br />
+                <span className="text-4xl md:text-5xl lg:text-6xl text-gray-300 mt-4 block">
+                  The Same Leads You Spent £200-£5,000 Each to Acquire Are Now Booking Meetings With Your Competitors.
+                </span>
               </h2>
 
               <div className="max-w-4xl mx-auto text-left space-y-6 mb-10">
                 <p className="text-xl md:text-2xl text-gray-200 leading-relaxed">
-                  Right now, you have <span className="text-white font-bold">£500,000 to £2,000,000 worth of leads</span> sitting in your database...
-                </p>
-
-                <p className="text-xl md:text-2xl text-gray-200 leading-relaxed">
-                  Leads you <span className="text-orange-400 font-bold">PAID £200-£5,000 each</span> to acquire through ads, events, SDRs, and outbound.
+                  Right now, you have <span className="text-white font-bold">£<AnimatedStat end={500000} decimals={0} />K to £<AnimatedStat end={2} decimals={0} />M worth of leads</span> sitting dormant in your CRM.
                 </p>
 
                 <p className="text-xl md:text-2xl text-gray-200 leading-relaxed">
@@ -771,9 +603,10 @@ export function LandingPage() {
                   They went silent because <span className="text-orange-400">THE TIMING WASN'T RIGHT</span>.
                 </p>
 
-                <div className="border-l-4 border-red-500 pl-6 py-4 bg-red-500/5 rounded-r-xl">
-                  <p className="text-xl md:text-2xl text-gray-200 leading-relaxed">
-                    But here's the killer: While you're chasing <span className="text-red-400 font-bold">shiny new leads at £5K/pop</span>, your competitors are re-engaging <span className="text-orange-400 font-bold">YOUR old prospects</span> at the <span className="text-white font-bold">EXACT moment they're ready to buy</span>.
+                {/* EMOTIONAL TRIGGER: COMPETITOR THREAT BOX */}
+                <div className="border-l-4 border-red-500 pl-6 py-4 bg-red-500/10 rounded-r-xl animate-pulse-glow">
+                  <p className="text-xl md:text-2xl text-white leading-relaxed font-bold">
+                    But here's the killer: While you're chasing <span className="text-red-400">shiny new leads at £5K/pop</span>, your competitors are re-engaging <span className="text-orange-400">YOUR old prospects</span> at the <span className="text-white">EXACT moment they're ready to buy</span>.
                   </p>
                 </div>
 
@@ -1929,6 +1762,13 @@ export function LandingPage() {
                 </span>
               </div>
             </div>
+          </div>
+        </section>
+
+        {/* SUPERNOVA: PRICING LOCK GUARANTEE */}
+        <section className="relative py-20 px-4">
+          <div className="max-w-7xl mx-auto relative z-10">
+            <PricingLockGuarantee discount="50%" />
           </div>
         </section>
 
