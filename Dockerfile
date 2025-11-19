@@ -34,6 +34,6 @@ EXPOSE 8081
 # Keep WORKDIR at /app to support Python package imports
 WORKDIR /app
 
-# Use exec form with sh to properly expand PORT environment variable
-# Activate venv and run uvicorn via python -m to avoid permission issues
-CMD ["/bin/sh", "-c", ". /opt/venv/bin/activate && python -m uvicorn backend.crewai_agents.api_server:app --host 0.0.0.0 --port ${PORT:-8081}"]
+# Use venv's Python directly - no activation needed, no permission issues
+# Railway will inject $PORT at runtime
+CMD ["/opt/venv/bin/python", "-m", "uvicorn", "backend.crewai_agents.api_server:app", "--host", "0.0.0.0", "--port", "8081"]
