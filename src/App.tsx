@@ -3,6 +3,7 @@ import { useAuth } from './contexts/AuthContext';
 import { ToastProvider } from './components/Toast';
 import { ErrorBoundary } from './components/ErrorBoundary';
 import { LandingPage } from './pages/LandingPage';
+import { TrustLandingPage } from './pages/TrustLandingPage';
 import { SignUp } from './pages/SignUp';
 import { Login } from './pages/Login';
 import { Dashboard } from './pages/Dashboard';
@@ -94,6 +95,16 @@ function App() {
     return <PilotApplication />;
   }
 
+  // Trust-first landing page (new default)
+  if (route === '/trust') {
+    return <TrustLandingPage />;
+  }
+
+  // Original landing page (for comparison)
+  if (route === '/original') {
+    return <LandingPage />;
+  }
+
   if (user) {
     if (route === '/' || route === '/login' || route === '/signup') {
       window.history.pushState({}, '', '/dashboard');
@@ -156,7 +167,8 @@ function App() {
     return <Login />;
   }
 
-  return <LandingPage />;
+  // Default: Trust-first landing page
+  return <TrustLandingPage />;
   })();
 
   return (
