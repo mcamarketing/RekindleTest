@@ -287,9 +287,9 @@ except ImportError as e:
 except Exception as e:
     logger.error(f"Failed to register webhook endpoints: {e}")
 
-@app.get("/")
+@app.get("/api")
 async def root():
-    """Root endpoint - API status."""
+    """API status endpoint - moved from / to /api to allow SPA at root."""
     return {
         "status": "online",
         "service": "Rekindle API",
@@ -1627,23 +1627,34 @@ async def demo_agent_activity_loop():
 # STARTUP/SHUTDOWN
 # ============================================================================
 
-# Catch-all route for SPA (Single Page Application) - must be last!
-@app.get("/{full_path:path}")
-async def serve_spa(full_path: str):
-    """
-    Serve the React SPA for all non-API routes.
-    This enables client-side routing to work properly.
-    """
-    # If the request is for an API route, let it pass through to 404
-    if full_path.startswith("api/"):
-        raise HTTPException(status_code=404, detail="API endpoint not found")
-
-    # Serve index.html for all other routes (SPA routing)
+# Serve the frontend for root path
+@app.get("/")
+async def serve_frontend_root():
+    """Serve the React frontend at root path."""
     index_path = STATIC_DIR / "index.html"
     if index_path.exists():
         return FileResponse(str(index_path))
     else:
-        raise HTTPException(status_code=404, detail="Frontend not built")
+        return {"status": "online", "service": "Rekindle API", "version": "1.0.0", "note": "Frontend not built"}
+
+
+# Catch-all route for SPA routing - must be LAST!
+@app.get("/{full_path:path}")
+async def serve_spa_routes(full_path: str):
+    """
+    Catch-all route for SPA client-side routing.
+    Serves index.html for all non-API routes.
+    """
+    # Don't interfere with API or WebSocket routes
+    if full_path.startswith("api/") or full_path.startswith("ws/"):
+        raise HTTPException(status_code=404, detail="Endpoint not found")
+
+    # Serve index.html for SPA routes
+    index_path = STATIC_DIR / "index.html"
+    if index_path.exists():
+        return FileResponse(str(index_path))
+    else:
+        raise HTTPException(status_code=404, detail="Page not found")
 
 
 @app.on_event("startup")
