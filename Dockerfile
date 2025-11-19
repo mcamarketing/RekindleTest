@@ -35,14 +35,15 @@ ENV VITE_SUPABASE_URL=$VITE_SUPABASE_URL
 ENV VITE_SUPABASE_ANON_KEY=$VITE_SUPABASE_ANON_KEY
 ENV VITE_API_URL=$VITE_API_URL
 
-# Create .env.production file for Vite to load
-RUN echo "VITE_SUPABASE_URL=$VITE_SUPABASE_URL" > .env.production && \
-    echo "VITE_SUPABASE_ANON_KEY=$VITE_SUPABASE_ANON_KEY" >> .env.production && \
-    echo "VITE_API_URL=$VITE_API_URL" >> .env.production && \
+# Create .env.production file using printf to avoid truncation
+RUN printf "VITE_SUPABASE_URL=%s\nVITE_SUPABASE_ANON_KEY=%s\nVITE_API_URL=%s\n" \
+    "$VITE_SUPABASE_URL" "$VITE_SUPABASE_ANON_KEY" "$VITE_API_URL" > .env.production && \
     echo "=== .env.production contents ===" && \
     cat .env.production && \
-    echo "=== Environment variables ===" && \
-    env | grep VITE
+    echo "=== Environment variable lengths ===" && \
+    printf "VITE_SUPABASE_URL length: %d\n" ${#VITE_SUPABASE_URL} && \
+    printf "VITE_SUPABASE_ANON_KEY length: %d\n" ${#VITE_SUPABASE_ANON_KEY} && \
+    printf "VITE_API_URL length: %d\n" ${#VITE_API_URL}
 
 RUN npm run build
 
