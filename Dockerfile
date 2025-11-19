@@ -34,6 +34,16 @@ ARG VITE_API_URL
 ENV VITE_SUPABASE_URL=$VITE_SUPABASE_URL
 ENV VITE_SUPABASE_ANON_KEY=$VITE_SUPABASE_ANON_KEY
 ENV VITE_API_URL=$VITE_API_URL
+
+# Create .env.production file for Vite to load
+RUN echo "VITE_SUPABASE_URL=$VITE_SUPABASE_URL" > .env.production && \
+    echo "VITE_SUPABASE_ANON_KEY=$VITE_SUPABASE_ANON_KEY" >> .env.production && \
+    echo "VITE_API_URL=$VITE_API_URL" >> .env.production && \
+    echo "=== .env.production contents ===" && \
+    cat .env.production && \
+    echo "=== Environment variables ===" && \
+    env | grep VITE
+
 RUN npm run build
 
 # Expose port (Railway will override with $PORT)
