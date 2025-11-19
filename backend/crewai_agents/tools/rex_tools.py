@@ -9,7 +9,7 @@ user data for intelligent, context-aware responses. All tools are:
 """
 
 import logging
-from crewai_tools import BaseTool
+from crewai.tools import BaseTool
 from pydantic import BaseModel, Field
 from typing import Type, Optional, List
 from datetime import datetime, timedelta
