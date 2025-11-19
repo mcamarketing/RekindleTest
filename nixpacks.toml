@@ -1,5 +1,8 @@
 # Nixpacks Configuration for Rekindle.ai
-# This tells Railway how to build the app with both Python and Node.js
+# Explicit configuration to prevent auto-detection
+
+[variables]
+NIXPACKS_NO_MUSL = "1"
 
 [phases.setup]
 nixPkgs = ["nodejs_18", "python311", "python311Packages.pip", "python311Packages.virtualenv"]
@@ -8,7 +11,7 @@ nixPkgs = ["nodejs_18", "python311", "python311Packages.pip", "python311Packages
 cmds = [
     "npm ci",
     "python -m venv /opt/venv",
-    ". /opt/venv/bin/activate && cd backend/crewai_agents && pip install -r requirements.txt"
+    ". /opt/venv/bin/activate && pip install -r backend/crewai_agents/requirements.txt"
 ]
 
 [phases.build]
@@ -18,4 +21,4 @@ cmds = [
 ]
 
 [start]
-cmd = ". /opt/venv/bin/activate && cd backend/crewai_agents && python -m uvicorn api_server:app --host 0.0.0.0 --port ${PORT:-8081}"
+cmd = ". /opt/venv/bin/activate && cd backend/crewai_agents && uvicorn api_server:app --host 0.0.0.0 --port ${PORT:-8081}"
