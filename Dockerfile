@@ -31,8 +31,8 @@ RUN npm run build
 # Set working directory to backend
 WORKDIR /app/backend/crewai_agents
 
-# Expose port
+# Expose port (Railway will override with $PORT)
 EXPOSE 8081
 
-# Start backend server (activate venv and run uvicorn)
-CMD ["/bin/bash", "-c", ". /opt/venv/bin/activate && uvicorn api_server:app --host 0.0.0.0 --port ${PORT:-8081}"]
+# Use shell form to allow environment variable expansion
+CMD /opt/venv/bin/uvicorn api_server:app --host 0.0.0.0 --port ${PORT:-8081}
