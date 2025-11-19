@@ -246,6 +246,8 @@ async def stripe_webhook(request: Request, stripe_signature: Optional[str] = Hea
         
         if not webhook_secret:
             logger.warning("STRIPE_WEBHOOK_SECRET not set, skipping signature verification")
+            # Parse without verification (not recommended for production)
+            event = json.loads(body)
         else:
             try:
                 event = stripe.Webhook.construct_event(
@@ -255,9 +257,6 @@ async def stripe_webhook(request: Request, stripe_signature: Optional[str] = Hea
                 raise HTTPException(status_code=400, detail="Invalid payload")
             except stripe.error.SignatureVerificationError as e:
                 raise HTTPException(status_code=401, detail="Invalid signature")
-        else:
-            # Parse without verification (not recommended for production)
-            event = json.loads(body)
         
         event_type = event.get("type")
         data = event.get("data", {}).get("object", {})
