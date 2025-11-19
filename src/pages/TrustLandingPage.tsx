@@ -95,7 +95,7 @@ export function TrustLandingPage() {
           >
             <img
               src="/images/image copy copy.png"
-              alt="Rekindle"
+              alt="RekindlePro.ai"
               className="h-8 w-auto"
             />
           </motion.div>
@@ -566,66 +566,144 @@ export function TrustLandingPage() {
               </p>
             </motion.div>
 
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.8 }}
-              className="p-12 bg-white/5 rounded-3xl border border-white/10"
-            >
-              <div className="grid md:grid-cols-2 gap-12 mb-12">
-                <div>
+            <div className="grid lg:grid-cols-3 gap-8 mb-16">
+              {/* Starter Tier */}
+              <motion.div
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6, delay: 0 }}
+                className="p-8 bg-white/5 rounded-2xl border border-white/10 hover:border-blue-500/30 transition-all duration-300"
+              >
+                <div className="flex items-center justify-between mb-6">
+                  <h3 className="text-2xl font-bold text-white">Starter</h3>
+                  <div className="w-10 h-10 rounded-xl bg-blue-500/20 border border-blue-500/30 flex items-center justify-center">
+                    <span className="text-blue-400 text-xl">⚡</span>
+                  </div>
+                </div>
+
+                <div className="mb-6">
                   <div className="text-white/40 text-sm mb-2">Platform Access</div>
-                  <div className="text-7xl font-bold text-white mb-2 tabular-nums">£99</div>
-                  <div className="text-white/40 mb-8">per month</div>
-                  <div className="space-y-3">
-                    {['Unlimited lead analysis', 'AI research & personalization', 'Multi-channel automation', 'Real-time analytics'].map((feature, i) => (
-                      <div key={i} className="flex items-center gap-3">
-                        <CheckCircle2 className="w-5 h-5 text-green-400 flex-shrink-0" />
-                        <span className="text-white/80">{feature}</span>
-                      </div>
-                    ))}
-                  </div>
+                  <div className="text-5xl font-bold text-white mb-1 tabular-nums">£99</div>
+                  <div className="text-white/40 text-sm">per month + 2.5% ACV per meeting</div>
                 </div>
 
-                <div>
-                  <div className="text-white/40 text-sm mb-2">Performance Fee</div>
-                  <div className="text-7xl font-bold text-white mb-2 tabular-nums">2.5%</div>
-                  <div className="text-white/40 mb-8">of ACV per meeting</div>
-                  <div className="p-6 bg-white/5 rounded-2xl border border-white/10">
-                    <div className="text-sm text-white/60 mb-4">Example: £10K ACV Deal</div>
-                    <div className="space-y-2 text-sm">
-                      <div className="flex justify-between text-white/60">
-                        <span>Platform (monthly)</span>
-                        <span className="tabular-nums">£99</span>
-                      </div>
-                      <div className="flex justify-between text-white/60">
-                        <span>Performance (one-time)</span>
-                        <span className="tabular-nums">£250</span>
-                      </div>
-                      <div className="border-t border-white/10 my-3" />
-                      <div className="flex justify-between text-white font-semibold">
-                        <span>Total per meeting</span>
-                        <span className="tabular-nums">£349</span>
-                      </div>
-                      <div className="text-xs text-white/40 mt-2">vs £2,400 avg acquisition cost</div>
+                <div className="space-y-3 mb-8">
+                  {['Up to 500 leads/month', 'Email + SMS automation', 'Basic AI research', 'Standard analytics', 'Email support'].map((feature, i) => (
+                    <div key={i} className="flex items-center gap-3">
+                      <CheckCircle2 className="w-4 h-4 text-blue-400 flex-shrink-0" />
+                      <span className="text-white/70 text-sm">{feature}</span>
                     </div>
-                  </div>
+                  ))}
                 </div>
-              </div>
 
-              <div className="text-center">
                 <button
                   onClick={() => navigate('/pilot-application')}
-                  className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-white text-black rounded-lg font-semibold hover:bg-gray-100 transition-all duration-200 hover:scale-[1.02] active:scale-[0.98]"
+                  className="w-full px-6 py-3 bg-white/10 hover:bg-white/15 text-white rounded-lg font-semibold transition-all duration-200 border border-white/20"
                 >
-                  Request Platform Access
-                  <ArrowRight className="w-4 h-4" />
+                  Get Started
                 </button>
-                <div className="text-sm text-white/40 mt-4">
-                  Pilot program · Qualified B2B SaaS teams only
+              </motion.div>
+
+              {/* Professional Tier (Featured) */}
+              <motion.div
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6, delay: 0.1 }}
+                className="p-8 bg-white/10 rounded-2xl border-2 border-orange-500/40 hover:border-orange-500/60 transition-all duration-300 relative"
+              >
+                <div className="absolute -top-4 left-1/2 -translate-x-1/2 px-4 py-1 bg-gradient-to-r from-orange-500 to-orange-600 rounded-full text-white text-xs font-bold">
+                  MOST POPULAR
                 </div>
-              </div>
+
+                <div className="flex items-center justify-between mb-6">
+                  <h3 className="text-2xl font-bold text-white">Professional</h3>
+                  <div className="w-10 h-10 rounded-xl bg-orange-500/20 border border-orange-500/30 flex items-center justify-center">
+                    <span className="text-orange-400 text-xl">🔥</span>
+                  </div>
+                </div>
+
+                <div className="mb-6">
+                  <div className="text-white/40 text-sm mb-2">Platform Access</div>
+                  <div className="text-5xl font-bold text-white mb-1 tabular-nums">£249</div>
+                  <div className="text-white/40 text-sm">per month + 2.5% ACV per meeting</div>
+                </div>
+
+                <div className="space-y-3 mb-8">
+                  {['Up to 2,000 leads/month', 'All channels (Email, SMS, WhatsApp, Voice)', 'Advanced AI personalization', 'Real-time analytics & reporting', 'Priority support', 'Custom integrations'].map((feature, i) => (
+                    <div key={i} className="flex items-center gap-3">
+                      <CheckCircle2 className="w-4 h-4 text-orange-400 flex-shrink-0" />
+                      <span className="text-white/90 text-sm">{feature}</span>
+                    </div>
+                  ))}
+                </div>
+
+                <button
+                  onClick={() => navigate('/pilot-application')}
+                  className="w-full px-6 py-3 bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 text-white rounded-lg font-semibold transition-all duration-200 shadow-lg shadow-orange-500/20"
+                >
+                  Get Started
+                </button>
+                <p className="text-center text-xs text-white/60 mt-3">Lock in pilot pricing forever</p>
+              </motion.div>
+
+              {/* Enterprise Tier */}
+              <motion.div
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6, delay: 0.2 }}
+                className="p-8 bg-white/5 rounded-2xl border border-white/10 hover:border-purple-500/30 transition-all duration-300"
+              >
+                <div className="flex items-center justify-between mb-6">
+                  <h3 className="text-2xl font-bold text-white">Enterprise</h3>
+                  <div className="w-10 h-10 rounded-xl bg-purple-500/20 border border-purple-500/30 flex items-center justify-center">
+                    <span className="text-purple-400 text-xl">👑</span>
+                  </div>
+                </div>
+
+                <div className="mb-6">
+                  <div className="text-white/40 text-sm mb-2">Platform Access</div>
+                  <div className="text-5xl font-bold text-white mb-1 tabular-nums">£999</div>
+                  <div className="text-white/40 text-sm">per month + 2.5% ACV per meeting</div>
+                </div>
+
+                <div className="space-y-3 mb-8">
+                  {['Unlimited leads', 'All Professional features', 'Dedicated success manager', 'Custom AI training', 'White-glove onboarding', 'SLA guarantees', 'API access'].map((feature, i) => (
+                    <div key={i} className="flex items-center gap-3">
+                      <CheckCircle2 className="w-4 h-4 text-purple-400 flex-shrink-0" />
+                      <span className="text-white/70 text-sm">{feature}</span>
+                    </div>
+                  ))}
+                </div>
+
+                <button
+                  onClick={() => navigate('/pilot-application')}
+                  className="w-full px-6 py-3 bg-white/10 hover:bg-white/15 text-white rounded-lg font-semibold transition-all duration-200 border border-white/20"
+                >
+                  Contact Sales
+                </button>
+              </motion.div>
+            </div>
+
+            {/* Pilot Program Lock-In Banner */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+              className="max-w-4xl mx-auto p-8 bg-gradient-to-r from-orange-500/10 to-orange-600/10 rounded-2xl border-2 border-orange-500/30"
+            >
+              <h4 className="text-xl font-bold text-white mb-3 text-center">
+                🔥 Pilot Pricing Lock-In Guarantee
+              </h4>
+              <p className="text-white/80 text-center leading-relaxed mb-2">
+                Pilot participants lock in <span className="text-orange-400 font-bold">50% off forever</span>. When we exit pilot, new customers pay £199/£499/£1,999/month.
+              </p>
+              <p className="text-white/60 text-center text-sm">
+                Join now to secure pilot rates for life. No price increases. Ever.
+              </p>
             </motion.div>
           </div>
         </section>
@@ -641,7 +719,7 @@ export function TrustLandingPage() {
               className="text-center mb-16"
             >
               <h2 className="text-5xl md:text-6xl font-bold tracking-tight mb-6" style={{ letterSpacing: '-0.03em' }}>
-                Why Rekindle
+                Why RekindlePro.ai
               </h2>
             </motion.div>
 
@@ -657,7 +735,7 @@ export function TrustLandingPage() {
                   <tr className="border-b border-black/10 bg-black/[0.02]">
                     <th className="p-4 text-left text-sm font-semibold text-black/60">Feature</th>
                     <th className="p-4 text-center bg-orange-50/50">
-                      <div className="font-bold text-black">Rekindle</div>
+                      <div className="font-bold text-black">RekindlePro.ai</div>
                     </th>
                     <th className="p-4 text-center text-sm font-semibold text-black/40">SDR Team</th>
                     <th className="p-4 text-center text-sm font-semibold text-black/40">AI Tools</th>
@@ -665,7 +743,7 @@ export function TrustLandingPage() {
                 </thead>
                 <tbody>
                   {[
-                    ['Cost per meeting', '£349', '£2,400+', '£800-1,200'],
+                    ['Cost per meeting', '£249-999 + 2.5% ACV', '£2,400+', '£800-1,200'],
                     ['Time to meeting', '72 hours', '2-3 weeks', '1-2 weeks'],
                     ['Meeting rate', '15.2%', '6-8%', '8-10%'],
                     ['Multi-channel', '✓', 'Limited', 'Email only'],
@@ -704,7 +782,7 @@ export function TrustLandingPage() {
                 <ArrowRight className="w-4 h-4" />
               </MinimalButton>
               <div className="text-sm text-black/40 mt-6">
-                £99/month platform fee · 2.5% ACV per meeting
+                From £99/month + 2.5% ACV per meeting · Pilot pricing available
               </div>
             </motion.div>
           </div>
@@ -715,7 +793,7 @@ export function TrustLandingPage() {
           <div className="max-w-6xl mx-auto">
             <div className="grid md:grid-cols-4 gap-8 mb-8">
               <div>
-                <img src="/images/image copy copy.png" alt="Rekindle" className="h-6 w-auto mb-4" />
+                <img src="/images/image copy copy.png" alt="RekindlePro.ai" className="h-6 w-auto mb-4" />
                 <p className="text-sm text-black/40">Enterprise revenue recovery platform</p>
               </div>
               <div>
@@ -741,7 +819,7 @@ export function TrustLandingPage() {
               </div>
             </div>
             <div className="border-t border-black/5 pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-black/40">
-              <div>© 2024 Rekindle. All rights reserved.</div>
+              <div>© 2024 RekindlePro.ai. All rights reserved.</div>
               <div className="flex items-center gap-4">
                 <span>SOC 2 Type II</span>
                 <span>·</span>
