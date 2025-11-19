@@ -13,7 +13,8 @@ Production-grade API server that:
 from fastapi import FastAPI, HTTPException, Depends, Request, BackgroundTasks, WebSocket, WebSocketDisconnect
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.security import HTTPBearer, HTTPAuthorizationCredentials
-from fastapi.responses import JSONResponse
+from fastapi.responses import JSONResponse, FileResponse
+from fastapi.staticfiles import StaticFiles
 from slowapi import Limiter, _rate_limit_exceeded_handler
 from slowapi.util import get_remote_address
 from slowapi.errors import RateLimitExceeded
@@ -93,6 +94,16 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
+
+# Mount static files for frontend (built React app)
+import pathlib
+STATIC_DIR = pathlib.Path(__file__).parent.parent.parent / "dist"
+if STATIC_DIR.exists():
+    app.mount("/assets", StaticFiles(directory=str(STATIC_DIR / "assets")), name="assets")
+    app.mount("/images", StaticFiles(directory=str(STATIC_DIR / "images")), name="images")
+    logger.info(f"Serving static files from {STATIC_DIR}")
+else:
+    logger.warning(f"Static directory not found: {STATIC_DIR}")
 
 # Security
 security = HTTPBearer()
@@ -1615,6 +1626,25 @@ async def demo_agent_activity_loop():
 # ============================================================================
 # STARTUP/SHUTDOWN
 # ============================================================================
+
+# Catch-all route for SPA (Single Page Application) - must be last!
+@app.get("/{full_path:path}")
+async def serve_spa(full_path: str):
+    """
+    Serve the React SPA for all non-API routes.
+    This enables client-side routing to work properly.
+    """
+    # If the request is for an API route, let it pass through to 404
+    if full_path.startswith("api/"):
+        raise HTTPException(status_code=404, detail="API endpoint not found")
+
+    # Serve index.html for all other routes (SPA routing)
+    index_path = STATIC_DIR / "index.html"
+    if index_path.exists():
+        return FileResponse(str(index_path))
+    else:
+        raise HTTPException(status_code=404, detail="Frontend not built")
+
 
 @app.on_event("startup")
 async def startup_event():
