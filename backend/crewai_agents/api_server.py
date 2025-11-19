@@ -19,7 +19,7 @@ from slowapi.util import get_remote_address
 from slowapi.errors import RateLimitExceeded
 from typing import Dict, List, Optional, Any, Set
 from datetime import datetime
-from pydantic import BaseModel
+from pydantic import BaseModel, Field
 import os
 import jwt
 from dotenv import load_dotenv
