@@ -122,9 +122,29 @@ export function TrustLandingPage() {
 
       <main className="pt-20">
         {/* HERO - Clean, clear, confident */}
-        <section className="relative min-h-[90vh] flex items-center justify-center px-6 py-32">
-          {/* Subtle gradient - barely visible */}
+        <section className="relative min-h-[90vh] flex items-center justify-center px-6 py-32 overflow-hidden">
+          {/* Subtle animated gradient background */}
           <div className="absolute inset-0 bg-gradient-to-b from-orange-50/30 via-white to-white" />
+
+          {/* Animated glow effect */}
+          <motion.div
+            className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[800px] h-[400px] bg-gradient-to-r from-orange-200/20 via-orange-300/20 to-orange-200/20 rounded-full blur-3xl"
+            animate={{
+              scale: [1, 1.1, 1],
+              opacity: [0.3, 0.5, 0.3],
+            }}
+            transition={{
+              duration: 8,
+              repeat: Infinity,
+              ease: "easeInOut"
+            }}
+          />
+
+          {/* Subtle grid pattern */}
+          <div className="absolute inset-0 opacity-[0.015]" style={{
+            backgroundImage: 'radial-gradient(circle, rgba(0,0,0,0.3) 1px, transparent 1px)',
+            backgroundSize: '40px 40px'
+          }} />
 
           <div className="relative max-w-5xl mx-auto text-center">
             {/* Trust badge */}
@@ -138,7 +158,7 @@ export function TrustLandingPage() {
               <span>SOC 2 Type II Certified</span>
             </motion.div>
 
-            {/* Headline - Large, clear, gradient-free */}
+            {/* Headline - Large, clear with subtle gradient accent */}
             <motion.h1
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
@@ -146,10 +166,10 @@ export function TrustLandingPage() {
               className="text-6xl md:text-7xl lg:text-8xl font-bold tracking-tight mb-8 leading-[1.1]"
               style={{ letterSpacing: '-0.04em' }}
             >
-              <span className="block text-black">
+              <span className="block text-black mb-2">
                 Recover dormant pipeline.
               </span>
-              <span className="block text-black/40">
+              <span className="block bg-gradient-to-r from-black/40 via-orange-600/60 to-black/40 bg-clip-text text-transparent">
                 Generate revenue.
               </span>
             </motion.h1>
@@ -271,7 +291,7 @@ export function TrustLandingPage() {
               </p>
             </motion.div>
 
-            <div className="space-y-16">
+            <div className="grid md:grid-cols-2 gap-6">
               {[
                 {
                   step: '01',
@@ -300,19 +320,23 @@ export function TrustLandingPage() {
               ].map((item, i) => (
                 <motion.div
                   key={i}
-                  initial={{ opacity: 0, x: -30 }}
-                  whileInView={{ opacity: 1, x: 0 }}
+                  initial={{ opacity: 0, y: 30 }}
+                  whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.6, delay: i * 0.1 }}
-                  className="flex gap-8 items-start pb-16 border-b border-black/5 last:border-0"
+                  whileHover={{ scale: 1.02, y: -4 }}
+                  className="group relative min-h-[240px] p-8 bg-gradient-to-br from-white to-black/[0.02] rounded-2xl border border-black/5 hover:border-black/10 hover:shadow-xl transition-all duration-300 cursor-pointer overflow-hidden"
                 >
-                  <div className="text-6xl font-bold text-black/10 tabular-nums">{item.step}</div>
-                  <div className="flex-1">
-                    <div className="flex items-center gap-4 mb-3">
-                      <h3 className="text-2xl font-semibold text-black">{item.title}</h3>
-                      <span className="text-sm text-black/40 tabular-nums">{item.time}</span>
+                  {/* Hover glow effect */}
+                  <div className="absolute inset-0 bg-gradient-to-br from-orange-50/0 to-orange-50/50 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+
+                  <div className="relative">
+                    <div className="flex items-start justify-between mb-4">
+                      <div className="text-5xl font-bold bg-gradient-to-br from-black to-black/40 bg-clip-text text-transparent tabular-nums">{item.step}</div>
+                      <span className="text-xs text-black/40 bg-black/5 px-3 py-1 rounded-full tabular-nums">{item.time}</span>
                     </div>
-                    <p className="text-lg text-black/60">{item.desc}</p>
+                    <h3 className="text-2xl font-bold text-black mb-3 group-hover:text-orange-600 transition-colors">{item.title}</h3>
+                    <p className="text-base text-black/60 leading-relaxed">{item.desc}</p>
                   </div>
                 </motion.div>
               ))}
@@ -340,10 +364,10 @@ export function TrustLandingPage() {
 
             <div className="grid md:grid-cols-4 gap-6">
               {[
-                { channel: 'Email', icon: Mail, open: '62%', reply: '14%', meeting: '15.2%' },
-                { channel: 'SMS', icon: MessageSquare, open: '98%', reply: '12%', meeting: '3.2%' },
-                { channel: 'WhatsApp', icon: MessageSquare, open: '95%', reply: '18%', meeting: '4.5%' },
-                { channel: 'Voicemail', icon: Phone, open: '72%', reply: '6%', meeting: '1.5%' }
+                { channel: 'Email', icon: Mail, open: '62%', reply: '14%', meeting: '15.2%', color: 'from-blue-500 to-blue-600' },
+                { channel: 'SMS', icon: MessageSquare, open: '98%', reply: '12%', meeting: '3.2%', color: 'from-green-500 to-green-600' },
+                { channel: 'WhatsApp', icon: MessageSquare, open: '95%', reply: '18%', meeting: '4.5%', color: 'from-emerald-500 to-emerald-600' },
+                { channel: 'Voicemail', icon: Phone, open: '72%', reply: '6%', meeting: '1.5%', color: 'from-purple-500 to-purple-600' }
               ].map((ch, i) => (
                 <motion.div
                   key={i}
@@ -351,40 +375,63 @@ export function TrustLandingPage() {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.6, delay: i * 0.1 }}
-                  className="p-6 bg-white rounded-2xl border border-black/5"
+                  whileHover={{ scale: 1.05, rotate: -1 }}
+                  className="group p-6 bg-white rounded-2xl border border-black/5 hover:border-black/10 hover:shadow-2xl transition-all duration-300 cursor-pointer"
                 >
                   <div className="flex items-center gap-3 mb-6">
-                    <div className="p-2 bg-black/5 rounded-lg">
-                      <ch.icon className="w-5 h-5 text-black" />
-                    </div>
-                    <span className="font-semibold text-black">{ch.channel}</span>
+                    <motion.div
+                      className={`p-3 bg-gradient-to-br ${ch.color} rounded-xl shadow-lg`}
+                      whileHover={{ scale: 1.1, rotate: 5 }}
+                      transition={{ type: "spring", stiffness: 300 }}
+                    >
+                      <ch.icon className="w-5 h-5 text-white" />
+                    </motion.div>
+                    <span className="font-bold text-black group-hover:text-orange-600 transition-colors">{ch.channel}</span>
                   </div>
-                  <div className="space-y-3">
+                  <div className="space-y-4">
                     <div>
-                      <div className="flex justify-between mb-1 text-xs">
-                        <span className="text-black/40">Open</span>
-                        <span className="text-black tabular-nums">{ch.open}</span>
+                      <div className="flex justify-between mb-2 text-xs">
+                        <span className="text-black/40 font-medium">Open Rate</span>
+                        <span className="text-black font-bold tabular-nums">{ch.open}</span>
                       </div>
-                      <div className="h-1 bg-black/5 rounded-full overflow-hidden">
-                        <div className="h-full bg-black" style={{ width: ch.open }} />
+                      <div className="h-2 bg-black/5 rounded-full overflow-hidden">
+                        <motion.div
+                          className={`h-full bg-gradient-to-r ${ch.color}`}
+                          initial={{ width: 0 }}
+                          whileInView={{ width: ch.open }}
+                          viewport={{ once: true }}
+                          transition={{ duration: 1, delay: 0.2 + i * 0.1 }}
+                        />
                       </div>
                     </div>
                     <div>
-                      <div className="flex justify-between mb-1 text-xs">
-                        <span className="text-black/40">Reply</span>
-                        <span className="text-black tabular-nums">{ch.reply}</span>
+                      <div className="flex justify-between mb-2 text-xs">
+                        <span className="text-black/40 font-medium">Reply Rate</span>
+                        <span className="text-black font-bold tabular-nums">{ch.reply}</span>
                       </div>
-                      <div className="h-1 bg-black/5 rounded-full overflow-hidden">
-                        <div className="h-full bg-black" style={{ width: ch.reply }} />
+                      <div className="h-2 bg-black/5 rounded-full overflow-hidden">
+                        <motion.div
+                          className={`h-full bg-gradient-to-r ${ch.color}`}
+                          initial={{ width: 0 }}
+                          whileInView={{ width: ch.reply }}
+                          viewport={{ once: true }}
+                          transition={{ duration: 1, delay: 0.4 + i * 0.1 }}
+                        />
                       </div>
                     </div>
                     <div>
-                      <div className="flex justify-between mb-1 text-xs">
-                        <span className="text-black/40">Meeting</span>
-                        <span className="text-black font-semibold tabular-nums">{ch.meeting}</span>
+                      <div className="flex justify-between mb-2 text-xs">
+                        <span className="text-black/40 font-medium">Meeting Rate</span>
+                        <span className="text-orange-600 font-bold tabular-nums">{ch.meeting}</span>
                       </div>
-                      <div className="h-1 bg-black/5 rounded-full overflow-hidden">
-                        <div className="h-full bg-orange-500" style={{ width: ch.meeting }} />
+                      <div className="h-2 bg-black/5 rounded-full overflow-hidden">
+                        <motion.div
+                          className="h-full bg-gradient-to-r from-orange-500 to-orange-600"
+                          initial={{ width: 0 }}
+                          whileInView={{ width: ch.meeting }}
+                          viewport={{ once: true }}
+                          transition={{ duration: 1, delay: 0.6 + i * 0.1 }}
+                        />
                       </div>
                     </div>
                   </div>
@@ -444,10 +491,10 @@ export function TrustLandingPage() {
 
             <div className="grid md:grid-cols-2 gap-6">
               {[
-                { icon: Shield, title: 'SOC 2 Type II Certified', sub: 'Enterprise-grade security' },
-                { icon: Lock, title: 'GDPR Compliant', sub: 'Full data protection & privacy' },
-                { icon: Eye, title: 'Approval Mode', sub: 'Review every message before sending' },
-                { icon: TrendingUp, title: '99.9% Uptime SLA', sub: 'Enterprise reliability guarantee' }
+                { icon: Shield, title: 'SOC 2 Type II Certified', sub: 'Enterprise-grade security', color: 'from-green-500 to-emerald-600' },
+                { icon: Lock, title: 'GDPR Compliant', sub: 'Full data protection & privacy', color: 'from-blue-500 to-blue-600' },
+                { icon: Eye, title: 'Approval Mode', sub: 'Review every message before sending', color: 'from-purple-500 to-purple-600' },
+                { icon: TrendingUp, title: '99.9% Uptime SLA', sub: 'Enterprise reliability guarantee', color: 'from-orange-500 to-orange-600' }
               ].map((badge, i) => (
                 <motion.div
                   key={i}
@@ -455,14 +502,19 @@ export function TrustLandingPage() {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.6, delay: i * 0.1 }}
-                  className="flex items-center gap-4 p-6 bg-black/[0.02] rounded-2xl border border-black/5"
+                  whileHover={{ scale: 1.03, y: -2 }}
+                  className="group flex items-center gap-4 p-6 bg-gradient-to-br from-white to-black/[0.02] rounded-2xl border border-black/5 hover:border-black/10 hover:shadow-xl transition-all duration-300 cursor-pointer"
                 >
-                  <div className="p-3 bg-black/5 rounded-xl">
-                    <badge.icon className="w-6 h-6 text-black" />
-                  </div>
+                  <motion.div
+                    className={`p-3 bg-gradient-to-br ${badge.color} rounded-xl shadow-lg`}
+                    whileHover={{ rotate: 5 }}
+                    transition={{ type: "spring", stiffness: 300 }}
+                  >
+                    <badge.icon className="w-6 h-6 text-white" />
+                  </motion.div>
                   <div>
-                    <div className="font-semibold text-black">{badge.title}</div>
-                    <div className="text-sm text-black/40">{badge.sub}</div>
+                    <div className="font-bold text-black group-hover:text-orange-600 transition-colors">{badge.title}</div>
+                    <div className="text-sm text-black/60">{badge.sub}</div>
                   </div>
                 </motion.div>
               ))}
