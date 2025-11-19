@@ -25,25 +25,17 @@ RUN . /opt/venv/bin/activate && pip install -r backend/crewai_agents/requirement
 # Copy application code
 COPY . .
 
-# Build arguments for Vite environment variables (injected at build time)
-ARG VITE_SUPABASE_URL
-ARG VITE_SUPABASE_ANON_KEY
-ARG VITE_API_URL
-
-# Build frontend with environment variables
-ENV VITE_SUPABASE_URL=$VITE_SUPABASE_URL
-ENV VITE_SUPABASE_ANON_KEY=$VITE_SUPABASE_ANON_KEY
-ENV VITE_API_URL=$VITE_API_URL
-
-# Create .env.production file using printf to avoid truncation
+# Railway automatically exposes all environment variables during build
+# We don't need ARG declarations - just reference them directly as ENV
+# This creates .env.production for Vite to pick up during build
 RUN printf "VITE_SUPABASE_URL=%s\nVITE_SUPABASE_ANON_KEY=%s\nVITE_API_URL=%s\n" \
-    "$VITE_SUPABASE_URL" "$VITE_SUPABASE_ANON_KEY" "$VITE_API_URL" > .env.production && \
+    "${VITE_SUPABASE_URL}" "${VITE_SUPABASE_ANON_KEY}" "${VITE_API_URL}" > .env.production && \
     echo "=== .env.production contents ===" && \
     cat .env.production && \
-    echo "=== Environment variable lengths ===" && \
-    printf "VITE_SUPABASE_URL length: %d\n" ${#VITE_SUPABASE_URL} && \
-    printf "VITE_SUPABASE_ANON_KEY length: %d\n" ${#VITE_SUPABASE_ANON_KEY} && \
-    printf "VITE_API_URL length: %d\n" ${#VITE_API_URL}
+    echo "=== Environment variable verification ===" && \
+    echo "VITE_SUPABASE_URL: ${VITE_SUPABASE_URL:0:30}..." && \
+    echo "VITE_SUPABASE_ANON_KEY: ${VITE_SUPABASE_ANON_KEY:0:50}..." && \
+    echo "VITE_API_URL: ${VITE_API_URL}"
 
 RUN npm run build
 
