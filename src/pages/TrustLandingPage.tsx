@@ -28,17 +28,20 @@ const MinimalButton = ({
   className?: string;
 }) => {
   const variants = {
-    primary: 'bg-white text-black hover:bg-gray-100 shadow-sm',
-    secondary: 'bg-black/5 text-black hover:bg-black/10 border border-black/10'
+    primary: 'bg-[#0a2540] text-white hover:bg-[#0a2540]/90 shadow-[0_2px_4px_rgba(0,0,0,0.1)]',
+    secondary: 'bg-white text-[#0a2540] hover:bg-[#f6f9fc] border border-[#e3e8ee] shadow-[0_2px_4px_rgba(0,0,0,0.04)]'
   };
 
   return (
-    <button
+    <motion.button
       onClick={onClick}
-      className={`inline-flex items-center justify-center gap-2 px-6 py-3 rounded-lg font-medium text-sm transition-all duration-200 hover:scale-[1.02] active:scale-[0.98] ${variants[variant]} ${className}`}
+      whileHover={{ scale: 1.02 }}
+      whileTap={{ scale: 0.98 }}
+      transition={{ duration: 0.2, ease: [0, -0.01, 0.19, 0.99] }}
+      className={`inline-flex items-center justify-center gap-2 px-6 py-3 rounded-lg font-medium text-sm transition-all duration-200 ${variants[variant]} ${className}`}
     >
       {children}
-    </button>
+    </motion.button>
   );
 };
 
@@ -81,9 +84,9 @@ export function TrustLandingPage() {
   };
 
   return (
-    <div className="min-h-screen bg-white">
-      {/* NAVIGATION - Ultra-minimal */}
-      <nav className="fixed top-0 left-0 right-0 z-50 bg-white/80 backdrop-blur-xl border-b border-black/5">
+    <div className="min-h-screen bg-[#f6f9fc]">
+      {/* NAVIGATION - Stripe-inspired */}
+      <nav className="fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-md border-b border-[#e3e8ee]">
         <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
           <motion.div
             initial={{ opacity: 0 }}
@@ -122,9 +125,9 @@ export function TrustLandingPage() {
 
       <main className="pt-20">
         {/* HERO - Clean, clear, confident */}
-        <section className="relative min-h-[90vh] flex items-center justify-center px-6 py-32 overflow-hidden">
+        <section className="relative min-h-[90vh] flex items-center justify-center px-6 py-32 overflow-hidden bg-white">
           {/* Subtle animated gradient background */}
-          <div className="absolute inset-0 bg-gradient-to-b from-orange-50/30 via-white to-white" />
+          <div className="absolute inset-0 bg-gradient-to-b from-[#f6f9fc] via-white to-white" />
 
           {/* Animated glow effect */}
           <motion.div
@@ -152,7 +155,7 @@ export function TrustLandingPage() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6 }}
-              className="inline-flex items-center gap-2 px-4 py-2 bg-black/5 rounded-full mb-8 text-sm text-black/60"
+              className="inline-flex items-center gap-2 px-4 py-2 bg-[#f6f9fc] rounded-full mb-8 text-sm text-[#727f96]"
             >
               <Shield className="w-4 h-4" />
               <span>SOC 2 Type II Certified</span>
@@ -166,10 +169,10 @@ export function TrustLandingPage() {
               className="text-6xl md:text-7xl lg:text-8xl font-bold tracking-tight mb-8 leading-[1.1]"
               style={{ letterSpacing: '-0.04em' }}
             >
-              <span className="block text-black mb-2">
+              <span className="block text-[#0a2540] mb-2">
                 Recover dormant pipeline.
               </span>
-              <span className="block bg-gradient-to-r from-black/40 via-orange-600/60 to-black/40 bg-clip-text text-transparent">
+              <span className="block bg-gradient-to-r from-[#0a2540]/40 via-[#ff6b35]/60 to-[#0a2540]/40 bg-clip-text text-transparent">
                 Generate revenue.
               </span>
             </motion.h1>
@@ -179,10 +182,10 @@ export function TrustLandingPage() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.4 }}
-              className="text-xl md:text-2xl text-black/60 max-w-3xl mx-auto mb-12 leading-relaxed"
+              className="text-xl md:text-2xl text-[#425466] max-w-3xl mx-auto mb-12 leading-relaxed"
             >
               AI-powered outreach that transforms dormant leads into booked meetings.
-              <span className="block mt-2 text-lg text-black/40">You only pay when we deliver results.</span>
+              <span className="block mt-2 text-lg text-[#727f96]">You only pay when we deliver results.</span>
             </motion.p>
 
             {/* CTA - Single, clear action */}
@@ -207,7 +210,7 @@ export function TrustLandingPage() {
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.8 }}
-              className="grid grid-cols-2 md:grid-cols-4 gap-8 max-w-4xl mx-auto pt-12 border-t border-black/5"
+              className="grid grid-cols-2 md:grid-cols-4 gap-8 max-w-4xl mx-auto pt-12 border-t border-[#e3e8ee]"
             >
               {[
                 { value: 15.2, suffix: '%', label: 'Meeting rate' },
@@ -216,12 +219,35 @@ export function TrustLandingPage() {
                 { value: 847, label: 'Leads analyzed Q4 2024' }
               ].map((metric, i) => (
                 <div key={i} className="text-center">
-                  <div className="text-4xl font-bold text-black mb-2 tabular-nums">
+                  <div className="text-4xl font-bold text-[#0a2540] mb-2 tabular-nums">
                     <Counter end={metric.value} suffix={metric.suffix || ''} />
                   </div>
-                  <div className="text-sm text-black/40">{metric.label}</div>
+                  <div className="text-sm text-[#727f96]">{metric.label}</div>
                 </div>
               ))}
+            </motion.div>
+
+            {/* Dashboard Preview - Stripe-style */}
+            <motion.div
+              initial={{ opacity: 0, y: 50 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 1, delay: 1 }}
+              className="mt-24 max-w-6xl mx-auto"
+            >
+              <div className="relative rounded-2xl overflow-hidden shadow-[0_8px_24px_rgba(0,0,0,0.08),0_32px_64px_rgba(0,0,0,0.12)] border border-[#e3e8ee]">
+                {/* Dashboard mockup placeholder */}
+                <div className="aspect-[16/10] bg-gradient-to-br from-[#f6f9fc] to-white p-8">
+                  <div className="bg-white rounded-xl h-full shadow-[0_2px_8px_rgba(0,0,0,0.04)] p-6 flex items-center justify-center">
+                    <div className="text-center max-w-md">
+                      <div className="w-16 h-16 bg-gradient-to-br from-orange-500 to-orange-600 rounded-xl mx-auto mb-4 flex items-center justify-center">
+                        <BarChart3 className="w-8 h-8 text-white" />
+                      </div>
+                      <h3 className="text-2xl font-bold text-[#0a2540] mb-2">Real-time Pipeline Intelligence</h3>
+                      <p className="text-[#727f96]">Monitor lead engagement, AI research progress, and meeting conversions in real-time</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </motion.div>
           </div>
         </section>
@@ -325,7 +351,7 @@ export function TrustLandingPage() {
                   viewport={{ once: true }}
                   transition={{ duration: 0.6, delay: i * 0.1 }}
                   whileHover={{ scale: 1.02, y: -4 }}
-                  className="group relative min-h-[240px] p-8 bg-gradient-to-br from-white to-black/[0.02] rounded-2xl border border-black/5 hover:border-black/10 hover:shadow-xl transition-all duration-300 cursor-pointer overflow-hidden"
+                  className="group relative min-h-[240px] p-8 bg-white rounded-2xl border border-[#e3e8ee] hover:border-[#d1d9e0] transition-all duration-300 cursor-pointer overflow-hidden shadow-[0_2px_4px_rgba(0,0,0,0.04),0_8px_16px_rgba(0,0,0,0.04)] hover:shadow-[0_4px_12px_rgba(0,0,0,0.08),0_16px_32px_rgba(0,0,0,0.08)]"
                 >
                   {/* Hover glow effect */}
                   <div className="absolute inset-0 bg-gradient-to-br from-orange-50/0 to-orange-50/50 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
@@ -376,7 +402,7 @@ export function TrustLandingPage() {
                   viewport={{ once: true }}
                   transition={{ duration: 0.6, delay: i * 0.1 }}
                   whileHover={{ scale: 1.05, rotate: -1 }}
-                  className="group p-6 bg-white rounded-2xl border border-black/5 hover:border-black/10 hover:shadow-2xl transition-all duration-300 cursor-pointer"
+                  className="group p-6 bg-white rounded-2xl border border-[#e3e8ee] hover:border-[#d1d9e0] transition-all duration-300 cursor-pointer shadow-[0_2px_4px_rgba(0,0,0,0.04),0_8px_16px_rgba(0,0,0,0.04)] hover:shadow-[0_4px_12px_rgba(0,0,0,0.08),0_16px_32px_rgba(0,0,0,0.08)]"
                 >
                   <div className="flex items-center gap-3 mb-6">
                     <motion.div
@@ -503,7 +529,7 @@ export function TrustLandingPage() {
                   viewport={{ once: true }}
                   transition={{ duration: 0.6, delay: i * 0.1 }}
                   whileHover={{ scale: 1.03, y: -2 }}
-                  className="group flex items-center gap-4 p-6 bg-gradient-to-br from-white to-black/[0.02] rounded-2xl border border-black/5 hover:border-black/10 hover:shadow-xl transition-all duration-300 cursor-pointer"
+                  className="group flex items-center gap-4 p-6 bg-white rounded-2xl border border-[#e3e8ee] hover:border-[#d1d9e0] transition-all duration-300 cursor-pointer shadow-[0_2px_4px_rgba(0,0,0,0.04),0_8px_16px_rgba(0,0,0,0.04)] hover:shadow-[0_4px_12px_rgba(0,0,0,0.08),0_16px_32px_rgba(0,0,0,0.08)]"
                 >
                   <motion.div
                     className={`p-3 bg-gradient-to-br ${badge.color} rounded-xl shadow-lg`}
