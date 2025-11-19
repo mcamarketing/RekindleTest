@@ -28,8 +28,11 @@ COPY . .
 # Build frontend
 RUN npm run build
 
+# Set working directory to backend
+WORKDIR /app/backend/crewai_agents
+
 # Expose port
 EXPOSE 8081
 
-# Start backend server
-CMD ["/bin/bash", "-c", ". /opt/venv/bin/activate && cd backend/crewai_agents && uvicorn api_server:app --host 0.0.0.0 --port ${PORT:-8081}"]
+# Start backend server (activate venv and run uvicorn)
+CMD ["/bin/bash", "-c", ". /opt/venv/bin/activate && uvicorn api_server:app --host 0.0.0.0 --port ${PORT:-8081}"]
