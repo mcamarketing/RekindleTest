@@ -1,0 +1,82 @@
+Category,Item,Status,Evidence Required,File Path/Test,Priority,Owner,Notes
+Technical - Core,CI pipeline green with all tests passing,NOT STARTED,GitHub Actions/CI logs showing green build,".github/workflows/",P0,Dev,Required before any deployment
+Technical - Core,Unit test coverage >= 80%,NOT STARTED,Coverage report from pytest/jest,"backend/tests/, src/__tests__/",P0,Dev,Focus on crew execution and permission logic
+Technical - Core,Integration tests for REX → Crew → Worker flow,NOT STARTED,Test logs showing end-to-end campaign execution,backend/tests/integration/,P0,Dev,Test with mocked SendGrid/Twilio
+Technical - Core,Special Forces Crew A execution tested with real leads,NOT STARTED,Campaign result JSON + database entries,backend/test_sf_simple.py,P0,Dev,Requires OPENAI_API_KEY
+Technical - Core,Special Forces Crew C (revenue) execution tested,NOT STARTED,Meeting booking logs + billing calculations,backend/crewai_agents/crews/special_forces_crews.py:RevenueConversionCrew,P1,Dev,Test meeting booker + billing agent
+Technical - Core,Database migrations tested and reversible,NOT STARTED,Migration up/down logs,backend/FULL_DATABASE_SETUP.sql,P0,Dev,Test on staging first
+Technical - Core,RLS policies active and tested,NOT STARTED,Query logs showing user isolation,"backend/FULL_DATABASE_SETUP.sql, test user_id filtering",P0,Dev,Critical for multi-tenant security
+Technical - Performance,Load test: 100 concurrent campaigns,NOT STARTED,Load test report (Locust/k6),"backend/tests/load/, create if needed",P1,Dev,Identify bottlenecks before scale
+Technical - Performance,API latency P95 < 3s measured,NOT STARTED,Grafana dashboard or APM metrics,backend/crewai_agents/api_server.py,P1,DevOps,Use FastAPI instrumentation
+Technical - Performance,Redis queue processing time < 30s per message,NOT STARTED,Queue metrics from Redis/BullMQ,backend/src/index.ts (queue setup),P1,DevOps,Monitor worker throughput
+Technical - Performance,Database query performance optimized,NOT STARTED,Query execution plans + indexes,"backend/FULL_DATABASE_SETUP.sql (indexes)",P2,Dev,Check slow query logs
+Technical - Delivery,SPF/DKIM/DMARC records configured,NOT STARTED,DNS TXT record screenshots + mail-tester.com score,DNS provider (Cloudflare/Route53),P0,DevOps,Required for email deliverability
+Technical - Delivery,SendGrid domain authentication verified,NOT STARTED,SendGrid dashboard screenshot showing verified domain,SendGrid account,P0,DevOps,Must complete before sending
+Technical - Delivery,Twilio SMS/WhatsApp credentials tested,NOT STARTED,Test message delivery logs,backend/crewai_agents/.env (TWILIO_*),P0,DevOps,Send test SMS to verify
+Technical - Delivery,Bounce/complaint webhooks active and tested,NOT STARTED,Webhook delivery logs from SendGrid/Twilio,"backend/crewai_agents/api_server.py (/webhooks endpoints)",P0,Dev,Create if missing
+Technical - Delivery,Suppression list implemented and enforced,NOT STARTED,Test showing suppressed lead not receiving message,"backend/crewai_agents/agents/safety_agents.py, database suppression table",P0,Dev,Legal requirement
+Technical - Delivery,Domain warm-up plan documented and started,NOT STARTED,Warm-up schedule + daily send volume logs,"backend/crewai_agents/agents/infrastructure_agents.py (EmailWarmupAgent)",P1,DevOps,7-14 day ramp recommended
+Product - UX,Landing page value prop clear in < 5 seconds,NOT STARTED,User test video or heatmap data,src/pages/LandingPage.tsx,P0,Product,Test with 5 strangers
+Product - UX,Onboarding flow: signup → first campaign < 15 min,NOT STARTED,Screen recording of full onboarding flow,"src/pages/SignUp.tsx, src/pages/CreateCampaign.tsx",P0,Product,Time each step
+Product - UX,Dashboard displays correct real-time KPIs,NOT STARTED,Screenshot of dashboard with test campaign data,src/pages/Dashboard.tsx,P0,Product,Verify open rate / response rate calculations
+Product - UX,Rex chat widget: guest vs logged-in flows tested,NOT STARTED,Test scenarios for both user types,src/components/AIAgentWidget.tsx,P0,Product,Guest should see login prompt for actions
+Product - UX,Campaign creation wizard functional and validated,NOT STARTED,Created campaign appears in database and UI,src/pages/CreateCampaign.tsx,P0,Product,Test with CSV import
+Product - UX,Lead import (CSV) tested with 1000+ leads,NOT STARTED,Import logs + leads in database,src/pages/LeadImport.tsx,P1,Product,Validate data mapping
+Product - UX,Error messages user-friendly and actionable,NOT STARTED,List of error scenarios with screenshots,src/components/Toast.tsx,P1,Product,No technical stack traces shown
+Product - UX,Mobile responsive design tested,NOT STARTED,Screenshots on iOS/Android devices,"All src/pages/, src/components/",P2,Product,At minimum: dashboard + chat widget
+Security - Auth,JWT authentication working with refresh tokens,NOT STARTED,Auth flow test logs,"backend/src/index.ts (authMiddleware), backend/crewai_agents/api_server.py (verify_jwt_token)",P0,Dev,Test token expiry and refresh
+Security - Auth,RBAC enforced per package tier,NOT STARTED,Test showing free user blocked from campaign launch,backend/crewai_agents/agents/rex/permissions.py,P0,Dev,Test all 4 tiers (free/starter/pro/enterprise)
+Security - Auth,Password reset flow functional,NOT STARTED,Password reset email received and link works,src/pages/Login.tsx + backend auth,P1,Dev,Use Supabase auth flows
+Security - Auth,Rate limiting active on all public endpoints,NOT STARTED,Rate limit test showing 429 responses,"backend/crewai_agents/api_server.py (@limiter.limit), backend/src/index.ts",P0,Dev,Protect against abuse
+Security - Data,Environment variables not committed to repo,NOT STARTED,Git history scan for secrets,.gitignore + repo scan,P0,Dev,Use git-secrets or truffleHog
+Security - Data,API keys rotatable without code changes,NOT STARTED,Key rotation test procedure,backend/crewai_agents/.env,P1,DevOps,Document rotation process
+Security - Data,Database backups automated and tested,NOT STARTED,Backup logs + restore test,Supabase dashboard (backup settings),P0,DevOps,Daily backups minimum
+Security - Data,PII encrypted at rest,NOT STARTED,Database encryption settings verified,Supabase dashboard (encryption),P1,DevOps,Check lead emails/phone encrypted
+Security - Data,Audit logs for all user actions,NOT STARTED,Sample audit log entries,backend/crewai_agents/agents/rex/rex.py (logging),P1,Dev,Critical for compliance
+Security - Compliance,GDPR data deletion flow implemented,NOT STARTED,Test user deletion removes all PII,Create DELETE /api/users/:id endpoint,P0,Dev,Legal requirement for EU
+Security - Compliance,Privacy policy published and linked,NOT STARTED,Privacy policy URL live,Frontend footer + /privacy page,P0,Legal,Review by lawyer
+Security - Compliance,Terms of Service published,NOT STARTED,ToS URL live,Frontend footer + /terms page,P0,Legal,Review by lawyer
+Security - Compliance,Opt-in consent tracked per lead,NOT STARTED,Database field + validation,leads table (consent_timestamp column),P0,Dev,Required for compliance
+Security - Compliance,Unsubscribe link in all emails,NOT STARTED,Test email showing unsubscribe link,Message generation templates,P0,Dev,CAN-SPAM requirement
+Security - Compliance,Opt-out handling functional (email/SMS),NOT STARTED,Test opt-out updates suppression list,Webhook handlers + suppression table,P0,Dev,Must work within 10 days (CAN-SPAM)
+Security - Compliance,TCPA compliance for SMS (explicit opt-in),NOT STARTED,Consent proof screenshot,SMS opt-in flow documentation,P0,Legal,Required in US for SMS
+Operations - Monitoring,Application logs centralized and searchable,NOT STARTED,Log search query results,ELK/Datadog/CloudWatch setup,P0,DevOps,Critical for debugging
+Operations - Monitoring,Error tracking active (Sentry/Rollbar),NOT STARTED,Test error appears in Sentry,Sentry.io integration,P0,DevOps,Catch production exceptions
+Operations - Monitoring,Metrics dashboard created (Grafana/DataDog),NOT STARTED,Dashboard URL with live metrics,Grafana/DataDog setup,P1,DevOps,Track API latency/throughput
+Operations - Monitoring,Alerts configured for critical errors,NOT STARTED,Alert rule list + test alert,PagerDuty/Opsgenie/Slack integration,P0,DevOps,High bounce rate / worker failure / API errors
+Operations - Monitoring,Health check endpoints tested,NOT STARTED,/health returning 200 with component status,backend/crewai_agents/api_server.py (/health),P0,Dev,Monitor DB/Redis/OpenAI connectivity
+Operations - Monitoring,WebSocket connection stability tested,NOT STARTED,Long-running WebSocket test (1+ hour),backend/crewai_agents/api_server.py (/ws/agents),P1,Dev,Test reconnection logic
+Operations - Deployment,Staging environment exists and mirrors prod,NOT STARTED,Staging URL + config comparison,Infrastructure (Vercel/Railway/AWS),P0,DevOps,Test all changes here first
+Operations - Deployment,Blue-green or canary deployment process,NOT STARTED,Deployment procedure document,CI/CD pipeline config,P1,DevOps,Minimize downtime
+Operations - Deployment,Rollback procedure tested,NOT STARTED,Rollback test log,Deployment scripts,P0,DevOps,Must work in < 5 minutes
+Operations - Deployment,Database migration strategy documented,NOT STARTED,Migration runbook,docs/runbooks/migrations.md,P0,DevOps,Forward and backward compatible
+Operations - Deployment,Secrets management configured,NOT STARTED,Secrets stored in vault/AWS Secrets Manager,Environment config,P0,DevOps,Never in code or CI logs
+Operations - Deployment,SSL certificates configured and auto-renewing,NOT STARTED,SSL Labs test A+ rating,Load balancer/CDN config,P0,DevOps,Let's Encrypt or cloud provider
+Operations - Infrastructure,Redis/queue infrastructure stable,NOT STARTED,Queue monitoring metrics,Redis Cloud or self-hosted config,P0,DevOps,Critical for message delivery
+Operations - Infrastructure,Worker processes auto-scaling,NOT STARTED,Load test showing workers scale up,Worker deployment config,P1,DevOps,Handle traffic spikes
+Operations - Infrastructure,Database connection pooling configured,NOT STARTED,Connection pool metrics,Supabase pooler or pg-pool config,P1,DevOps,Prevent connection exhaustion
+Operations - Infrastructure,CDN configured for static assets,NOT STARTED,CDN cache hit rate metrics,Vercel/Cloudflare/CloudFront,P2,DevOps,Improve frontend load time
+Business - Monetization,Stripe/payment integration tested,NOT STARTED,Test subscription creation + webhook,backend/mcp_servers/stripe_mcp_server.py,P0,Dev,Test upgrade/downgrade flows
+Business - Monetization,Pricing page matches package features in code,NOT STARTED,Manual verification of pricing page vs permissions.py,src/pages/LandingPage.tsx + backend/crewai_agents/agents/rex/permissions.py,P0,Product,Avoid customer confusion
+Business - Monetization,Free tier limits enforced,NOT STARTED,Test free user hitting limits,backend/crewai_agents/agents/rex/permissions.py,P0,Dev,Show upgrade prompt
+Business - Monetization,Performance fee calculation (2.5% ACV) tested,NOT STARTED,Billing calculation test cases,backend/crewai_agents/crews/special_forces_crews.py:RevenueConversionCrew,P1,Dev,Verify meeting → revenue tracking
+Business - Monetization,Invoice generation automated,NOT STARTED,Sample invoice PDF,Stripe integration or custom invoicing,P1,Dev,Monthly recurring
+Business - GTM,ICP defined and documented,NOT STARTED,ICP document with firmographics,docs/go-to-market/icp.md,P0,Marketing,Who is the ideal customer?
+Business - GTM,3 pilot customers identified and contacted,NOT STARTED,Customer names + signed pilot agreements,Sales CRM or spreadsheet,P0,Sales,Revenue validation
+Business - GTM,ROI calculator/dashboard for customers,NOT STARTED,Dashboard screenshot showing ROI,src/pages/Analytics.tsx or new ROI page,P0,Product,Show meetings booked → revenue impact
+Business - GTM,Case study template prepared,NOT STARTED,Template document,docs/case-studies/template.md,P1,Marketing,Capture customer success stories
+Business - GTM,Sales playbook documented,NOT STARTED,Playbook document,docs/go-to-market/sales-playbook.md,P1,Sales,Onboarding + objection handling
+Business - GTM,Referral/affiliate program designed,NOT STARTED,Program terms document,TBD,P2,Marketing,Growth lever
+Documentation,Architecture diagram up-to-date,COMPLETE,Mermaid diagram in repo,REKINDLE_SYSTEM_WORKFLOW_DIAGRAM.md,P0,Dev,Already exists - verify accuracy
+Documentation,API documentation published,NOT STARTED,API docs URL (Swagger/Postman),backend/crewai_agents/api_server.py + docs/,P1,Dev,Use FastAPI auto-docs
+Documentation,Runbook: High bounce rate incident,NOT STARTED,Runbook document,docs/runbooks/high-bounce-rate.md,P0,DevOps,Create from template below
+Documentation,Runbook: Campaign rollback,NOT STARTED,Runbook document,docs/runbooks/campaign-rollback.md,P0,DevOps,Create from template below
+Documentation,Runbook: Database outage,NOT STARTED,Runbook document,docs/runbooks/db-outage.md,P0,DevOps,Recovery procedure
+Documentation,README with setup instructions,NOT STARTED,README.md with local dev setup,README.md,P1,Dev,For new developers
+Documentation,Changelog published,NOT STARTED,CHANGELOG.md or release notes,CHANGELOG.md,P2,Dev,Track feature releases
+Environment Setup,OPENAI_API_KEY configured,NOT STARTED,Test agent execution successful,backend/crewai_agents/.env,P0,DevOps,Currently blocking
+Environment Setup,SUPABASE_KEY configured,NOT STARTED,Database query successful,backend/crewai_agents/.env,P0,DevOps,Currently missing
+Environment Setup,SENDGRID_API_KEY configured,NOT STARTED,Test email sent,backend/crewai_agents/.env,P0,DevOps,For email delivery
+Environment Setup,TWILIO_ACCOUNT_SID configured,NOT STARTED,Test SMS sent,backend/crewai_agents/.env,P0,DevOps,For SMS delivery
+Environment Setup,JWT_SECRET configured,NOT STARTED,Auth test successful,backend/crewai_agents/.env,P0,DevOps,For token signing
+Environment Setup,All environment variables documented,NOT STARTED,.env.example file with all required vars,backend/crewai_agents/.env.example,P1,Dev,For team onboarding
