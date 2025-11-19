@@ -2,12 +2,13 @@
 # This tells Railway how to build the app with both Python and Node.js
 
 [phases.setup]
-nixPkgs = ["nodejs_18", "python311", "python311Packages.pip"]
+nixPkgs = ["nodejs_18", "python311", "python311Packages.pip", "python311Packages.virtualenv"]
 
 [phases.install]
 cmds = [
     "npm ci",
-    "cd backend/crewai_agents && pip install -r requirements.txt"
+    "python -m venv /opt/venv",
+    ". /opt/venv/bin/activate && cd backend/crewai_agents && pip install -r requirements.txt"
 ]
 
 [phases.build]
@@ -17,4 +18,4 @@ cmds = [
 ]
 
 [start]
-cmd = "npm run start:production"
+cmd = ". /opt/venv/bin/activate && cd backend/crewai_agents && python -m uvicorn api_server:app --host 0.0.0.0 --port ${PORT:-8081}"
