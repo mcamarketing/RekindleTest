@@ -14,17 +14,20 @@ from pydantic import BaseModel, Field
 from typing import Type, Optional, List
 from datetime import datetime, timedelta
 
-# Import the client getter from api_server
-try:
-    from ..api_server import get_supa_client
-except ImportError:
-    # Fallback if imported directly
-    from ..tools.db_tools import SupabaseDB
-    _db_instance = SupabaseDB()
-    def get_supa_client():
-        return _db_instance.supabase
-
 logger = logging.getLogger(__name__)
+
+# Lazy import to avoid circular dependency
+def get_supa_client():
+    """Get Supabase client - lazy import to avoid circular dependency."""
+    try:
+        from ..api_server import get_supa_client as _get_client
+        return _get_client()
+    except (ImportError, AttributeError):
+        # Fallback: create client directly
+        from ..tools.db_tools import SupabaseDB
+        if not hasattr(get_supa_client, '_db_instance'):
+            get_supa_client._db_instance = SupabaseDB()
+        return get_supa_client._db_instance.supabase
 
 
 # --- Tool: Get User KPIs ---
