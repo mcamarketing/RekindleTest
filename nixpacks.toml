@@ -1,0 +1,20 @@
+# Nixpacks Configuration for Rekindle.ai
+# This tells Railway how to build the app with both Python and Node.js
+
+[phases.setup]
+nixPkgs = ["nodejs_18", "python311", "python311Packages.pip"]
+
+[phases.install]
+cmds = [
+    "npm ci",
+    "cd backend/crewai_agents && pip install -r requirements.txt"
+]
+
+[phases.build]
+cmds = [
+    "npm install",
+    "npm run build"
+]
+
+[start]
+cmd = "npm run start:production"
