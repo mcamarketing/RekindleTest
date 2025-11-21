@@ -26,38 +26,35 @@ export function Navigation({ currentPage }: NavigationProps) {
   const isActive = (page: string) => currentPage === page;
 
   return (
-    <nav className="sticky top-0 z-50 bg-[#1A1F2E]/95 backdrop-blur-xl border-b border-gray-800 shadow-2xl">
-      {/* Aurora gradient background effect */}
-      <div className="absolute inset-0 opacity-30 pointer-events-none overflow-hidden">
-        <div className="absolute top-0 left-1/4 w-96 h-96 bg-[#FF6B35] rounded-full blur-[120px] animate-aurora" />
-        <div className="absolute top-0 right-1/4 w-96 h-96 bg-[#F7931E] rounded-full blur-[120px] animate-aurora" style={{ animationDelay: '2s' }} />
-      </div>
-
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+    <nav className="sticky top-0 z-50 bg-white border-b border-[#e3e8ee]">
+      <div className="max-w-7xl mx-auto px-6">
         <div className="flex justify-between items-center h-16">
+          {/* Logo */}
           <div className="flex items-center">
             <button
               onClick={() => navigate('/dashboard')}
-              className="focus:outline-none focus:ring-2 focus:ring-[#FF6B35]/50 rounded-lg transition-all duration-300 hover:scale-105"
+              className="focus:outline-none rounded-md transition-opacity hover:opacity-80"
             >
-              <img
-                src="/images/image copy copy.png"
-                alt="Rekindle.ai"
-                className="h-12 w-auto"
-              />
+              <div className="flex items-center gap-2">
+                <div className="w-8 h-8 bg-[#0a2540] rounded-md flex items-center justify-center">
+                  <span className="text-white font-bold text-sm">R</span>
+                </div>
+                <span className="text-[#0a2540] font-bold text-lg">RekindlePro</span>
+              </div>
             </button>
           </div>
 
+          {/* Navigation Links - Stripe-style minimal */}
           <div className="flex items-center gap-1">
             <button
               onClick={() => navigate('/dashboard')}
               className={`
-                flex items-center gap-2 px-4 py-2.5
-                font-semibold text-sm rounded-xl
-                transition-all duration-300
+                flex items-center gap-2 px-3 py-2
+                font-medium text-sm rounded-md
+                transition-colors duration-150
                 ${isActive('dashboard')
-                  ? 'text-white bg-gradient-to-r from-[#FF6B35] to-[#F7931E] shadow-lg shadow-[#FF6B35]/30 scale-105'
-                  : 'text-gray-400 hover:text-white hover:bg-white/5 hover:shadow-lg hover:shadow-white/10'
+                  ? 'text-[#0a2540] bg-[#f6f9fc]'
+                  : 'text-[#727f96] hover:text-[#0a2540]'
                 }
               `}
             >
@@ -68,12 +65,12 @@ export function Navigation({ currentPage }: NavigationProps) {
             <button
               onClick={() => navigate('/leads')}
               className={`
-                flex items-center gap-2 px-4 py-2.5
-                font-semibold text-sm rounded-xl
-                transition-all duration-300
+                flex items-center gap-2 px-3 py-2
+                font-medium text-sm rounded-md
+                transition-colors duration-150
                 ${isActive('leads')
-                  ? 'text-white bg-gradient-to-r from-[#FF6B35] to-[#F7931E] shadow-lg shadow-[#FF6B35]/30 scale-105'
-                  : 'text-gray-400 hover:text-white hover:bg-white/5 hover:shadow-lg hover:shadow-white/10'
+                  ? 'text-[#0a2540] bg-[#f6f9fc]'
+                  : 'text-[#727f96] hover:text-[#0a2540]'
                 }
               `}
             >
@@ -84,12 +81,12 @@ export function Navigation({ currentPage }: NavigationProps) {
             <button
               onClick={() => navigate('/campaigns')}
               className={`
-                flex items-center gap-2 px-4 py-2.5
-                font-semibold text-sm rounded-xl
-                transition-all duration-300
+                flex items-center gap-2 px-3 py-2
+                font-medium text-sm rounded-md
+                transition-colors duration-150
                 ${isActive('campaigns')
-                  ? 'text-white bg-gradient-to-r from-[#FF6B35] to-[#F7931E] shadow-lg shadow-[#FF6B35]/30 scale-105'
-                  : 'text-gray-400 hover:text-white hover:bg-white/5 hover:shadow-lg hover:shadow-white/10'
+                  ? 'text-[#0a2540] bg-[#f6f9fc]'
+                  : 'text-[#727f96] hover:text-[#0a2540]'
                 }
               `}
             >
@@ -98,30 +95,14 @@ export function Navigation({ currentPage }: NavigationProps) {
             </button>
 
             <button
-              onClick={() => navigate('/agents')}
-              className={`
-                flex items-center gap-2 px-4 py-2.5
-                font-semibold text-sm rounded-xl
-                transition-all duration-300
-                ${isActive('agents')
-                  ? 'text-white bg-gradient-to-r from-[#FF6B35] to-[#F7931E] shadow-lg shadow-[#FF6B35]/30 scale-105'
-                  : 'text-gray-400 hover:text-white hover:bg-white/5 hover:shadow-lg hover:shadow-white/10'
-                }
-              `}
-            >
-              <Cpu className="w-4 h-4" />
-              <span>AI Agents</span>
-            </button>
-
-            <button
               onClick={() => navigate('/analytics')}
               className={`
-                flex items-center gap-2 px-4 py-2.5
-                font-semibold text-sm rounded-xl
-                transition-all duration-300
+                flex items-center gap-2 px-3 py-2
+                font-medium text-sm rounded-md
+                transition-colors duration-150
                 ${isActive('analytics')
-                  ? 'text-white bg-gradient-to-r from-[#FF6B35] to-[#F7931E] shadow-lg shadow-[#FF6B35]/30 scale-105'
-                  : 'text-gray-400 hover:text-white hover:bg-white/5 hover:shadow-lg hover:shadow-white/10'
+                  ? 'text-[#0a2540] bg-[#f6f9fc]'
+                  : 'text-[#727f96] hover:text-[#0a2540]'
                 }
               `}
             >
@@ -132,12 +113,12 @@ export function Navigation({ currentPage }: NavigationProps) {
             <button
               onClick={() => navigate('/billing')}
               className={`
-                flex items-center gap-2 px-4 py-2.5
-                font-semibold text-sm rounded-xl
-                transition-all duration-300
+                flex items-center gap-2 px-3 py-2
+                font-medium text-sm rounded-md
+                transition-colors duration-150
                 ${isActive('billing')
-                  ? 'text-white bg-gradient-to-r from-[#FF6B35] to-[#F7931E] shadow-lg shadow-[#FF6B35]/30 scale-105'
-                  : 'text-gray-400 hover:text-white hover:bg-white/5 hover:shadow-lg hover:shadow-white/10'
+                  ? 'text-[#0a2540] bg-[#f6f9fc]'
+                  : 'text-[#727f96] hover:text-[#0a2540]'
                 }
               `}
             >
@@ -145,30 +126,14 @@ export function Navigation({ currentPage }: NavigationProps) {
               <span>Billing</span>
             </button>
 
-            <button
-              onClick={() => navigate('/compliance')}
-              className={`
-                flex items-center gap-2 px-4 py-2.5
-                font-semibold text-sm rounded-xl
-                transition-all duration-300
-                ${isActive('compliance')
-                  ? 'text-white bg-gradient-to-r from-[#FF6B35] to-[#F7931E] shadow-lg shadow-[#FF6B35]/30 scale-105'
-                  : 'text-gray-400 hover:text-white hover:bg-white/5 hover:shadow-lg hover:shadow-white/10'
-                }
-              `}
-            >
-              <Shield className="w-4 h-4" />
-              <span>Compliance</span>
-            </button>
-
-            <div className="w-px h-8 bg-gray-700 mx-2" />
+            <div className="w-px h-6 bg-[#e3e8ee] mx-2" />
 
             <button
               onClick={handleSignOut}
-              className="flex items-center gap-2 px-4 py-2.5 text-gray-400 hover:text-red-400 hover:bg-red-500/10 font-semibold text-sm rounded-xl transition-all duration-300 hover:shadow-lg hover:shadow-red-500/20"
+              className="flex items-center gap-2 px-3 py-2 text-[#727f96] hover:text-[#ef4444] font-medium text-sm rounded-md transition-colors duration-150"
             >
               <LogOut className="w-4 h-4" />
-              <span>Sign Out</span>
+              <span>Sign out</span>
             </button>
           </div>
         </div>

@@ -40,7 +40,12 @@
       "Bash(/tmp/final_report.txt)",
       "Bash(echo:*)",
       "Bash(git config:*)",
-      "Bash(git add:*)"
+      "Bash(git add:*)",
+      "Bash(git commit:*)",
+      "Bash(git pull:*)",
+      "Bash(git checkout:*)",
+      "Bash(git push:*)",
+      "Bash(.nixpacksignore)"
     ],
     "deny": [],
     "ask": []

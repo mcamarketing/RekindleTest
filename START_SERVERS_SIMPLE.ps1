@@ -24,3 +24,5 @@ Write-Host "🎨 Frontend: http://localhost:5173" -ForegroundColor Cyan
 Write-Host "`n💡 Wait 10-15 seconds, then open http://localhost:5173 in your browser`n" -ForegroundColor Yellow
 
 
+
+

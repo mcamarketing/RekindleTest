@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { ArrowLeft, CheckCircle, AlertCircle, Loader } from 'lucide-react';
+import { ArrowLeft, CheckCircle, AlertCircle, Loader, ArrowRight, Zap, Target, Users } from 'lucide-react';
 import { supabase } from '../lib/supabase';
 import { CustomSelect } from '../components/CustomSelect';
 
@@ -103,38 +103,38 @@ export function PilotApplication() {
 
   if (submitted) {
     return (
-      <div className="min-h-screen bg-[#1A1F2E] flex items-center justify-center px-4">
-        <div className="max-w-2xl w-full glass-card p-12 text-center border-2 border-green-500/30">
-          <div className="w-20 h-20 rounded-full bg-green-500/20 border-2 border-green-500/40 flex items-center justify-center mx-auto mb-6">
-            <CheckCircle className="w-10 h-10 text-green-400" />
+      <div className="min-h-screen bg-[#f6f9fc] flex items-center justify-center px-4">
+        <div className="max-w-2xl w-full bg-white border border-[#e3e8ee] rounded-lg p-12 text-center shadow-sm">
+          <div className="w-20 h-20 rounded-full bg-green-50 border border-green-200 flex items-center justify-center mx-auto mb-6">
+            <CheckCircle className="w-10 h-10 text-green-600" />
           </div>
-          
-          <h1 className="text-4xl font-bold text-white mb-4">
+
+          <h1 className="text-4xl font-bold text-[#0a2540] mb-4 tracking-tight">
             Application Received!
           </h1>
-          
-          <p className="text-xl text-gray-300 mb-8 leading-relaxed">
-            Thank you for applying to the Rekindle.ai Pilot Program. We review applications within 24 hours.
+
+          <p className="text-xl text-[#425466] mb-8 leading-relaxed">
+            Thank you for applying to the RekindlePro Pilot Program. We review applications within 24 hours.
           </p>
-          
-          <div className="glass-card rounded-2xl p-6 border border-white/10 mb-8">
-            <h3 className="text-white font-semibold mb-4">What Happens Next:</h3>
-            <div className="text-left space-y-3 text-gray-300 text-sm">
+
+          <div className="bg-[#f6f9fc] rounded-lg p-6 border border-[#e3e8ee] mb-8">
+            <h3 className="text-[#0a2540] font-semibold mb-4">What Happens Next:</h3>
+            <div className="text-left space-y-3 text-[#425466] text-sm">
               <div className="flex items-start gap-3">
-                <span className="text-orange-400 font-bold">1.</span>
+                <span className="text-[#0a2540] font-bold">1.</span>
                 <span>Our team reviews your application (within 24 hours)</span>
               </div>
               <div className="flex items-start gap-3">
-                <span className="text-orange-400 font-bold">2.</span>
+                <span className="text-[#0a2540] font-bold">2.</span>
                 <span>If approved, you receive onboarding email with setup instructions</span>
               </div>
               <div className="flex items-start gap-3">
-                <span className="text-orange-400 font-bold">3.</span>
-                <span>First 30 days: Performance fee only (zero platform fee until you see results)</span>
+                <span className="text-[#0a2540] font-bold">3.</span>
+                <span>Month 1 platform access complimentary (performance fee only)</span>
               </div>
               <div className="flex items-start gap-3">
-                <span className="text-orange-400 font-bold">4.</span>
-                <span>We revive your leads, book meetings, and prove ROI</span>
+                <span className="text-[#0a2540] font-bold">4.</span>
+                <span>We reactivate your dormant leads and book qualified meetings</span>
               </div>
             </div>
           </div>
@@ -142,20 +142,20 @@ export function PilotApplication() {
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <button
               onClick={() => navigate('/')}
-              className="px-8 py-4 bg-gradient-to-r from-[#FF6B35] to-[#F7931E] text-white font-bold text-lg rounded-xl hover:scale-105 transition-all"
+              className="px-8 py-3 bg-[#0a2540] text-white font-medium rounded-md hover:bg-[#0d2d52] transition-colors"
             >
               Return to Home
             </button>
             <button
               onClick={() => navigate('/blog')}
-              className="px-8 py-4 bg-white/10 border-2 border-white/20 text-white font-bold text-lg rounded-xl hover:bg-white/20 transition-all"
+              className="px-8 py-3 bg-white border border-[#e3e8ee] text-[#0a2540] font-medium rounded-md hover:border-[#0a2540] transition-all"
             >
               Read Our Blog
             </button>
           </div>
 
-          <p className="mt-8 text-sm text-gray-500">
-            Questions? Email us at <a href="mailto:pilot@rekindle.ai" className="text-[#FF6B35] hover:text-[#F7931E]">pilot@rekindle.ai</a>
+          <p className="mt-8 text-sm text-[#727f96]">
+            Questions? Email us at <a href="mailto:pilot@rekindlepro.ai" className="text-[#0a2540] hover:underline">pilot@rekindlepro.ai</a>
           </p>
         </div>
       </div>
@@ -163,18 +163,12 @@ export function PilotApplication() {
   }
 
   return (
-    <div className="min-h-screen bg-[#1A1F2E] relative overflow-hidden">
-      {/* Background gradients */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute top-0 left-1/4 w-[800px] h-[800px] bg-orange-600 rounded-full blur-[150px] opacity-15 animate-aurora" />
-        <div className="absolute bottom-0 right-1/4 w-[600px] h-[600px] bg-[#FF6B35] rounded-full blur-[150px] opacity-20 animate-aurora" style={{ animationDelay: '4s' }} />
-      </div>
-
-      <div className="max-w-4xl mx-auto px-4 py-12 relative z-10">
+    <div className="min-h-screen bg-[#f6f9fc]">
+      <div className="max-w-4xl mx-auto px-4 py-12">
         {/* Back button */}
         <button
           onClick={() => navigate('/')}
-          className="inline-flex items-center gap-2 text-[#FF6B35] hover:text-[#F7931E] mb-8 transition-all font-semibold hover:gap-3"
+          className="inline-flex items-center gap-2 text-[#0a2540] hover:text-[#0d2d52] mb-8 transition-colors font-medium"
         >
           <ArrowLeft className="w-5 h-5" />
           <span>Back to Home</span>
@@ -182,40 +176,40 @@ export function PilotApplication() {
 
         {/* Header */}
         <div className="text-center mb-12">
-          <div className="inline-flex items-center gap-3 px-6 py-3 glass-card rounded-full mb-6 border-2 border-orange-500/40">
-            <span className="relative flex h-3 w-3">
+          <div className="inline-flex items-center gap-3 px-6 py-3 bg-white border border-[#e3e8ee] rounded-full mb-6 shadow-sm">
+            <span className="relative flex h-2 w-2">
               <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-orange-400 opacity-75"></span>
-              <span className="relative inline-flex rounded-full h-3 w-3 bg-orange-500"></span>
+              <span className="relative inline-flex rounded-full h-2 w-2 bg-orange-500"></span>
             </span>
-            <span className="text-sm text-white font-bold">🎯 EXCLUSIVE PILOT PROGRAM</span>
+            <span className="text-sm text-[#0a2540] font-semibold">Founding Pilot Program</span>
           </div>
 
-          <h1 className="text-5xl md:text-6xl font-bold text-white mb-6">
-            <span className="text-gradient">Claim Your Spot:</span> Lock In 50% Off <span className="text-white">Forever</span>
+          <h1 className="text-5xl md:text-6xl font-bold text-[#0a2540] mb-6 tracking-tight">
+            Request Pilot Access
           </h1>
 
-          <p className="text-xl text-gray-300 max-w-3xl mx-auto mb-4 leading-relaxed">
-            <span className="text-white font-bold">Only 47 pilot spots left.</span> First 30 days: <span className="text-green-400 font-bold">zero platform fee</span>, pay <span className="text-orange-400 font-bold">only 2.5% ACV per booked meeting</span>. <span className="text-red-400 font-bold">No meetings = £0.</span> After pilot: <span className="text-white font-bold">50% off forever</span>. <span className="text-emerald-400 font-semibold">Guarantee: 5+ meetings in 30 days or £500 cash penalty.</span>
+          <p className="text-xl text-[#425466] max-w-3xl mx-auto mb-4 leading-relaxed">
+            Join the founding pilot program. Month 1 platform access complimentary. Lock in founding member rates permanently.
           </p>
 
-          <p className="text-sm text-gray-500">
-            Applications reviewed within 24 hours. Solopreneurs to enterprise teams welcome.
+          <p className="text-sm text-[#727f96]">
+            Applications reviewed within 24 hours. All company sizes welcome.
           </p>
         </div>
 
         {/* Application Form */}
-        <form onSubmit={handleSubmit} className="glass-card p-10 border-2 border-white/10">
+        <form onSubmit={handleSubmit} className="bg-white border border-[#e3e8ee] rounded-lg p-10 shadow-sm">
           {error && (
-            <div className="mb-8 p-4 bg-red-500/10 border-2 border-red-500/30 rounded-xl flex items-start gap-3">
-              <AlertCircle className="w-5 h-5 text-red-400 flex-shrink-0 mt-0.5" />
-              <p className="text-red-300 text-sm">{error}</p>
+            <div className="mb-8 p-4 bg-red-50 border border-red-200 rounded-lg flex items-start gap-3">
+              <AlertCircle className="w-5 h-5 text-red-600 flex-shrink-0 mt-0.5" />
+              <p className="text-red-700 text-sm">{error}</p>
             </div>
           )}
 
           {/* Company Information */}
           <div className="mb-10">
-            <h2 className="text-2xl font-bold text-white mb-6 flex items-center gap-3">
-              <span className="w-8 h-8 rounded-full bg-orange-500/20 border border-orange-500/40 flex items-center justify-center text-orange-400 font-black text-sm">
+            <h2 className="text-2xl font-bold text-[#0a2540] mb-6 flex items-center gap-3">
+              <span className="w-8 h-8 rounded-full bg-[#f6f9fc] border border-[#e3e8ee] flex items-center justify-center text-[#0a2540] font-bold text-sm">
                 1
               </span>
               Company Information
@@ -223,33 +217,33 @@ export function PilotApplication() {
 
             <div className="grid md:grid-cols-2 gap-6">
               <div>
-                <label className="block text-white font-semibold mb-2 text-sm">Company Name *</label>
+                <label className="block text-[#0a2540] font-medium mb-2 text-sm">Company Name *</label>
                 <input
                   type="text"
                   name="companyName"
                   value={formData.companyName}
                   onChange={handleChange}
                   required
-                  className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-xl text-white placeholder-gray-500 focus:border-orange-500/50 focus:outline-none transition-all"
+                  className="w-full px-4 py-3 bg-white border border-[#e3e8ee] rounded-md text-[#0a2540] placeholder-[#727f96] focus:border-[#0a2540] focus:outline-none focus:ring-2 focus:ring-[#0a2540] transition-all"
                   placeholder="Acme Corp"
                 />
               </div>
 
               <div>
-                <label className="block text-white font-semibold mb-2 text-sm">Company Website *</label>
+                <label className="block text-[#0a2540] font-medium mb-2 text-sm">Company Website *</label>
                 <input
                   type="url"
                   name="companyWebsite"
                   value={formData.companyWebsite}
                   onChange={handleChange}
                   required
-                  className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-xl text-white placeholder-gray-500 focus:border-orange-500/50 focus:outline-none transition-all"
+                  className="w-full px-4 py-3 bg-white border border-[#e3e8ee] rounded-md text-[#0a2540] placeholder-[#727f96] focus:border-[#0a2540] focus:outline-none focus:ring-2 focus:ring-[#0a2540] transition-all"
                   placeholder="https://acmecorp.com"
                 />
               </div>
 
               <div>
-                <label className="block text-white font-semibold mb-2 text-sm">Company Size *</label>
+                <label className="block text-[#0a2540] font-medium mb-2 text-sm">Company Size *</label>
                 <CustomSelect
                   name="companySize"
                   value={formData.companySize}
@@ -268,7 +262,7 @@ export function PilotApplication() {
               </div>
 
               <div>
-                <label className="block text-white font-semibold mb-2 text-sm">Industry *</label>
+                <label className="block text-[#0a2540] font-medium mb-2 text-sm">Industry *</label>
                 <CustomSelect
                   name="industry"
                   value={formData.industry}
@@ -290,8 +284,8 @@ export function PilotApplication() {
 
           {/* Contact Information */}
           <div className="mb-10">
-            <h2 className="text-2xl font-bold text-white mb-6 flex items-center gap-3">
-              <span className="w-8 h-8 rounded-full bg-orange-500/20 border border-orange-500/40 flex items-center justify-center text-orange-400 font-black text-sm">
+            <h2 className="text-2xl font-bold text-[#0a2540] mb-6 flex items-center gap-3">
+              <span className="w-8 h-8 rounded-full bg-[#f6f9fc] border border-[#e3e8ee] flex items-center justify-center text-[#0a2540] font-bold text-sm">
                 2
               </span>
               Your Information
@@ -299,59 +293,59 @@ export function PilotApplication() {
 
             <div className="grid md:grid-cols-2 gap-6">
               <div>
-                <label className="block text-white font-semibold mb-2 text-sm">First Name *</label>
+                <label className="block text-[#0a2540] font-medium mb-2 text-sm">First Name *</label>
                 <input
                   type="text"
                   name="firstName"
                   value={formData.firstName}
                   onChange={handleChange}
                   required
-                  className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-xl text-white placeholder-gray-500 focus:border-orange-500/50 focus:outline-none transition-all"
+                  className="w-full px-4 py-3 bg-white border border-[#e3e8ee] rounded-md text-[#0a2540] placeholder-[#727f96] focus:border-[#0a2540] focus:outline-none focus:ring-2 focus:ring-[#0a2540] transition-all"
                   placeholder="John"
                 />
               </div>
 
               <div>
-                <label className="block text-white font-semibold mb-2 text-sm">Last Name *</label>
+                <label className="block text-[#0a2540] font-medium mb-2 text-sm">Last Name *</label>
                 <input
                   type="text"
                   name="lastName"
                   value={formData.lastName}
                   onChange={handleChange}
                   required
-                  className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-xl text-white placeholder-gray-500 focus:border-orange-500/50 focus:outline-none transition-all"
+                  className="w-full px-4 py-3 bg-white border border-[#e3e8ee] rounded-md text-[#0a2540] placeholder-[#727f96] focus:border-[#0a2540] focus:outline-none focus:ring-2 focus:ring-[#0a2540] transition-all"
                   placeholder="Smith"
                 />
               </div>
 
               <div>
-                <label className="block text-white font-semibold mb-2 text-sm">Work Email *</label>
+                <label className="block text-[#0a2540] font-medium mb-2 text-sm">Work Email *</label>
                 <input
                   type="email"
                   name="email"
                   value={formData.email}
                   onChange={handleChange}
                   required
-                  className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-xl text-white placeholder-gray-500 focus:border-orange-500/50 focus:outline-none transition-all"
+                  className="w-full px-4 py-3 bg-white border border-[#e3e8ee] rounded-md text-[#0a2540] placeholder-[#727f96] focus:border-[#0a2540] focus:outline-none focus:ring-2 focus:ring-[#0a2540] transition-all"
                   placeholder="john@acmecorp.com"
                 />
               </div>
 
               <div>
-                <label className="block text-white font-semibold mb-2 text-sm">Phone Number *</label>
+                <label className="block text-[#0a2540] font-medium mb-2 text-sm">Phone Number *</label>
                 <input
                   type="tel"
                   name="phone"
                   value={formData.phone}
                   onChange={handleChange}
                   required
-                  className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-xl text-white placeholder-gray-500 focus:border-orange-500/50 focus:outline-none transition-all"
+                  className="w-full px-4 py-3 bg-white border border-[#e3e8ee] rounded-md text-[#0a2540] placeholder-[#727f96] focus:border-[#0a2540] focus:outline-none focus:ring-2 focus:ring-[#0a2540] transition-all"
                   placeholder="+44 7700 900000"
                 />
               </div>
 
               <div className="md:col-span-2">
-                <label className="block text-white font-semibold mb-2 text-sm">Your Role *</label>
+                <label className="block text-[#0a2540] font-medium mb-2 text-sm">Your Role *</label>
                 <CustomSelect
                   name="role"
                   value={formData.role}
@@ -374,8 +368,8 @@ export function PilotApplication() {
 
           {/* Qualification Questions */}
           <div className="mb-10">
-            <h2 className="text-2xl font-bold text-white mb-6 flex items-center gap-3">
-              <span className="w-8 h-8 rounded-full bg-orange-500/20 border border-orange-500/40 flex items-center justify-center text-orange-400 font-black text-sm">
+            <h2 className="text-2xl font-bold text-[#0a2540] mb-6 flex items-center gap-3">
+              <span className="w-8 h-8 rounded-full bg-[#f6f9fc] border border-[#e3e8ee] flex items-center justify-center text-[#0a2540] font-bold text-sm">
                 3
               </span>
               Qualification
@@ -383,7 +377,7 @@ export function PilotApplication() {
 
             <div className="grid md:grid-cols-2 gap-6">
               <div>
-                <label className="block text-white font-semibold mb-2 text-sm">Average Deal Value (ACV) *</label>
+                <label className="block text-[#0a2540] font-medium mb-2 text-sm">Average Deal Value (ACV) *</label>
                 <CustomSelect
                   name="averageDealValue"
                   value={formData.averageDealValue}
@@ -402,7 +396,7 @@ export function PilotApplication() {
               </div>
 
               <div>
-                <label className="block text-white font-semibold mb-2 text-sm">Dormant Leads in CRM *</label>
+                <label className="block text-[#0a2540] font-medium mb-2 text-sm">Dormant Leads in CRM *</label>
                 <CustomSelect
                   name="dormantLeadsCount"
                   value={formData.dormantLeadsCount}
@@ -421,7 +415,7 @@ export function PilotApplication() {
               </div>
 
               <div className="md:col-span-2">
-                <label className="block text-white font-semibold mb-2 text-sm">Current CRM *</label>
+                <label className="block text-[#0a2540] font-medium mb-2 text-sm">Current CRM *</label>
                 <CustomSelect
                   name="currentCRM"
                   value={formData.currentCRM}
@@ -443,14 +437,14 @@ export function PilotApplication() {
               </div>
 
               <div className="md:col-span-2">
-                <label className="block text-white font-semibold mb-2 text-sm">Primary Challenge *</label>
+                <label className="block text-[#0a2540] font-medium mb-2 text-sm">Primary Challenge *</label>
                 <textarea
                   name="primaryChallenge"
                   value={formData.primaryChallenge}
                   onChange={handleChange}
                   required
                   rows={4}
-                  className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-xl text-white placeholder-gray-500 focus:border-orange-500/50 focus:outline-none transition-all resize-none"
+                  className="w-full px-4 py-3 bg-white border border-[#e3e8ee] rounded-md text-[#0a2540] placeholder-[#727f96] focus:border-[#0a2540] focus:outline-none focus:ring-2 focus:ring-[#0a2540] transition-all resize-none"
                   placeholder="What is your biggest challenge with lead reactivation right now? (Be specific - this helps us tailor your pilot)"
                 />
               </div>
@@ -459,31 +453,31 @@ export function PilotApplication() {
 
           {/* Pilot Terms Agreement */}
           <div className="mb-10">
-            <h2 className="text-2xl font-bold text-white mb-6 flex items-center gap-3">
-              <span className="w-8 h-8 rounded-full bg-orange-500/20 border border-orange-500/40 flex items-center justify-center text-orange-400 font-black text-sm">
+            <h2 className="text-2xl font-bold text-[#0a2540] mb-6 flex items-center gap-3">
+              <span className="w-8 h-8 rounded-full bg-[#f6f9fc] border border-[#e3e8ee] flex items-center justify-center text-[#0a2540] font-bold text-sm">
                 4
               </span>
               Pilot Program Terms
             </h2>
 
-            <div className="glass-card rounded-2xl p-6 border border-green-500/30 bg-green-500/5 mb-6">
-              <h3 className="text-white font-bold mb-4 text-lg">Special Pilot Offer:</h3>
-              <div className="space-y-3 text-gray-300 text-sm">
+            <div className="bg-green-50 rounded-lg p-6 border border-green-200 mb-6">
+              <h3 className="text-[#0a2540] font-bold mb-4 text-lg">Founding Pilot Benefits:</h3>
+              <div className="space-y-3 text-[#425466] text-sm">
                 <div className="flex items-start gap-3">
-                  <CheckCircle className="w-5 h-5 text-green-400 flex-shrink-0 mt-0.5" />
-                  <span>First 30 days: <span className="text-white font-bold">Zero platform fee</span> (performance fee only)</span>
+                  <CheckCircle className="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" />
+                  <span>Month 1 platform access complimentary (performance fee only)</span>
                 </div>
                 <div className="flex items-start gap-3">
-                  <CheckCircle className="w-5 h-5 text-green-400 flex-shrink-0 mt-0.5" />
-                  <span>Only pay when we book confirmed meetings (2.5-3% of your ACV)</span>
+                  <CheckCircle className="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" />
+                  <span>Only pay for confirmed meetings with decision-makers</span>
                 </div>
                 <div className="flex items-start gap-3">
-                  <CheckCircle className="w-5 h-5 text-green-400 flex-shrink-0 mt-0.5" />
-                  <span>After 30 days: <span className="text-white font-bold">50% off platform fee forever</span> (pioneer pricing)</span>
+                  <CheckCircle className="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" />
+                  <span>Lock in <span className="text-[#0a2540] font-semibold">founding member rates permanently</span></span>
                 </div>
                 <div className="flex items-start gap-3">
-                  <CheckCircle className="w-5 h-5 text-green-400 flex-shrink-0 mt-0.5" />
-                  <span>Lock in pilot pricing for 6 months minimum (save 30-50% vs. future rates)</span>
+                  <CheckCircle className="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" />
+                  <span>5+ meetings in 30 days or £500 account credit guarantee</span>
                 </div>
               </div>
             </div>
@@ -495,10 +489,10 @@ export function PilotApplication() {
                   name="agreedTo30Days"
                   checked={formData.agreedTo30Days}
                   onChange={handleChange}
-                  className="w-5 h-5 rounded border-2 border-white/20 bg-white/5 text-orange-500 focus:ring-2 focus:ring-orange-500/50 mt-0.5"
+                  className="w-5 h-5 rounded border-2 border-[#e3e8ee] bg-white text-[#0a2540] focus:ring-2 focus:ring-[#0a2540] mt-0.5"
                 />
-                <span className="text-gray-300 text-sm group-hover:text-white transition-colors">
-                  I commit to testing Rekindle for the full 30-day pilot period to allow the AI time to learn and optimize campaigns. *
+                <span className="text-[#425466] text-sm group-hover:text-[#0a2540] transition-colors">
+                  I commit to testing RekindlePro for the full 30-day pilot period to allow the AI time to learn and optimize campaigns. *
                 </span>
               </label>
 
@@ -508,10 +502,10 @@ export function PilotApplication() {
                   name="agreedToPerformanceFee"
                   checked={formData.agreedToPerformanceFee}
                   onChange={handleChange}
-                  className="w-5 h-5 rounded border-2 border-white/20 bg-white/5 text-orange-500 focus:ring-2 focus:ring-orange-500/50 mt-0.5"
+                  className="w-5 h-5 rounded border-2 border-[#e3e8ee] bg-white text-[#0a2540] focus:ring-2 focus:ring-[#0a2540] mt-0.5"
                 />
-                <span className="text-gray-300 text-sm group-hover:text-white transition-colors">
-                  I understand and agree to the performance-based pricing model (2.5-3% of ACV per booked meeting, zero platform fee for first 30 days, then 50% off platform fee forever). *
+                <span className="text-[#425466] text-sm group-hover:text-[#0a2540] transition-colors">
+                  I understand and agree to the performance-based pricing model (pay per qualified meeting, founding member rates locked permanently). *
                 </span>
               </label>
             </div>
@@ -521,48 +515,52 @@ export function PilotApplication() {
           <button
             type="submit"
             disabled={isSubmitting}
-            className="w-full px-12 py-5 bg-gradient-to-r from-[#FF6B35] to-[#F7931E] text-white font-black text-xl rounded-2xl hover:scale-105 transition-all duration-300 shadow-[0_0_40px_rgba(255,107,53,0.4)] disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100 flex items-center justify-center gap-3"
+            className="w-full px-8 py-3 bg-[#0a2540] text-white font-semibold rounded-md hover:bg-[#0d2d52] transition-colors disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-3"
           >
             {isSubmitting ? (
               <>
-                <Loader className="w-6 h-6 animate-spin" />
-                <span>Submitting Application...</span>
+                <Loader className="w-5 h-5 animate-spin" />
+                <span>Submitting application...</span>
               </>
             ) : (
               <>
-                <span>Submit Pilot Application</span>
-                <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M13 7l5 5m0 0l-5 5m5-5H6" />
-                </svg>
+                <span>Submit application</span>
+                <ArrowRight className="w-5 h-5" />
               </>
             )}
           </button>
 
-          <p className="mt-6 text-center text-sm text-gray-500">
-            By submitting, you agree to our <button onClick={() => navigate('/terms')} className="text-[#FF6B35] hover:text-[#F7931E] underline">Terms of Service</button> and <button onClick={() => navigate('/privacy')} className="text-[#FF6B35] hover:text-[#F7931E] underline">Privacy Policy</button>
+          <p className="mt-6 text-center text-sm text-[#727f96]">
+            By submitting, you agree to our <button onClick={() => navigate('/terms')} className="text-[#0a2540] hover:underline">Terms of Service</button> and <button onClick={() => navigate('/privacy')} className="text-[#0a2540] hover:underline">Privacy Policy</button>
           </p>
         </form>
 
         {/* Why Apply Section */}
-        <div className="mt-16 glass-card p-10 border-2 border-white/10">
-          <h3 className="text-2xl font-bold text-white mb-6 text-center">
+        <div className="mt-16 bg-white border border-[#e3e8ee] rounded-lg p-10 shadow-sm">
+          <h3 className="text-2xl font-bold text-[#0a2540] mb-6 text-center">
             Why Apply for the Pilot?
           </h3>
           <div className="grid md:grid-cols-3 gap-6">
             <div className="text-center">
-              <div className="text-4xl mb-3">⚡</div>
-              <div className="text-white font-semibold mb-2">Zero Platform Fee (30 Days) + 50% Off Forever</div>
-              <div className="text-sm text-gray-400">Only pay for booked meetings. No upfront cost.</div>
+              <div className="flex items-center justify-center mb-3">
+                <Zap className="w-10 h-10 text-[#0a2540]" />
+              </div>
+              <div className="text-[#0a2540] font-semibold mb-2">Founding Member Rates</div>
+              <div className="text-sm text-[#727f96]">Lock in permanent pricing. No future increases.</div>
             </div>
             <div className="text-center">
-              <div className="text-4xl mb-3">🎯</div>
-              <div className="text-white font-semibold mb-2">Locked Pricing</div>
-              <div className="text-sm text-gray-400">Save 30-50% vs. future rates for 6 months minimum</div>
+              <div className="flex items-center justify-center mb-3">
+                <Target className="w-10 h-10 text-[#0a2540]" />
+              </div>
+              <div className="text-[#0a2540] font-semibold mb-2">Performance-Based</div>
+              <div className="text-sm text-[#727f96]">Only pay for confirmed meetings. No meetings = £0.</div>
             </div>
             <div className="text-center">
-              <div className="text-4xl mb-3">🤝</div>
-              <div className="text-white font-semibold mb-2">Dedicated Support</div>
-              <div className="text-sm text-gray-400">Work directly with our team to optimize campaigns</div>
+              <div className="flex items-center justify-center mb-3">
+                <Users className="w-10 h-10 text-[#0a2540]" />
+              </div>
+              <div className="text-[#0a2540] font-semibold mb-2">Dedicated Support</div>
+              <div className="text-sm text-[#727f96]">Work directly with our team to optimize campaigns</div>
             </div>
           </div>
         </div>
