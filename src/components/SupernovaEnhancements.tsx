@@ -304,19 +304,19 @@ export const PricingLockGuarantee = ({ discount = "50%" }: { discount?: string }
         </h3>
 
         <p className="text-lg text-gray-300 mb-6 max-w-2xl mx-auto">
-          <strong className="text-white">Pilot members pay £99/mo forever.</strong> After December 31st, standard pricing is £199/mo.
-          That's <span className="text-orange-400 font-bold">£1,200/year in savings</span>—locked in for life.
+          <strong className="text-white">Founding members pay £99.99/mo forever.</strong> Original pricing is £199/mo.
+          That's <span className="text-orange-400 font-bold">50% off for life</span>—locked in permanently after pilot.
         </p>
 
         <div className="flex items-center justify-center gap-4 text-sm text-gray-400">
           <div className="flex items-center gap-2">
             <div className="w-3 h-3 rounded-full bg-green-500 animate-pulse" />
-            <span>Pilot pricing: <strong className="text-white">£99/mo</strong></span>
+            <span>Founding rate: <strong className="text-white">£99.99/mo</strong></span>
           </div>
           <div className="text-gray-600">→</div>
           <div className="flex items-center gap-2">
             <div className="w-3 h-3 rounded-full bg-red-500" />
-            <span>After Dec 31: <strong className="text-red-400 line-through">£199/mo</strong></span>
+            <span>Original: <strong className="text-red-400 line-through">£199/mo</strong></span>
           </div>
         </div>
 

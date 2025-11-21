@@ -950,9 +950,13 @@ export function TrustLandingPage() {
 
                 <div className="mb-8">
                   <div className="text-white/40 text-xs uppercase tracking-wide mb-3">Platform Access</div>
-                  <div className="flex items-baseline gap-2 mb-2">
-                    <div className="text-5xl font-bold text-white tabular-nums">£29</div>
+                  <div className="flex items-baseline gap-3 mb-2">
+                    <div className="text-2xl text-white/40 line-through tabular-nums">£29</div>
+                    <div className="text-5xl font-bold text-white tabular-nums">£14.99</div>
                     <div className="text-white/40 text-lg">/month</div>
+                  </div>
+                  <div className="inline-block px-2 py-0.5 bg-green-500/10 border border-green-500/30 rounded text-green-400 text-xs mb-2">
+                    Founding Rate - Save 50%
                   </div>
                   <div className="text-white/70 text-sm mb-1">£100 per qualified meeting</div>
                   <div className="text-white/40 text-xs">For ACV &lt; £5,000 • Month 1 complimentary</div>
@@ -994,9 +998,13 @@ export function TrustLandingPage() {
 
                 <div className="mb-8">
                   <div className="text-white/40 text-xs uppercase tracking-wide mb-3">Platform Access</div>
-                  <div className="flex items-baseline gap-2 mb-2">
-                    <div className="text-5xl font-bold text-white tabular-nums">£199</div>
+                  <div className="flex items-baseline gap-3 mb-2">
+                    <div className="text-2xl text-white/40 line-through tabular-nums">£199</div>
+                    <div className="text-5xl font-bold text-white tabular-nums">£99.99</div>
                     <div className="text-white/40 text-lg">/month</div>
+                  </div>
+                  <div className="inline-block px-2 py-0.5 bg-green-500/10 border border-green-500/30 rounded text-green-400 text-xs mb-2">
+                    Founding Rate - Save 50%
                   </div>
                   <div className="text-white/90 text-sm mb-1">£250 per qualified meeting</div>
                   <div className="text-orange-300 text-xs">For ACV £5K–£25K • Founding rate locked</div>
@@ -1039,9 +1047,13 @@ export function TrustLandingPage() {
 
                 <div className="mb-8">
                   <div className="text-white/40 text-xs uppercase tracking-wide mb-3">Platform Access</div>
-                  <div className="flex items-baseline gap-2 mb-2">
-                    <div className="text-5xl font-bold text-white tabular-nums">£799</div>
+                  <div className="flex items-baseline gap-3 mb-2">
+                    <div className="text-2xl text-white/40 line-through tabular-nums">£799</div>
+                    <div className="text-5xl font-bold text-white tabular-nums">£399.99</div>
                     <div className="text-white/40 text-lg">/month</div>
+                  </div>
+                  <div className="inline-block px-2 py-0.5 bg-green-500/10 border border-green-500/30 rounded text-green-400 text-xs mb-2">
+                    Founding Rate - Save 50%
                   </div>
                   <div className="text-white/70 text-sm mb-1">£500–£1,000 per qualified meeting</div>
                   <div className="text-white/40 text-xs">For ACV &gt; £25K • Custom pricing available</div>
@@ -1350,7 +1362,7 @@ export function TrustLandingPage() {
                 <ArrowRight className="w-4 h-4" />
               </MinimalButton>
               <div className="text-sm text-black/40 mt-6">
-                From £29/month + per-meeting fees · No credit card required
+                From £14.99/month (founding rate) + per-meeting fees · No credit card required
               </div>
             </motion.div>
           </div>

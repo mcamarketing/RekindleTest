@@ -101,7 +101,7 @@ export function TermsOfService() {
                   </p>
                   <ul className="list-disc list-inside text-gray-300 ml-4 space-y-2">
                     <li>
-                      <span className="font-bold text-white">Platform Access Fee:</span> A modest, fixed monthly fee (e.g., £19, £99, or £299 depending on your plan) that covers enterprise infrastructure (99.9% uptime), SOC 2 Type II security, dedicated account support, and real-time CRM integration. This fee is <span className="text-white font-bold">non-refundable</span> as it pays for real operational costs.
+                      <span className="font-bold text-white">Platform Access Fee:</span> A modest, fixed monthly fee (founding rates: £14.99, £99.99, or £399.99 depending on your plan) that covers enterprise infrastructure (99.9% uptime), SOC 2 Type II security, dedicated account support, and real-time CRM integration. Founding members receive 50% off for life. This fee is <span className="text-white font-bold">non-refundable</span> as it pays for real operational costs.
                     </li>
                     <li>
                       <span className="font-bold text-white">Performance Fee:</span> A variable fee equal to 2.5% of your Average Contract Value (ACV) per booked meeting. This fee is only charged when a meeting is successfully booked and confirmed on your calendar. The Performance Fee is <span className="text-green-400 font-bold">100% refundable</span> if the booked meeting results in a no-show.

@@ -1428,46 +1428,33 @@ export function LandingPage() {
                   {pricingPeriod === 'monthly' ? (
                     <>
                       <div className="mb-3">
-                        <div className="text-sm text-green-400 font-bold mb-1">First 30 Days: £0 Platform Fee</div>
-                        <div className="flex items-baseline gap-3">
-                          <span className="text-4xl font-black text-gray-500 line-through">£19</span>
-                          <span className="text-6xl font-black bg-gradient-to-br from-blue-400 to-blue-600 bg-clip-text text-transparent">£9.99</span>
+                        <div className="flex items-baseline gap-3 mb-2">
+                          <span className="text-lg text-gray-400 line-through">£29/mo</span>
+                          <span className="text-5xl md:text-6xl font-black text-[#FF6B35]">£14.99</span>
                           <span className="text-gray-400 text-lg">/month</span>
                         </div>
-                        <div className="text-xs text-gray-400 mt-1">After 30 days (50% off forever)</div>
+                        <div className="inline-flex items-center gap-2 px-3 py-1 bg-orange-500/20 border border-orange-500/40 rounded-full mb-2">
+                          <span className="text-xs font-black text-orange-400">FOUNDING RATE 50% OFF</span>
+                        </div>
                       </div>
-                      <div className="inline-flex items-center gap-2 px-3 py-1 bg-green-500/20 border border-green-500/40 rounded-full mb-2">
-                        <span className="text-xs font-black text-green-400">50% OFF FOREVER</span>
-                      </div>
-                      <p className="text-xs text-gray-500 mb-1">
-                        Regular price: <span className="line-through">£19</span>
-                      </p>
-                      <p className="text-sm text-gray-400">
-                        + <span className="text-orange-400 font-semibold">3% of deal value</span> per meeting
+                      <p className="text-sm text-gray-400 mb-4">
+                        Per qualified meeting: <span className="text-white font-semibold">£100</span>
                       </p>
                     </>
                   ) : (
                     <>
                       <div className="mb-3">
-                        <div className="text-sm text-green-400 font-bold mb-1">First 30 Days: £0 Platform Fee</div>
-                        <div className="flex items-baseline gap-3">
-                          <span className="text-4xl font-black text-gray-500 line-through">£182</span>
-                          <span className="text-6xl font-black bg-gradient-to-br from-blue-400 to-blue-600 bg-clip-text text-transparent">£96</span>
+                        <div className="flex items-baseline gap-3 mb-2">
+                          <span className="text-lg text-gray-400 line-through">£348/year</span>
+                          <span className="text-5xl md:text-6xl font-black text-[#FF6B35]">£144</span>
                           <span className="text-gray-400 text-lg">/year</span>
                         </div>
-                        <div className="text-xs text-gray-400 mt-1">After 30 days (50% off forever + 20% annual)</div>
+                        <div className="inline-flex items-center gap-2 px-3 py-1 bg-orange-500/20 border border-orange-500/40 rounded-full mb-2">
+                          <span className="text-xs font-black text-orange-400">FOUNDING RATE 50% OFF + 20% ANNUAL</span>
+                        </div>
                       </div>
-                      <div className="inline-flex items-center gap-2 px-3 py-1 bg-green-500/20 border border-green-500/40 rounded-full mb-2">
-                        <span className="text-xs font-black text-green-400">50% OFF FOREVER + 20% ANNUAL</span>
-                      </div>
-                      <p className="text-xs text-gray-500 mb-1">
-                        Regular price: <span className="line-through">£182</span>
-                      </p>
-                      <p className="text-sm text-green-400 font-semibold mb-1">
-                        Save £134/year (pilot + annual discount)
-                      </p>
-                      <p className="text-sm text-gray-400">
-                        + <span className="text-orange-400 font-semibold">3% of deal value</span> per meeting
+                      <p className="text-sm text-gray-400 mb-4">
+                        Per qualified meeting: <span className="text-white font-semibold">£100</span>
                       </p>
                     </>
                   )}
@@ -1476,19 +1463,23 @@ export function LandingPage() {
                 <ul className="space-y-4 mb-10 text-base">
                   <li className="flex items-start gap-3">
                     <CheckCircle className="w-6 h-6 text-green-400 flex-shrink-0 mt-0.5" />
-                    <span className="text-gray-300">Up to <span className="text-white font-semibold">5,000 leads</span></span>
+                    <span className="text-gray-300"><span className="text-white font-semibold">500 leads</span>/month</span>
                   </li>
                   <li className="flex items-start gap-3">
                     <CheckCircle className="w-6 h-6 text-green-400 flex-shrink-0 mt-0.5" />
-                    <span className="text-gray-300"><span className="text-white font-semibold">All 5 channels</span> included</span>
+                    <span className="text-gray-300"><span className="text-white font-semibold">Email + SMS</span> channels</span>
                   </li>
                   <li className="flex items-start gap-3">
                     <CheckCircle className="w-6 h-6 text-green-400 flex-shrink-0 mt-0.5" />
-                    <span className="text-gray-300"><span className="text-white font-semibold">AI research</span> & scoring</span>
+                    <span className="text-gray-300"><span className="text-white font-semibold">AI personalization</span></span>
                   </li>
                   <li className="flex items-start gap-3">
                     <CheckCircle className="w-6 h-6 text-green-400 flex-shrink-0 mt-0.5" />
-                    <span className="text-gray-300"><span className="text-white font-semibold">Auto-ICP sourcing</span> (500/mo)</span>
+                    <span className="text-gray-300"><span className="text-white font-semibold">Standard analytics</span></span>
+                  </li>
+                  <li className="flex items-start gap-3">
+                    <CheckCircle className="w-6 h-6 text-green-400 flex-shrink-0 mt-0.5" />
+                    <span className="text-gray-300"><span className="text-white font-semibold">Email support</span></span>
                   </li>
                 </ul>
 
@@ -1496,7 +1487,7 @@ export function LandingPage() {
                   onClick={() => navigate('/pilot-application')}
                   className="w-full btn-shimmer bg-gradient-to-r from-blue-500 to-blue-600 text-white py-4 rounded-2xl font-bold text-lg hover:scale-105 transition-all duration-300 shadow-[0_0_30px_rgba(59,130,246,0.3)]"
                 >
-                  🚀 Start FREE 72-Hour Test
+                  Request Access
                 </button>
 
                 <p className="text-center text-xs text-gray-500 mt-4">Perfect for solopreneurs • No credit card</p>
@@ -1529,46 +1520,33 @@ export function LandingPage() {
                     {pricingPeriod === 'monthly' ? (
                       <>
                         <div className="mb-3">
-                          <div className="text-sm text-green-300 font-bold mb-1">First 30 Days: £0 Platform Fee</div>
-                          <div className="flex items-baseline gap-3">
-                            <span className="text-4xl font-black text-white/50 line-through drop-shadow-none">£99</span>
-                            <span className="text-6xl font-black text-white drop-shadow-[0_0_20px_rgba(255,255,255,0.5)]">£49</span>
+                          <div className="flex items-baseline gap-3 mb-2">
+                            <span className="text-lg text-white/50 line-through">£199/mo</span>
+                            <span className="text-5xl md:text-6xl font-black text-white drop-shadow-[0_0_20px_rgba(255,255,255,0.5)]">£99.99</span>
                             <span className="text-white/80 text-lg">/month</span>
                           </div>
-                          <div className="text-xs text-white/70 mt-1">After 30 days (50% off forever)</div>
+                          <div className="inline-flex items-center gap-2 px-3 py-1 bg-white/20 border border-white/40 rounded-full mb-2">
+                            <span className="text-xs font-black text-white">FOUNDING RATE 50% OFF</span>
+                          </div>
                         </div>
-                        <div className="inline-flex items-center gap-2 px-3 py-1 bg-white/20 border border-white/40 rounded-full mb-2">
-                          <span className="text-xs font-black text-white">50% OFF FOREVER</span>
-                        </div>
-                        <p className="text-xs text-white/70 mb-1">
-                          Regular price: <span className="line-through">£99</span>
-                        </p>
-                        <p className="text-sm text-white/90">
-                          + <span className="text-white font-semibold">2.5% of deal value</span> per meeting
+                        <p className="text-sm text-white/90 mb-4">
+                          Per qualified meeting: <span className="text-white font-semibold">£250</span>
                         </p>
                       </>
                     ) : (
                       <>
                         <div className="mb-3">
-                          <div className="text-sm text-green-300 font-bold mb-1">First 30 Days: £0 Platform Fee</div>
-                          <div className="flex items-baseline gap-3">
-                            <span className="text-4xl font-black text-white/50 line-through drop-shadow-none">£950</span>
-                            <span className="text-6xl font-black text-white drop-shadow-[0_0_20px_rgba(255,255,255,0.5)]">£470</span>
+                          <div className="flex items-baseline gap-3 mb-2">
+                            <span className="text-lg text-white/50 line-through">£1,910/year</span>
+                            <span className="text-5xl md:text-6xl font-black text-white drop-shadow-[0_0_20px_rgba(255,255,255,0.5)]">£960</span>
                             <span className="text-white/80 text-lg">/year</span>
                           </div>
-                          <div className="text-xs text-white/70 mt-1">After 30 days (50% off forever + 20% annual)</div>
+                          <div className="inline-flex items-center gap-2 px-3 py-1 bg-white/20 border border-white/40 rounded-full mb-2">
+                            <span className="text-xs font-black text-white">FOUNDING RATE 50% OFF + 20% ANNUAL</span>
+                          </div>
                         </div>
-                        <div className="inline-flex items-center gap-2 px-3 py-1 bg-white/20 border border-white/40 rounded-full mb-2">
-                          <span className="text-xs font-black text-white">50% OFF FOREVER + 20% ANNUAL</span>
-                        </div>
-                        <p className="text-xs text-white/70 mb-1">
-                          Regular price: <span className="line-through">£950</span>
-                        </p>
-                        <p className="text-sm text-green-300 font-semibold mb-1">
-                          Save £718/year (pilot + annual discount)
-                        </p>
-                        <p className="text-sm text-white/90">
-                          + <span className="text-white font-semibold">2.5% of deal value</span> per meeting
+                        <p className="text-sm text-white/90 mb-4">
+                          Per qualified meeting: <span className="text-white font-semibold">£250</span>
                         </p>
                       </>
                     )}
@@ -1577,23 +1555,27 @@ export function LandingPage() {
                   <ul className="space-y-4 mb-10 text-base text-white">
                     <li className="flex items-start gap-3">
                       <CheckCircle className="w-6 h-6 flex-shrink-0 mt-0.5" />
-                      <span>Up to <span className="font-bold">25,000 leads</span></span>
+                      <span><span className="font-bold">2,000 leads</span>/month</span>
                     </li>
                     <li className="flex items-start gap-3">
                       <CheckCircle className="w-6 h-6 flex-shrink-0 mt-0.5" />
-                      <span><span className="font-bold">All 5 channels</span> included</span>
+                      <span><span className="font-bold">All channels</span> (Email, SMS, WhatsApp, Voicemail)</span>
                     </li>
                     <li className="flex items-start gap-3">
                       <CheckCircle className="w-6 h-6 flex-shrink-0 mt-0.5" />
-                      <span><span className="font-bold">Auto-ICP sourcing</span> (2,500/mo)</span>
+                      <span><span className="font-bold">Advanced AI personalization</span></span>
                     </li>
                     <li className="flex items-start gap-3">
                       <CheckCircle className="w-6 h-6 flex-shrink-0 mt-0.5" />
-                      <span><span className="font-bold">CRM integration</span></span>
+                      <span><span className="font-bold">Real-time analytics</span></span>
                     </li>
                     <li className="flex items-start gap-3">
                       <CheckCircle className="w-6 h-6 flex-shrink-0 mt-0.5" />
-                      <span><span className="font-bold">5 team seats</span></span>
+                      <span><span className="font-bold">Priority support</span></span>
+                    </li>
+                    <li className="flex items-start gap-3">
+                      <CheckCircle className="w-6 h-6 flex-shrink-0 mt-0.5" />
+                      <span><span className="font-bold">CRM integrations</span></span>
                     </li>
                   </ul>
 
@@ -1601,10 +1583,10 @@ export function LandingPage() {
                     onClick={() => navigate('/pilot-application')}
                     className="w-full btn-shimmer bg-white text-orange-600 py-4 rounded-2xl font-black text-lg hover:scale-105 transition-all duration-300 shadow-[0_8px_30px_rgba(0,0,0,0.3)]"
                   >
-                    💎 Claim 50% Off Forever—47 Spots Left
+                    Request Access
                   </button>
 
-                  <p className="text-center text-sm text-white/90 mt-4 font-semibold">Most popular • Lock in pilot pricing for life</p>
+                  <p className="text-center text-sm text-white/90 mt-4 font-semibold">Most popular • Lock in founding rate for life</p>
                 </div>
               </div>
 
@@ -1623,46 +1605,33 @@ export function LandingPage() {
                   {pricingPeriod === 'monthly' ? (
                     <>
                       <div className="mb-3">
-                        <div className="text-sm text-green-400 font-bold mb-1">First 30 Days: £0 Platform Fee</div>
-                        <div className="flex items-baseline gap-3">
-                          <span className="text-4xl font-black text-gray-500 line-through">£499</span>
-                          <span className="text-6xl font-black bg-gradient-to-br from-purple-400 to-purple-600 bg-clip-text text-transparent">£249</span>
+                        <div className="flex items-baseline gap-3 mb-2">
+                          <span className="text-lg text-gray-400 line-through">£799/mo</span>
+                          <span className="text-5xl md:text-6xl font-black bg-gradient-to-br from-purple-400 to-purple-600 bg-clip-text text-transparent">£399.99</span>
                           <span className="text-gray-400 text-lg">/month</span>
                         </div>
-                        <div className="text-xs text-gray-400 mt-1">After 30 days (50% off forever)</div>
+                        <div className="inline-flex items-center gap-2 px-3 py-1 bg-purple-500/20 border border-purple-500/40 rounded-full mb-2">
+                          <span className="text-xs font-black text-purple-400">FOUNDING RATE 50% OFF</span>
+                        </div>
                       </div>
-                      <div className="inline-flex items-center gap-2 px-3 py-1 bg-green-500/20 border border-green-500/40 rounded-full mb-2">
-                        <span className="text-xs font-black text-green-400">50% OFF FOREVER</span>
-                      </div>
-                      <p className="text-xs text-gray-500 mb-1">
-                        Regular price: <span className="line-through">£499</span>
-                      </p>
-                      <p className="text-sm text-gray-400">
-                        + <span className="text-orange-400 font-semibold">2% of deal value</span> per meeting
+                      <p className="text-sm text-gray-400 mb-4">
+                        Per qualified meeting: <span className="text-white font-semibold">£500–£1,000</span>
                       </p>
                     </>
                   ) : (
                     <>
                       <div className="mb-3">
-                        <div className="text-sm text-green-400 font-bold mb-1">First 30 Days: £0 Platform Fee</div>
-                        <div className="flex items-baseline gap-3">
-                          <span className="text-4xl font-black text-gray-500 line-through">£4,790</span>
-                          <span className="text-6xl font-black bg-gradient-to-br from-purple-400 to-purple-600 bg-clip-text text-transparent">£2,390</span>
+                        <div className="flex items-baseline gap-3 mb-2">
+                          <span className="text-lg text-gray-400 line-through">£7,670/year</span>
+                          <span className="text-5xl md:text-6xl font-black bg-gradient-to-br from-purple-400 to-purple-600 bg-clip-text text-transparent">£3,840</span>
                           <span className="text-gray-400 text-lg">/year</span>
                         </div>
-                        <div className="text-xs text-gray-400 mt-1">After 30 days (50% off forever + 20% annual)</div>
+                        <div className="inline-flex items-center gap-2 px-3 py-1 bg-purple-500/20 border border-purple-500/40 rounded-full mb-2">
+                          <span className="text-xs font-black text-purple-400">FOUNDING RATE 50% OFF + 20% ANNUAL</span>
+                        </div>
                       </div>
-                      <div className="inline-flex items-center gap-2 px-3 py-1 bg-green-500/20 border border-green-500/40 rounded-full mb-2">
-                        <span className="text-xs font-black text-green-400">50% OFF FOREVER + 20% ANNUAL</span>
-                      </div>
-                      <p className="text-xs text-gray-500 mb-1">
-                        Regular price: <span className="line-through">£4,790</span>
-                      </p>
-                      <p className="text-sm text-green-400 font-semibold mb-1">
-                        Save £3,598/year (pilot + annual discount)
-                      </p>
-                      <p className="text-sm text-gray-400">
-                        + <span className="text-orange-400 font-semibold">2% of deal value</span> per meeting
+                      <p className="text-sm text-gray-400 mb-4">
+                        Per qualified meeting: <span className="text-white font-semibold">£500–£1,000</span>
                       </p>
                     </>
                   )}
@@ -1675,19 +1644,27 @@ export function LandingPage() {
                   </li>
                   <li className="flex items-start gap-3">
                     <CheckCircle className="w-6 h-6 text-green-400 flex-shrink-0 mt-0.5" />
-                    <span className="text-gray-300"><span className="text-white font-semibold">Auto-ICP sourcing</span> (10,000/mo)</span>
+                    <span className="text-gray-300">All <span className="text-white font-semibold">Professional</span> features</span>
                   </li>
                   <li className="flex items-start gap-3">
                     <CheckCircle className="w-6 h-6 text-green-400 flex-shrink-0 mt-0.5" />
-                    <span className="text-gray-300"><span className="text-white font-semibold">White-label</span> option</span>
+                    <span className="text-gray-300"><span className="text-white font-semibold">Dedicated success manager</span></span>
                   </li>
                   <li className="flex items-start gap-3">
                     <CheckCircle className="w-6 h-6 text-green-400 flex-shrink-0 mt-0.5" />
-                    <span className="text-gray-300"><span className="text-white font-semibold">Dedicated</span> infrastructure</span>
+                    <span className="text-gray-300"><span className="text-white font-semibold">Custom AI model training</span></span>
                   </li>
                   <li className="flex items-start gap-3">
                     <CheckCircle className="w-6 h-6 text-green-400 flex-shrink-0 mt-0.5" />
-                    <span className="text-gray-300"><span className="text-white font-semibold">15 team seats</span></span>
+                    <span className="text-gray-300"><span className="text-white font-semibold">White-glove onboarding</span></span>
+                  </li>
+                  <li className="flex items-start gap-3">
+                    <CheckCircle className="w-6 h-6 text-green-400 flex-shrink-0 mt-0.5" />
+                    <span className="text-gray-300"><span className="text-white font-semibold">SLA guarantees</span></span>
+                  </li>
+                  <li className="flex items-start gap-3">
+                    <CheckCircle className="w-6 h-6 text-green-400 flex-shrink-0 mt-0.5" />
+                    <span className="text-gray-300"><span className="text-white font-semibold">Full API access</span></span>
                   </li>
                 </ul>
 
@@ -1695,7 +1672,7 @@ export function LandingPage() {
                   onClick={() => navigate('/pilot-application')}
                   className="w-full btn-shimmer bg-gradient-to-r from-purple-500 to-purple-600 text-white py-4 rounded-2xl font-bold text-lg hover:scale-105 transition-all duration-300 shadow-[0_0_30px_rgba(168,85,247,0.3)]"
                 >
-                  🏆 Get Enterprise Pilot Access
+                  Request Access
                 </button>
 
                 <p className="text-center text-xs text-gray-500 mt-4">Built for scale • White-glove onboarding</p>

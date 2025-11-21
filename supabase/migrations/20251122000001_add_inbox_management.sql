@@ -132,9 +132,9 @@ BEGIN
         END as hourly_send_limit,
         CASE p_tier
             WHEN 'free' THEN 0.00
-            WHEN 'starter' THEN 29.00
-            WHEN 'pro' THEN 99.00
-            WHEN 'enterprise' THEN 499.00
+            WHEN 'starter' THEN 14.99
+            WHEN 'pro' THEN 99.99
+            WHEN 'enterprise' THEN 399.99
         END::DECIMAL as price_per_month,
         CASE p_tier
             WHEN 'free' THEN '{"warmup": false, "analytics": false, "priority_support": false}'::JSONB
