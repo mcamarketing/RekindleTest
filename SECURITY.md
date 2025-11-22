@@ -31,6 +31,10 @@ USING (auth.uid() = user_id);
 - **At rest**: AES-256 encryption for database (Supabase default)
 - **In transit**: TLS 1.3 for all API communications
 - **Secrets management**: Environment variables, never committed to git
+  - All secrets stored in `.env` file (gitignored)
+  - `.env.rex.example` template provided for setup
+  - Docker Compose requires passwords to be set (no weak defaults)
+  - Password generation: `openssl rand -base64 32`
 - **PII redaction**: Automatic redaction before LLM calls
 
 #### Data Retention
