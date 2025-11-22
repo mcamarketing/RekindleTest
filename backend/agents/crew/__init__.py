@@ -26,6 +26,10 @@ from .reviver_agent import ReviverAgent
 from .deliverability_agent import DeliverabilityAgent
 from .personalizer_agent import PersonalizerAgent
 from .icp_intelligence_agent import ICPIntelligenceAgent
+from .scraper_agent import ScraperAgent
+from .outreach_agent import OutreachAgent
+from .analytics_agent import AnalyticsAgent
+from .special_forces_coordinator import SpecialForcesCoordinator
 
 # Agent registry for dynamic loading
 AGENT_REGISTRY = {
@@ -33,6 +37,10 @@ AGENT_REGISTRY = {
     'DeliverabilityAgent': DeliverabilityAgent,
     'PersonalizerAgent': PersonalizerAgent,
     'ICPIntelligenceAgent': ICPIntelligenceAgent,
+    'ScraperAgent': ScraperAgent,
+    'OutreachAgent': OutreachAgent,
+    'AnalyticsAgent': AnalyticsAgent,
+    'SpecialForcesCoordinator': SpecialForcesCoordinator,
 }
 
 
@@ -55,6 +63,10 @@ __all__ = [
     "DeliverabilityAgent",
     "PersonalizerAgent",
     "ICPIntelligenceAgent",
+    "ScraperAgent",
+    "OutreachAgent",
+    "AnalyticsAgent",
+    "SpecialForcesCoordinator",
     "AGENT_REGISTRY",
     "register_agent",
     "get_agent",
