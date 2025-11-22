@@ -20,8 +20,20 @@ Version: 1.0.0
 
 __version__ = "1.0.0"
 
+# Import agents
+from .base_agent import BaseAgent, MissionContext, AgentResult
+from .reviver_agent import ReviverAgent
+from .deliverability_agent import DeliverabilityAgent
+from .personalizer_agent import PersonalizerAgent
+from .icp_intelligence_agent import ICPIntelligenceAgent
+
 # Agent registry for dynamic loading
-AGENT_REGISTRY = {}
+AGENT_REGISTRY = {
+    'ReviverAgent': ReviverAgent,
+    'DeliverabilityAgent': DeliverabilityAgent,
+    'PersonalizerAgent': PersonalizerAgent,
+    'ICPIntelligenceAgent': ICPIntelligenceAgent,
+}
 
 
 def register_agent(agent_class):
@@ -36,6 +48,13 @@ def get_agent(agent_name: str):
 
 
 __all__ = [
+    "BaseAgent",
+    "MissionContext",
+    "AgentResult",
+    "ReviverAgent",
+    "DeliverabilityAgent",
+    "PersonalizerAgent",
+    "ICPIntelligenceAgent",
     "AGENT_REGISTRY",
     "register_agent",
     "get_agent",
