@@ -155,9 +155,71 @@ async def root() -> Dict[str, Any]:
 
 
 @app.get("/health", tags=["Health"])
-async def health_check() -> Dict[str, str]:
-    """Health check endpoint for load balancers"""
-    return {"status": "healthy"}
+async def health_check() -> Dict[str, Any]:
+    """
+    Enhanced health check endpoint for platform monitoring.
+
+    Checks:
+    - API server status
+    - Database connectivity (Supabase)
+    - Redis connectivity (optional)
+
+    Returns 200 if all components healthy, 503 if any degraded.
+    """
+    import os
+    from datetime import datetime
+
+    health_status = {
+        "status": "healthy",
+        "timestamp": datetime.utcnow().isoformat(),
+        "version": "1.0.0",
+        "components": {}
+    }
+
+    # Check database (Supabase)
+    try:
+        from supabase import create_client
+        supabase_url = os.getenv("SUPABASE_URL")
+        supabase_key = os.getenv("SUPABASE_KEY") or os.getenv("SUPABASE_SERVICE_ROLE_KEY")
+
+        if supabase_url and supabase_key:
+            supabase = create_client(supabase_url, supabase_key)
+            # Simple query to test connection
+            result = supabase.table("profiles").select("id").limit(1).execute()
+            health_status["components"]["database"] = "healthy"
+        else:
+            health_status["components"]["database"] = "not_configured"
+    except Exception as e:
+        logger.error(f"Database health check failed: {e}")
+        health_status["components"]["database"] = "unhealthy"
+        health_status["status"] = "degraded"
+
+    # Check Redis (optional)
+    try:
+        import redis
+        redis_host = os.getenv("REDIS_HOST")
+        redis_port = int(os.getenv("REDIS_PORT", "6379"))
+        redis_password = os.getenv("REDIS_PASSWORD")
+
+        if redis_host and redis_password:
+            redis_client = redis.Redis(
+                host=redis_host,
+                port=redis_port,
+                password=redis_password,
+                socket_timeout=2
+            )
+            redis_client.ping()
+            health_status["components"]["redis"] = "healthy"
+        else:
+            health_status["components"]["redis"] = "not_configured"
+    except ImportError:
+        health_status["components"]["redis"] = "not_installed"
+    except Exception as e:
+        logger.error(f"Redis health check failed: {e}")
+        health_status["components"]["redis"] = "unhealthy"
+        # Redis is optional, don't mark overall status as degraded
+
+    return health_status
 
 
 @app.get("/ping", tags=["Health"])

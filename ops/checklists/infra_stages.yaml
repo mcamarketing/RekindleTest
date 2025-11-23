@@ -1,0 +1,580 @@
+# RekindlePro Infrastructure Stages - Machine-Readable Checklist
+# Version: 1.0
+# Last Updated: 2025-01-23
+
+stages:
+  - id: stage_a
+    name: "Stage A – 0–5 clients (Foundation)"
+    trigger:
+      min_clients: 0
+      max_clients: 5
+      max_mrr: 5000
+    tasks:
+      # Infrastructure
+      - id: a_managed_postgres
+        category: infrastructure
+        description: "Use managed Postgres (Supabase/RDS) for production"
+        status: completed
+        priority: critical
+        verification: "Check SUPABASE_URL env var is set and not localhost"
+
+      - id: a_redis_provisioned
+        category: infrastructure
+        description: "Redis instance provisioned and connected"
+        status: pending
+        priority: critical
+        verification: "REDIS_HOST and REDIS_PASSWORD set, /health shows Redis healthy"
+
+      - id: a_frontend_static
+        category: infrastructure
+        description: "Frontend deployed to static hosting (Vercel/Netlify/Render)"
+        status: pending
+        priority: high
+        verification: "Production URL accessible, serves static React build"
+
+      - id: a_backend_deployed
+        category: infrastructure
+        description: "Backend deployed to Render/Railway with single instance"
+        status: pending
+        priority: critical
+        verification: "API accessible at production URL, /health returns 200"
+
+      - id: a_worker_deployed
+        category: infrastructure
+        description: "Worker service deployed and processing queue"
+        status: pending
+        priority: high
+        verification: "Worker logs show queue consumption, no error spikes"
+
+      # Observability
+      - id: a_health_endpoint
+        category: observability
+        description: "Health endpoint accessible at /health with DB + Redis checks"
+        status: pending
+        priority: critical
+        verification: "GET /health returns {database: healthy, redis: healthy}"
+
+      - id: a_sentry_backend
+        category: observability
+        description: "Sentry configured and enabled for backend"
+        status: pending
+        priority: high
+        verification: "SENTRY_DSN set, test error appears in Sentry dashboard"
+
+      - id: a_sentry_frontend
+        category: observability
+        description: "Sentry configured and enabled for frontend"
+        status: pending
+        priority: high
+        verification: "Frontend errors appear in Sentry, DSN configured"
+
+      - id: a_platform_monitoring
+        category: observability
+        description: "Platform uptime monitoring enabled (Render/Railway)"
+        status: pending
+        priority: medium
+        verification: "Health check configured in platform dashboard"
+
+      # Security
+      - id: a_https_enforced
+        category: security
+        description: "HTTPS enforced on all endpoints (no HTTP access)"
+        status: pending
+        priority: critical
+        verification: "HTTP requests redirect to HTTPS, SSL cert valid"
+
+      - id: a_secrets_in_env
+        category: security
+        description: "All secrets stored in platform environment variables"
+        status: completed
+        priority: critical
+        verification: "No secrets in code, all via env vars"
+
+      - id: a_cors_configured
+        category: security
+        description: "CORS restricted to production domain (no wildcards)"
+        status: pending
+        priority: high
+        verification: "ALLOWED_ORIGINS set to specific domain, test cross-origin"
+
+      - id: a_rls_enabled
+        category: security
+        description: "RLS (Row-Level Security) enabled on all Supabase tables"
+        status: completed
+        priority: critical
+        verification: "Test multi-tenant isolation, user can't access other user data"
+
+      # Documentation
+      - id: a_deployment_guide
+        category: documentation
+        description: "Stage A deployment guide written"
+        status: pending
+        priority: high
+        verification: "docs/deployment/STAGE_A_DEPLOYMENT.md exists and complete"
+
+      - id: a_env_vars_doc
+        category: documentation
+        description: "All environment variables documented"
+        status: pending
+        priority: medium
+        verification: "docs/deployment/ENV_VARS.md lists all required vars"
+
+  - id: stage_b
+    name: "Stage B – 5–20 clients (Early Pilot)"
+    trigger:
+      min_clients: 5
+      max_clients: 20
+      min_mrr: 5000
+      max_mrr: 20000
+    tasks:
+      # Infrastructure
+      - id: b_api_autoscaling
+        category: infrastructure
+        description: "API autoscaling configured (min 2, max 5 instances)"
+        status: pending
+        priority: critical
+        verification: "Platform shows 2+ instances running, autoscale policy active"
+
+      - id: b_worker_pools
+        category: infrastructure
+        description: "Worker pools separated by task type (campaign, analytics)"
+        status: pending
+        priority: high
+        verification: "2+ worker processes deployed, queue routing configured"
+
+      - id: b_redis_upgraded
+        category: infrastructure
+        description: "Redis upgraded to Standard plan (256MB–1GB)"
+        status: pending
+        priority: high
+        verification: "Redis plan shows Standard/Pro, memory >256MB"
+
+      - id: b_postgres_upgraded
+        category: infrastructure
+        description: "Database upgraded to Pro tier with connection pooling"
+        status: pending
+        priority: high
+        verification: "Supabase shows Pro plan, connection pooling enabled"
+
+      - id: b_hourly_backups
+        category: infrastructure
+        description: "Automated hourly database backups configured"
+        status: pending
+        priority: medium
+        verification: "Backup schedule shows hourly, 7-day retention"
+
+      # Observability
+      - id: b_metrics_dashboard
+        category: observability
+        description: "Platform metrics dashboard created (requests, errors, latency)"
+        status: pending
+        priority: high
+        verification: "Dashboard shows API metrics, worker queue depth"
+
+      - id: b_error_rate_alert
+        category: observability
+        description: "Alert configured for error rate >2% for 10 minutes"
+        status: pending
+        priority: critical
+        verification: "Test alert triggers correctly, notification sent"
+
+      - id: b_queue_depth_alert
+        category: observability
+        description: "Alert configured for queue depth >500 for 15 minutes"
+        status: pending
+        priority: high
+        verification: "Queue depth monitoring active, alert tested"
+
+      - id: b_slow_query_monitoring
+        category: observability
+        description: "Database slow query monitoring enabled"
+        status: pending
+        priority: medium
+        verification: "Slow query logs accessible, threshold set <2s"
+
+      - id: b_llm_failure_tracking
+        category: observability
+        description: "LLM API failure rate tracked and alerted"
+        status: pending
+        priority: medium
+        verification: "OpenAI failures logged, dashboard shows failure rate"
+
+      # Security
+      - id: b_waf_enabled
+        category: security
+        description: "WAF (Web Application Firewall) enabled"
+        status: pending
+        priority: high
+        verification: "Cloudflare WAF or platform WAF active, rules configured"
+
+      - id: b_rate_limiting
+        category: security
+        description: "Rate limiting enforced at 100 req/min per user"
+        status: pending
+        priority: high
+        verification: "Test exceeds rate limit, returns 429 status"
+
+      - id: b_api_key_rotation_doc
+        category: security
+        description: "API key rotation process documented and tested"
+        status: pending
+        priority: medium
+        verification: "Runbook exists, rotation tested without downtime"
+
+      - id: b_security_headers
+        category: security
+        description: "Security headers configured (CSP, HSTS, X-Frame-Options)"
+        status: pending
+        priority: high
+        verification: "securityheaders.com scan shows A rating"
+
+      # Compliance
+      - id: b_dpa_template
+        category: compliance
+        description: "Data Processing Agreement (DPA) template prepared"
+        status: pending
+        priority: medium
+        verification: "Legal-reviewed DPA ready for client signatures"
+
+      - id: b_gdpr_export_api
+        category: compliance
+        description: "GDPR data export API implemented"
+        status: pending
+        priority: medium
+        verification: "User can export all data via API, tested"
+
+      # Documentation
+      - id: b_stage_deployment_guide
+        category: documentation
+        description: "Stage B deployment guide written"
+        status: pending
+        priority: high
+        verification: "docs/deployment/STAGE_B_DEPLOYMENT.md complete"
+
+      - id: b_scaling_runbook
+        category: documentation
+        description: "Worker scaling runbook created"
+        status: pending
+        priority: medium
+        verification: "docs/runbooks/SCALING_WORKERS.md exists"
+
+      - id: b_alert_playbook
+        category: documentation
+        description: "Alert response playbook created"
+        status: pending
+        priority: high
+        verification: "docs/monitoring/ALERT_PLAYBOOK.md with response steps"
+
+  - id: stage_c
+    name: "Stage C – 20–50 clients (Full Pilot)"
+    trigger:
+      min_clients: 20
+      max_clients: 50
+      min_mrr: 20000
+      max_mrr: 50000
+    tasks:
+      # Infrastructure
+      - id: c_api_scaling
+        category: infrastructure
+        description: "API autoscaling 3–10 instances (2 vCPU, 2GB RAM each)"
+        status: pending
+        priority: critical
+        verification: "Platform shows 3+ instances, resource allocation correct"
+
+      - id: c_worker_pools_expanded
+        category: infrastructure
+        description: "Dedicated worker pools (heavy, deliverability, analytics, notifications)"
+        status: pending
+        priority: high
+        verification: "4 separate worker pools deployed and processing"
+
+      - id: c_db_read_replica
+        category: infrastructure
+        description: "Database read replica for analytics queries"
+        status: pending
+        priority: high
+        verification: "Read replica provisioned, analytics queries routed correctly"
+
+      - id: c_redis_ha
+        category: infrastructure
+        description: "Redis multi-AZ or replicated (1–4GB)"
+        status: pending
+        priority: high
+        verification: "Redis HA configured, failover tested"
+
+      - id: c_global_cdn
+        category: infrastructure
+        description: "Global CDN configured (Cloudflare Pro or CloudFront)"
+        status: pending
+        priority: medium
+        verification: "CDN headers present, geo-distribution verified"
+
+      # Observability
+      - id: c_full_metrics_stack
+        category: observability
+        description: "Full metrics stack deployed (Prometheus + Grafana or Datadog)"
+        status: pending
+        priority: high
+        verification: "Custom metrics dashboard accessible, all services instrumented"
+
+      - id: c_apm_integrated
+        category: observability
+        description: "APM integrated (New Relic / Datadog APM)"
+        status: pending
+        priority: high
+        verification: "Transaction tracing active, performance insights available"
+
+      - id: c_sla_dashboard
+        category: observability
+        description: "SLA tracking dashboard (uptime, p95 latency, error rate)"
+        status: pending
+        priority: high
+        verification: "Dashboard shows SLA metrics, historical trends"
+
+      - id: c_business_metrics
+        category: observability
+        description: "Custom business metrics tracked (campaigns, conversions, revenue)"
+        status: pending
+        priority: medium
+        verification: "Business KPIs visible in dashboard"
+
+      - id: c_centralized_logging
+        category: observability
+        description: "Centralized log aggregation (Datadog / Logtail / CloudWatch)"
+        status: pending
+        priority: medium
+        verification: "All service logs searchable in one place, 30-day retention"
+
+      # Security
+      - id: c_penetration_test
+        category: security
+        description: "Penetration testing completed (annually)"
+        status: pending
+        priority: critical
+        verification: "Pen test report reviewed, vulnerabilities remediated"
+
+      - id: c_secret_rotation_auto
+        category: security
+        description: "Secrets rotation automated (quarterly)"
+        status: pending
+        priority: high
+        verification: "Automated rotation tested, no downtime"
+
+      - id: c_audit_logs
+        category: security
+        description: "Audit logs for all admin actions"
+        status: pending
+        priority: high
+        verification: "Admin actions logged, queryable audit trail"
+
+      - id: c_mfa_enforced
+        category: security
+        description: "Multi-factor authentication enforced for admin users"
+        status: pending
+        priority: critical
+        verification: "Admin login requires MFA, tested"
+
+      # Compliance
+      - id: c_soc2_type1_prep
+        category: compliance
+        description: "SOC 2 Type I preparation started"
+        status: pending
+        priority: high
+        verification: "Auditor engaged, controls documented"
+
+      - id: c_gdpr_legal_verify
+        category: compliance
+        description: "GDPR compliance verified by legal"
+        status: pending
+        priority: high
+        verification: "Legal sign-off on GDPR implementation"
+
+      # Documentation
+      - id: c_internal_sla
+        category: documentation
+        description: "Internal SLA targets documented"
+        status: pending
+        priority: high
+        verification: "docs/sla/SERVICE_LEVEL_AGREEMENT.md exists"
+
+      - id: c_incident_response
+        category: documentation
+        description: "Incident response playbook created"
+        status: pending
+        priority: critical
+        verification: "docs/runbooks/INCIDENT_RESPONSE.md with escalation paths"
+
+      - id: c_architecture_updated
+        category: documentation
+        description: "System architecture diagrams updated"
+        status: pending
+        priority: medium
+        verification: "docs/architecture/SYSTEM_ARCHITECTURE.md reflects current state"
+
+  - id: stage_d
+    name: "Stage D – 50–200 clients (Post-Pilot / Open Sales)"
+    trigger:
+      min_clients: 50
+      max_clients: 200
+      min_mrr: 50000
+      max_mrr: 200000
+    tasks:
+      # Infrastructure
+      - id: d_microservices
+        category: infrastructure
+        description: "Microservices architecture deployed (API, orchestration, analytics, notifications)"
+        status: pending
+        priority: critical
+        verification: "4+ separate services deployed and communicating"
+
+      - id: d_db_multi_replica
+        category: infrastructure
+        description: "Database with 2+ read replicas"
+        status: pending
+        priority: high
+        verification: "Primary + 2 read replicas active, query routing verified"
+
+      - id: d_redis_cluster
+        category: infrastructure
+        description: "Redis cluster (3+ nodes, 8–16GB total)"
+        status: pending
+        priority: high
+        verification: "Redis cluster healthy, data sharding verified"
+
+      - id: d_multi_region_cdn
+        category: infrastructure
+        description: "Global CDN with multi-region caching"
+        status: pending
+        priority: medium
+        verification: "CDN nodes in 3+ regions, latency <100ms globally"
+
+      # Observability
+      - id: d_distributed_tracing
+        category: observability
+        description: "Distributed tracing implemented (Jaeger / Datadog APM)"
+        status: pending
+        priority: high
+        verification: "Request traces span multiple services, end-to-end visibility"
+
+      - id: d_cost_monitoring
+        category: observability
+        description: "Cost monitoring dashboard (cloud spend per client)"
+        status: pending
+        priority: medium
+        verification: "Cost per client visible, budget alerts configured"
+
+      - id: d_status_page
+        category: observability
+        description: "Customer-facing status page (status.rekindlepro.ai)"
+        status: pending
+        priority: high
+        verification: "Status page public, incidents auto-posted"
+
+      - id: d_slo_tracking
+        category: observability
+        description: "SLO tracking (99.9% uptime, p95 <500ms, error <0.5%)"
+        status: pending
+        priority: critical
+        verification: "SLO dashboard shows compliance, burn rate alerts"
+
+      # Security
+      - id: d_soc2_type2
+        category: security
+        description: "SOC 2 Type II certification achieved"
+        status: pending
+        priority: critical
+        verification: "SOC 2 Type II report issued, compliance verified"
+
+      - id: d_gdpr_dpa_final
+        category: compliance
+        description: "GDPR DPA template finalized and in use"
+        status: pending
+        priority: high
+        verification: "DPA signed with all EU clients"
+
+      # Documentation
+      - id: d_formal_sla
+        category: documentation
+        description: "Formal customer-facing SLA published"
+        status: pending
+        priority: high
+        verification: "SLA in customer contracts, uptime guarantees defined"
+
+  - id: stage_e
+    name: "Stage E – 200+ clients (Serious SaaS)"
+    trigger:
+      min_clients: 200
+      min_mrr: 200000
+    tasks:
+      # Infrastructure
+      - id: e_kubernetes
+        category: infrastructure
+        description: "Kubernetes cluster deployed (EKS/GKE/AKS)"
+        status: pending
+        priority: critical
+        verification: "K8s cluster running, all services containerized"
+
+      - id: e_multi_region_active
+        category: infrastructure
+        description: "Multi-region active-active deployment"
+        status: pending
+        priority: critical
+        verification: "Primary + failover region, traffic routing verified"
+
+      - id: e_analytics_dw
+        category: infrastructure
+        description: "Analytics data warehouse (Snowflake/BigQuery)"
+        status: pending
+        priority: high
+        verification: "Separate DW for analytics, ETL pipelines running"
+
+      - id: e_self_hosted_llm
+        category: infrastructure
+        description: "Self-hosted LLM option for cost optimization"
+        status: pending
+        priority: medium
+        verification: "Mixed LLM strategy (OpenAI + self-hosted), costs reduced"
+
+      # Observability
+      - id: e_chaos_engineering
+        category: observability
+        description: "Chaos engineering implemented (automated failure testing)"
+        status: pending
+        priority: high
+        verification: "Chaos experiments running, resilience verified"
+
+      - id: e_incident_rotations
+        category: observability
+        description: "Formal incident response rotations established"
+        status: pending
+        priority: high
+        verification: "On-call schedule active, escalation tested"
+
+      - id: e_slo_9995
+        category: observability
+        description: "99.95% uptime SLO achieved"
+        status: pending
+        priority: critical
+        verification: "Uptime >99.95% over 90 days, SLO met"
+
+      # Security
+      - id: e_iso27001
+        category: security
+        description: "ISO 27001 certified"
+        status: pending
+        priority: high
+        verification: "ISO 27001 certification issued"
+
+      - id: e_quarterly_pentest
+        category: security
+        description: "Quarterly penetration testing program established"
+        status: pending
+        priority: high
+        verification: "Pen tests completed Q1-Q4, vulnerabilities remediated"
+
+# Metadata
+metadata:
+  version: "1.0"
+  last_updated: "2025-01-23"
+  owner: "Infrastructure & Ops Team"
+  review_schedule: "Monthly during stages A-C, Quarterly during D-E"
