@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { useAuth } from './contexts/AuthContext';
 import { ToastProvider } from './components/Toast';
 import { ErrorBoundary } from './components/ErrorBoundary';
-import LandingPagePremium from './pages/LandingPagePremium';
+import { LandingPage } from './pages/LandingPage';
 import { TrustLandingPage } from './pages/TrustLandingPage';
 import { SignUp } from './pages/SignUp';
 import { Login } from './pages/Login';
@@ -168,8 +168,8 @@ function App() {
     return <Login />;
   }
 
-  // Default: Premium Stripe/Linear/Apple-quality landing page
-  return <LandingPagePremium />;
+  // Default: Landing page with enhanced styling
+  return <LandingPage />;
   })();
 
   // Chat widget message handler

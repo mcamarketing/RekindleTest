@@ -1,5 +1,6 @@
 import { ArrowLeft, Calendar, User, Clock, TrendingUp, Sparkles, Zap, Target } from 'lucide-react';
 import { useState } from 'react';
+import { EnhancedBlogCard, EnhancedBlogGrid, EnhancedBlogHeader } from '../components/enhanced/EnhancedBlogCard';
 
 interface BlogPost {
   id: string;
@@ -1131,18 +1132,7 @@ export function Blog() {
         </button>
 
         {/* Header */}
-        <div className="text-center mb-16">
-          <div className="inline-flex items-center gap-3 px-6 py-3 bg-gradient-to-r from-[#FF6B35]/20 to-[#F7931E]/20 border border-[#FF6B35]/30 rounded-full mb-6">
-            <Sparkles className="w-5 h-5 text-[#FF6B35]" />
-            <span className="text-[#FF6B35] font-bold">Latest Insights</span>
-          </div>
-          <h1 className="text-5xl md:text-6xl font-bold text-white mb-6">
-            Rekindle.ai <span className="text-gradient">Blog</span>
-          </h1>
-          <p className="text-xl text-gray-400 max-w-3xl mx-auto">
-            Expert insights on AI-powered sales, lead generation, and modern CRM strategies
-          </p>
-        </div>
+        <EnhancedBlogHeader />
 
         {/* Category Filter */}
         <div className="flex flex-wrap gap-3 mb-12 justify-center">
@@ -1162,51 +1152,21 @@ export function Blog() {
         </div>
 
         {/* Blog Posts Grid */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <EnhancedBlogGrid>
           {filteredPosts.map((post) => (
-            <article
+            <EnhancedBlogCard
               key={post.id}
-              className="glass-card overflow-hidden hover:scale-105 transition-all duration-300 cursor-pointer group"
+              title={post.title}
+              excerpt={post.excerpt}
+              author={post.author}
+              date={post.date}
+              readTime={post.readTime}
+              category={post.category}
+              image={post.image}
               onClick={() => setSelectedPost(post)}
-            >
-              {/* Image */}
-              <div className="h-48 overflow-hidden">
-                <img 
-                  src={post.image} 
-                  alt={post.title}
-                  className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
-                />
-              </div>
-
-              {/* Content */}
-              <div className="p-6">
-                <div className="inline-block px-3 py-1 bg-[#FF6B35]/20 border border-[#FF6B35]/30 rounded-full text-[#FF6B35] text-xs font-bold mb-3">
-                  {post.category}
-                </div>
-
-                <h2 className="text-xl font-bold text-white mb-3 group-hover:text-[#FF6B35] transition-colors">
-                  {post.title}
-                </h2>
-
-                <p className="text-gray-400 text-sm mb-4 line-clamp-3">
-                  {post.excerpt}
-                </p>
-
-                {/* Meta */}
-                <div className="flex items-center gap-4 text-xs text-gray-500 border-t border-white/10 pt-4">
-                  <div className="flex items-center gap-1">
-                    <User className="w-3 h-3" />
-                    <span>{post.author}</span>
-                  </div>
-                  <div className="flex items-center gap-1">
-                    <Clock className="w-3 h-3" />
-                    <span>{post.readTime}</span>
-                  </div>
-                </div>
-              </div>
-            </article>
+            />
           ))}
-        </div>
+        </EnhancedBlogGrid>
 
         {/* CTA Section */}
         <div className="mt-20 glass-card p-12 text-center">
