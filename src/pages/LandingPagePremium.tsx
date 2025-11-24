@@ -2,7 +2,6 @@
 // @ts-nocheck
 import '../styles/animations.css';
 import { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
 import {
   CheckCircle,
   Shield,
@@ -96,7 +95,10 @@ const PremiumButton = ({
 // HERO SECTION - Emotional, trust-driven copy
 // ============================================================================
 const HeroSection = () => {
-  const navigate = useNavigate();
+  const navigate = (path: string) => {
+    window.history.pushState({}, '', path);
+    window.dispatchEvent(new PopStateEvent('popstate'));
+  };
 
   return (
     <section className="relative min-h-screen flex items-center justify-center px-4 py-20 overflow-hidden">
@@ -414,7 +416,10 @@ const HowItWorksSection = () => {
 // PRICING SECTION - Stripe-quality tier cards
 // ============================================================================
 const PricingSection = () => {
-  const navigate = useNavigate();
+  const navigate = (path: string) => {
+    window.history.pushState({}, '', path);
+    window.dispatchEvent(new PopStateEvent('popstate'));
+  };
 
   const plans = [
     {
