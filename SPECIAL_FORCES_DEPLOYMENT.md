@@ -37,9 +37,7 @@
 
 **Required Action:**
 Add to `backend/crewai_agents/.env`:
-```bash
-OPENAI_API_KEY=sk-proj-...
-```
+```bashOPENAI_API_KEY=<redacted>```
 
 **Get your key:** https://platform.openai.com/api-keys
 
@@ -50,7 +48,7 @@ OPENAI_API_KEY=sk-proj-...
 ### 1. Set OpenAI API Key
 ```bash
 # Edit backend/crewai_agents/.env
-# Add: OPENAI_API_KEY=sk-proj-...
+# Add: OPENAI_API_KEY=<redacted>
 ```
 
 ### 2. Test Special Forces

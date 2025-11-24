@@ -121,7 +121,7 @@ class GetCampaignStatusTool(BaseTool):
             query = supabase.table('campaigns').select('*').eq('user_id', user_id)
             
             if campaign_name:
-                query = query.ilike('name', f'%{campaign_name}%')
+                query = query.ilike('name', campaign_name)
             else:
                 query = query.eq('status', 'active')
             

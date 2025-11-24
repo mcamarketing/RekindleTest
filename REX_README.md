@@ -190,11 +190,11 @@ SUPABASE_KEY=your-anon-key
 REDIS_URL=redis://user:pass@host:6379/0
 
 # API Keys
-OPENAI_API_KEY=sk-...
-SENDGRID_API_KEY=SG...
-TWILIO_ACCOUNT_SID=AC...
-TWILIO_AUTH_TOKEN=...
-TWILIO_PHONE_NUMBER=+1...
+OPENAI_API_KEY=<redacted>
+SENDGRID_API_KEY=<redacted>
+TWILIO_ACCOUNT_SID=<redacted>
+TWILIO_AUTH_TOKEN=<redacted>
+TWILIO_PHONE_NUMBER=<redacted>
 
 # Security
 CORS_ORIGINS=https://yourapp.com

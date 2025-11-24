@@ -50,38 +50,38 @@ Create `.env` file in project root:
 
 ```bash
 # Database
-SUPABASE_URL=https://your-project.supabase.co
-SUPABASE_SERVICE_ROLE_KEY=your-service-role-key
-DATABASE_URL=postgresql://postgres:password@localhost:5432/rekindle
+SUPABASE_URL=<redacted>
+SUPABASE_SERVICE_ROLE_KEY=<redacted>
+DATABASE_URL=<redacted>
 
 # Redis
 REDIS_HOST=localhost
 REDIS_PORT=6379
-REDIS_PASSWORD=your-redis-password
+REDIS_PASSWORD=<redacted>
 REDIS_DB=0
 
 # OpenAI
-OPENAI_API_KEY=sk-...
-OPENAI_ORG_ID=org-...
+OPENAI_API_KEY=<redacted>
+OPENAI_ORG_ID=<redacted>
 
 # SendGrid
-SENDGRID_API_KEY=SG...
+SENDGRID_API_KEY=<redacted>
 SENDGRID_FROM_EMAIL=noreply@rekindlepro.ai
 
 # Twilio
-TWILIO_ACCOUNT_SID=AC...
-TWILIO_AUTH_TOKEN=...
-TWILIO_PHONE_NUMBER=+1...
+TWILIO_ACCOUNT_SID=<redacted>
+TWILIO_AUTH_TOKEN=<redacted>
+TWILIO_PHONE_NUMBER=<redacted>
 
 # Application
 APP_ENV=production
 APP_DEBUG=false
-SECRET_KEY=your-secret-key-min-32-chars
+SECRET_KEY=<redacted>
 ALLOWED_ORIGINS=https://app.rekindlepro.ai,https://rekindlepro.ai
 
 # Monitoring
-SENTRY_DSN=https://...@sentry.io/...
-DATADOG_API_KEY=...
+SENTRY_DSN=<redacted>
+DATADOG_API_KEY=<redacted>
 
 # Feature Flags
 ENABLE_LLM_FALLBACK=true

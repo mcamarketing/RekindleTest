@@ -38,8 +38,8 @@
 
 ```typescript
 // ⚠️ SECURITY BREACH
-const supabaseUrl = 'https://jnhbmemmwtsrfhlztmyq.supabase.co';
-const supabaseAnonKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...';
+const supabaseUrl = '<redacted>';
+const supabaseAnonKey = '<redacted>';
 ```
 
 **Impact:** Anyone can access your entire database (PII, leads, messages)
@@ -132,12 +132,12 @@ grep -r "console.log" src/ | wc -l  # Should be 0
 
 ```bash
 # .env
-OPENAI_API_KEY=sk-...                    # Get: platform.openai.com/api-keys
-SENDGRID_API_KEY=SG....                  # Get: app.sendgrid.com/settings/api_keys
+OPENAI_API_KEY=<redacted>                    # Get: platform.openai.com/api-keys
+SENDGRID_API_KEY=<redacted>                  # Get: app.sendgrid.com/settings/api_keys
 SENDGRID_FROM_EMAIL=noreply@domain.com
-TWILIO_ACCOUNT_SID=AC...                 # Get: console.twilio.com
-TWILIO_AUTH_TOKEN=...
-TWILIO_PHONE_NUMBER=+1234567890
+TWILIO_ACCOUNT_SID=<redacted>                 # Get: console.twilio.com
+TWILIO_AUTH_TOKEN=<redacted>
+TWILIO_PHONE_NUMBER=<redacted>
 JWT_SECRET=$(python -c "import secrets; print(secrets.token_urlsafe(64))")
 ```
 

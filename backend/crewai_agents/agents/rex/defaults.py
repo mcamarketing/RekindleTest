@@ -33,9 +33,9 @@ class IntelligentDefaults:
                 if criteria.get("hot_only"):
                     query = query.gte("lead_score", 70)
                 if criteria.get("state"):
-                    query = query.ilike("state", f"%{criteria['state']}%")
+                    query = query.ilike("state", criteria['state'])
                 if criteria.get("industry"):
-                    query = query.ilike("industry", f"%{criteria['industry']}%")
+                    query = query.ilike("industry", criteria['industry'])
                 if criteria.get("status"):
                     query = query.eq("status", criteria["status"])
             else:

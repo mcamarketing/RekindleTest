@@ -26,7 +26,7 @@ python -c "import secrets; print(secrets.token_urlsafe(64))"
 ```bash
 # Supabase Configuration (Fix 1 - REQUIRED)
 VITE_SUPABASE_URL=https://YOUR_PROJECT.supabase.co
-VITE_SUPABASE_ANON_KEY=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...
+VITE_SUPABASE_ANON_KEY=<redacted>
 
 # API Configuration (Fix 2 - REQUIRED for production only)
 # In development, will fallback to http://localhost:3001/api with warning
@@ -56,22 +56,22 @@ VITE_API_URL=https://your-api.railway.app/api
 ```bash
 # Database
 SUPABASE_URL=https://YOUR_PROJECT.supabase.co
-SUPABASE_SERVICE_ROLE_KEY=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...
+SUPABASE_SERVICE_ROLE_KEY=<redacted>
 
 # AI/ML
-OPENAI_API_KEY=sk-...
+OPENAI_API_KEY=<redacted>
 
 # Authentication
 JWT_SECRET=<generate with: python -c "import secrets; print(secrets.token_urlsafe(64))">
 
 # Email (SendGrid)
-SENDGRID_API_KEY=SG...
+SENDGRID_API_KEY=<redacted>
 SENDGRID_FROM_EMAIL=noreply@yourdomain.com
 
 # SMS (Twilio)
-TWILIO_ACCOUNT_SID=AC...
-TWILIO_AUTH_TOKEN=...
-TWILIO_PHONE_NUMBER=+1234567890
+TWILIO_ACCOUNT_SID=<redacted>
+TWILIO_AUTH_TOKEN=<redacted>
+TWILIO_PHONE_NUMBER=<redacted>
 
 # OAuth Token Encryption (Fix 5 - NEW REQUIREMENT)
 CALENDAR_ENCRYPTION_KEY=<generate with: python -c "from cryptography.fernet import Fernet; print(Fernet.generate_key().decode())">
@@ -90,7 +90,7 @@ SENTRY_DSN=https://...@sentry.io/...
 REDIS_URL=redis://...
 
 # Payment Processing
-STRIPE_SECRET_KEY=sk_test_...
+STRIPE_SECRET_KEY=<redacted>
 STRIPE_WEBHOOK_SECRET=whsec_...
 
 # Feature Flags

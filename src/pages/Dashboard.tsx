@@ -1,12 +1,17 @@
-import { useEffect, useState } from 'react';
-import { useAuth } from '../contexts/AuthContext';
-import { supabase } from '../lib/supabase';
-import { Navigation } from '../components/Navigation';
-import { RippleButton } from '../components/RippleButton';
-import { StatCard } from '../components/StatCard';
-import { ActivityFeed } from '../components/ActivityFeed';
-import { Users, TrendingUp, Mail, Plus, LayoutDashboard, ArrowUp, ArrowDown, DollarSign, Target, Activity } from 'lucide-react';
-import { motion } from 'framer-motion';
+import { useEffect, useState } from "react";
+import { useAuth } from "../contexts/AuthContext";
+import { supabase } from "../lib/supabase";
+import { Navigation } from "../components/Navigation";
+import {
+  Users,
+  TrendingUp,
+  Mail,
+  Plus,
+  ArrowUp,
+  Activity,
+} from "lucide-react";
+import { motion } from "framer-motion";
+import { Chart } from "../components/Chart";
 
 interface DashboardStats {
   totalLeads: number;
@@ -29,7 +34,7 @@ export function Dashboard() {
     totalACV: 0,
     potentialRevenue: 0,
     hotLeads: 0,
-    coldLeads: 0
+    coldLeads: 0,
   });
   const [loading, setLoading] = useState(true);
   const [lastUpdated, setLastUpdated] = useState<Date>(new Date());
@@ -40,28 +45,41 @@ export function Dashboard() {
     return () => clearInterval(interval);
   }, []);
 
+  const chartData = [
+    { name: "Jan", value: 400 },
+    { name: "Feb", value: 300 },
+    { name: "Mar", value: 600 },
+    { name: "Apr", value: 800 },
+    { name: "May", value: 500 },
+    { name: "Jun", value: 700 },
+    { name: "Jul", value: 900 },
+  ];
+
   const loadDashboardStats = async () => {
     try {
       // Get total leads count
       const { count: leadsCount } = await supabase
-        .from('leads')
-        .select('*', { count: 'exact', head: true });
+        .from("leads")
+        .select("*", { count: "exact", head: true });
 
       // Get active campaigns count
       const { count: campaignsCount } = await supabase
-        .from('campaigns')
-        .select('*', { count: 'exact', head: true })
-        .eq('status', 'active');
+        .from("campaigns")
+        .select("*", { count: "exact", head: true })
+        .eq("status", "active");
 
       // Get leads with full data for ACV calculation
       const { data: leadsData } = await supabase
-        .from('leads')
-        .select('lead_score, status, custom_fields');
+        .from("leads")
+        .select("lead_score, status, custom_fields");
 
       // Calculate ACV and lead breakdown
       const defaultACV = 2500; // Default deal value
-      const hotLeadsCount = leadsData?.filter(l => l.lead_score >= 70).length || 0;
-      const coldLeadsCount = leadsData?.filter(l => l.lead_score < 40 && l.status !== 'converted').length || 0;
+      const hotLeadsCount =
+        leadsData?.filter((l) => l.lead_score >= 70).length || 0;
+      const coldLeadsCount =
+        leadsData?.filter((l) => l.lead_score < 40 && l.status !== "converted")
+          .length || 0;
       const totalACV = (leadsData?.length || 0) * defaultACV;
       const potentialRevenue = hotLeadsCount * defaultACV * 0.2; // 20% conversion estimate
 
@@ -73,92 +91,20 @@ export function Dashboard() {
         totalACV,
         potentialRevenue,
         hotLeads: hotLeadsCount,
-        coldLeads: coldLeadsCount
+        coldLeads: coldLeadsCount,
       });
       setLastUpdated(new Date());
     } catch (error) {
-      console.error('Error loading dashboard stats:', error);
+      console.error("Error loading dashboard stats:", error);
     } finally {
       setLoading(false);
     }
   };
 
   const navigate = (path: string) => {
-    window.history.pushState({}, '', path);
-    window.dispatchEvent(new PopStateEvent('popstate'));
+    window.history.pushState({}, "", path);
+    window.dispatchEvent(new PopStateEvent("popstate"));
   };
-
-  // Format currency for display
-  const formatCurrency = (value: number) => {
-    return new Intl.NumberFormat('en-GB', {
-      style: 'currency',
-      currency: 'GBP',
-      minimumFractionDigits: 0,
-      maximumFractionDigits: 0
-    }).format(value);
-  };
-
-  const statCardsData = [
-    {
-      title: 'Total Pipeline ACV',
-      value: formatCurrency(stats.totalACV),
-      numericValue: stats.totalACV,
-      icon: DollarSign,
-      gradient: 'from-emerald-500 to-emerald-600',
-      description: `${stats.totalLeads} leads in pipeline`,
-      onClick: () => navigate('/leads')
-    },
-    {
-      title: 'Potential Revenue (30d)',
-      value: formatCurrency(stats.potentialRevenue),
-      numericValue: stats.potentialRevenue,
-      icon: TrendingUp,
-      gradient: 'from-green-500 to-green-600',
-      description: `${stats.hotLeads} hot leads × 20% close rate`,
-      trend: 'up' as const,
-      trendValue: '12%',
-      onClick: () => navigate('/leads?filter=hot')
-    },
-    {
-      title: 'Hot Leads (70+ Score)',
-      value: stats.hotLeads.toString(),
-      numericValue: stats.hotLeads,
-      icon: Target,
-      gradient: 'from-orange-500 to-orange-600',
-      description: 'Ready for outreach now',
-      onClick: () => navigate('/leads?filter=hot')
-    },
-    {
-      title: 'Cold Leads to Revive',
-      value: stats.coldLeads.toString(),
-      numericValue: stats.coldLeads,
-      icon: Mail,
-      gradient: 'from-blue-500 to-blue-600',
-      description: 'Reactivation opportunities',
-      onClick: () => navigate('/leads?filter=cold')
-    },
-    {
-      title: 'Active Campaigns',
-      value: stats.activeCampaigns.toString(),
-      numericValue: stats.activeCampaigns,
-      icon: TrendingUp,
-      gradient: 'from-purple-500 to-purple-600',
-      description: 'Running campaigns',
-      onClick: () => navigate('/campaigns')
-    },
-    {
-      title: 'Meetings Booked',
-      value: stats.meetingsBooked.toString(),
-      numericValue: stats.meetingsBooked,
-      icon: LayoutDashboard,
-      gradient: 'from-pink-500 to-pink-600',
-      description: 'This month',
-      onClick: () => navigate('/billing')
-    },
-  ];
-
-  // Mock activity data (in a real app, this would come from the database)
-  const recentActivities = [];
 
   const getTimeSinceUpdate = () => {
     const seconds = Math.floor((Date.now() - lastUpdated.getTime()) / 1000);
@@ -196,7 +142,9 @@ export function Dashboard() {
             </div>
           </div>
           <p className="text-[#425466] text-base">
-            Welcome back{user?.email ? `, ${user.email.split('@')[0]}` : ''}. Here's your pipeline overview.
+            Welcome back
+            {user?.email ? `, ${user.email.split("@")[0]}` : ""}. Here's your
+            pipeline overview.
           </p>
         </motion.div>
 
@@ -219,7 +167,9 @@ export function Dashboard() {
               {/* Leads Contacted */}
               <div className="bg-white border border-[#e3e8ee] rounded-lg p-6 hover:shadow-md transition-shadow duration-200">
                 <div className="flex items-center justify-between mb-4">
-                  <span className="text-xs uppercase tracking-wider text-[#727f96] font-medium">Leads Contacted</span>
+                  <span className="text-xs uppercase tracking-wider text-[#727f96] font-medium">
+                    Leads Contacted
+                  </span>
                   <Users className="w-4 h-4 text-[#727f96]" />
                 </div>
                 <div className="text-3xl font-bold text-[#0a2540] mb-1 tabular-nums">
@@ -233,21 +183,23 @@ export function Dashboard() {
               {/* Meetings Booked */}
               <div className="bg-white border border-[#e3e8ee] rounded-lg p-6 hover:shadow-md transition-shadow duration-200">
                 <div className="flex items-center justify-between mb-4">
-                  <span className="text-xs uppercase tracking-wider text-[#727f96] font-medium">Meetings Booked</span>
+                  <span className="text-xs uppercase tracking-wider text-[#727f96] font-medium">
+                    Meetings Booked
+                  </span>
                   <Activity className="w-4 h-4 text-[#727f96]" />
                 </div>
                 <div className="text-3xl font-bold text-[#0a2540] mb-1 tabular-nums">
                   {stats.meetingsBooked}
                 </div>
-                <div className="text-sm text-[#425466]">
-                  This month
-                </div>
+                <div className="text-sm text-[#425466]">This month</div>
               </div>
 
               {/* Reply Rate */}
               <div className="bg-white border border-[#e3e8ee] rounded-lg p-6 hover:shadow-md transition-shadow duration-200">
                 <div className="flex items-center justify-between mb-4">
-                  <span className="text-xs uppercase tracking-wider text-[#727f96] font-medium">Reply Rate</span>
+                  <span className="text-xs uppercase tracking-wider text-[#727f96] font-medium">
+                    Reply Rate
+                  </span>
                   <TrendingUp className="w-4 h-4 text-[#727f96]" />
                 </div>
                 <div className="text-3xl font-bold text-[#0a2540] mb-1 tabular-nums">
@@ -259,6 +211,10 @@ export function Dashboard() {
                 </div>
               </div>
             </motion.div>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-12">
+              <Chart data={chartData} title="Leads Generated" />
+              <Chart data={chartData} title="Conversion Rate" />
+            </div>
 
             {/* Active Campaigns Section */}
             <motion.div
@@ -268,9 +224,11 @@ export function Dashboard() {
               transition={{ duration: 0.5, delay: 0.2 }}
             >
               <div className="flex items-center justify-between mb-6">
-                <h2 className="text-xl font-bold text-[#0a2540]">Active Campaigns</h2>
+                <h2 className="text-xl font-bold text-[#0a2540]">
+                  Active Campaigns
+                </h2>
                 <button
-                  onClick={() => navigate('/campaigns')}
+                  onClick={() => navigate("/campaigns")}
                   className="text-sm text-[#425466] hover:text-[#0a2540] font-medium transition-colors"
                 >
                   View all →
@@ -280,9 +238,11 @@ export function Dashboard() {
               {stats.activeCampaigns === 0 ? (
                 <div className="bg-white border border-[#e3e8ee] rounded-lg p-8 text-center">
                   <Mail className="w-12 h-12 text-[#e3e8ee] mx-auto mb-4" />
-                  <p className="text-[#425466] mb-4">No active campaigns yet</p>
+                  <p className="text-[#425466] mb-4">
+                    No active campaigns yet
+                  </p>
                   <button
-                    onClick={() => navigate('/campaigns/create')}
+                    onClick={() => navigate("/campaigns/create")}
                     className="inline-flex items-center gap-2 px-4 py-2 bg-[#0a2540] text-white rounded-md hover:bg-[#0d2d52] transition-colors text-sm font-medium"
                   >
                     <Plus className="w-4 h-4" />
@@ -295,12 +255,16 @@ export function Dashboard() {
                     <div className="flex items-center gap-3">
                       <span className="w-2 h-2 bg-green-500 rounded-full"></span>
                       <div>
-                        <div className="font-medium text-[#0a2540]">Q4 Re-engagement</div>
-                        <div className="text-sm text-[#727f96]">Multi-channel sequence</div>
+                        <div className="font-medium text-[#0a2540]">
+                          Q4 Re-engagement
+                        </div>
+                        <div className="text-sm text-[#727f96]">
+                          Multi-channel sequence
+                        </div>
                       </div>
                     </div>
                     <button
-                      onClick={() => navigate('/campaigns')}
+                      onClick={() => navigate("/campaigns")}
                       className="text-sm text-[#425466] hover:text-[#0a2540] font-medium transition-colors"
                     >
                       View details →
@@ -308,16 +272,28 @@ export function Dashboard() {
                   </div>
                   <div className="grid grid-cols-3 gap-6 pt-4">
                     <div>
-                      <div className="text-xs uppercase tracking-wider text-[#727f96] mb-1">Leads</div>
-                      <div className="text-lg font-bold text-[#0a2540] tabular-nums">{stats.totalLeads}</div>
+                      <div className="text-xs uppercase tracking-wider text-[#727f96] mb-1">
+                        Leads
+                      </div>
+                      <div className="text-lg font-bold text-[#0a2540] tabular-nums">
+                        {stats.totalLeads}
+                      </div>
                     </div>
                     <div>
-                      <div className="text-xs uppercase tracking-wider text-[#727f96] mb-1">Meetings</div>
-                      <div className="text-lg font-bold text-[#0a2540] tabular-nums">{stats.meetingsBooked}</div>
+                      <div className="text-xs uppercase tracking-wider text-[#727f96] mb-1">
+                        Meetings
+                      </div>
+                      <div className="text-lg font-bold text-[#0a2540] tabular-nums">
+                        {stats.meetingsBooked}
+                      </div>
                     </div>
                     <div>
-                      <div className="text-xs uppercase tracking-wider text-[#727f96] mb-1">Rate</div>
-                      <div className="text-lg font-bold text-[#0a2540] tabular-nums">{stats.responseRate}%</div>
+                      <div className="text-xs uppercase tracking-wider text-[#727f96] mb-1">
+                        Rate
+                      </div>
+                      <div className="text-lg font-bold text-[#0a2540] tabular-nums">
+                        {stats.responseRate}%
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -332,30 +308,42 @@ export function Dashboard() {
               transition={{ duration: 0.5, delay: 0.3 }}
             >
               <button
-                onClick={() => navigate('/leads/import')}
+                onClick={() => navigate("/leads/import")}
                 className="bg-white border border-[#e3e8ee] rounded-lg p-6 text-left hover:shadow-md transition-shadow duration-200 group"
               >
                 <Plus className="w-5 h-5 text-[#727f96] mb-3 group-hover:text-[#0a2540] transition-colors" />
-                <div className="font-medium text-[#0a2540] mb-1">Import leads</div>
-                <div className="text-sm text-[#727f96]">Upload CSV or connect CRM</div>
+                <div className="font-medium text-[#0a2540] mb-1">
+                  Import leads
+                </div>
+                <div className="text-sm text-[#727f96]">
+                  Upload CSV or connect CRM
+                </div>
               </button>
 
               <button
-                onClick={() => navigate('/campaigns/create')}
+                onClick={() => navigate("/campaigns/create")}
                 className="bg-white border border-[#e3e8ee] rounded-lg p-6 text-left hover:shadow-md transition-shadow duration-200 group"
               >
                 <Mail className="w-5 h-5 text-[#727f96] mb-3 group-hover:text-[#0a2540] transition-colors" />
-                <div className="font-medium text-[#0a2540] mb-1">Create campaign</div>
-                <div className="text-sm text-[#727f96]">AI-powered sequences</div>
+                <div className="font-medium text-[#0a2540] mb-1">
+                  Create campaign
+                </div>
+                <div className="text-sm text-[#727f96]">
+                  AI-powered sequences
+                </div>
               </button>
 
               <button
-                onClick={() => navigate('/analytics')}
+                onClick={() => navigate("/analytics")}
                 className="bg-white border border-[#e3e8ee] rounded-lg p-6 text-left hover:shadow-md transition-shadow duration-200 group"
               >
                 <TrendingUp className="w-5 h-5 text-[#727f96] mb-3 group-hover:text-[#0a2540] transition-colors" />
-                <div className="font-medium text-[#0a2540] mb-1">View analytics</div>
-                <div className="text-sm text-[#727f96]">Performance insights</div>
+                <div className="font-medium text-[#0a2540] mb-1">
+                  View analytics
+                </div>
+                <div className="text-sm text-[#727f96]">
+                  Performance insights
+                </div>
               </button>
             </motion.div>
 
@@ -367,15 +355,26 @@ export function Dashboard() {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: 0.4 }}
               >
-                <h2 className="text-2xl font-bold text-[#0a2540] mb-3">Get started with RekindlePro</h2>
+                <h2 className="text-2xl font-bold text-[#0a2540] mb-3">
+                  Get started with RekindlePro
+                </h2>
                 <p className="text-[#425466] mb-8 text-base">
                   Recover dormant pipeline in three simple steps
                 </p>
                 <div className="space-y-4 mb-8">
                   {[
-                    { num: 1, text: 'Import your dormant leads from CSV or CRM' },
-                    { num: 2, text: 'Create AI-powered re-engagement campaign' },
-                    { num: 3, text: 'Review and approve messages before sending' }
+                    {
+                      num: 1,
+                      text: "Import your dormant leads from CSV or CRM",
+                    },
+                    {
+                      num: 2,
+                      text: "Create AI-powered re-engagement campaign",
+                    },
+                    {
+                      num: 3,
+                      text: "Review and approve messages before sending",
+                    },
                   ].map((step) => (
                     <div key={step.num} className="flex items-start gap-4">
                       <div className="flex-shrink-0 w-6 h-6 rounded-full bg-[#e3e8ee] flex items-center justify-center text-sm font-bold text-[#727f96]">
@@ -386,7 +385,7 @@ export function Dashboard() {
                   ))}
                 </div>
                 <button
-                  onClick={() => navigate('/leads/import')}
+                  onClick={() => navigate("/leads/import")}
                   className="px-4 py-2 bg-[#0a2540] text-white rounded-md hover:bg-[#0d2d52] transition-colors text-sm font-medium"
                 >
                   Import leads

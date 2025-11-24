@@ -499,20 +499,20 @@ supabase/migrations/
 
 ### **Frontend (`.env`)**
 ```bash
-VITE_SUPABASE_URL=https://xxx.supabase.co
-VITE_SUPABASE_ANON_KEY=xxx
-VITE_SENTRY_DSN=https://xxx@sentry.io/xxx
+VITE_SUPABASE_URL=<redacted>
+VITE_SUPABASE_ANON_KEY=<redacted>
+VITE_SENTRY_DSN=<redacted>
 VITE_ENV=production
 ```
 
 ### **Backend (`backend/crewai_agents/.env`)**
 ```bash
 # Supabase
-SUPABASE_URL=https://xxx.supabase.co
-SUPABASE_SERVICE_ROLE_KEY=xxx
+SUPABASE_URL=<redacted>
+SUPABASE_SERVICE_ROLE_KEY=<redacted>
 
 # Anthropic
-ANTHROPIC_API_KEY=sk-ant-xxx
+ANTHROPIC_API_KEY=<redacted>
 ANTHROPIC_MODEL=claude-3-5-sonnet-20241022
 
 # MCP Servers
@@ -525,19 +525,19 @@ CALENDAR_MCP_URL=http://mcp-calendar-server
 # Redis
 REDIS_HOST=127.0.0.1
 REDIS_PORT=6379
-REDIS_PASSWORD=xxx
+REDIS_PASSWORD=<redacted>
 
 # Email
-SENDGRID_API_KEY=SG.xxx
+SENDGRID_API_KEY=<redacted>
 SENDGRID_FROM_EMAIL=noreply@rekindle.ai
 
 # SMS
-TWILIO_ACCOUNT_SID=xxx
-TWILIO_AUTH_TOKEN=xxx
-TWILIO_PHONE_NUMBER=+1234567890
+TWILIO_ACCOUNT_SID=<redacted>
+TWILIO_AUTH_TOKEN=<redacted>
+TWILIO_PHONE_NUMBER=<redacted>
 
 # Authentication
-TRACKER_API_TOKEN=xxx
+TRACKER_API_TOKEN=<redacted>
 ```
 
 ---
@@ -682,6 +682,7 @@ The application has a **solid foundation** with:
 **Report Generated:** January 2025  
 **Application Version:** 1.0.0  
 **Status:** Production-Ready (Integration Pending)
+
 
 
 

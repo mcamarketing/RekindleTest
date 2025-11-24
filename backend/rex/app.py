@@ -21,6 +21,9 @@ from .api_endpoints import (
     webhook_router,
 )
 
+# Import outcome tracking webhooks (Flywheel Architecture)
+from .webhooks import sendgrid_router, crm_router
+
 # ============================================================================
 # LOGGING SETUP
 # ============================================================================
@@ -237,6 +240,10 @@ app.include_router(agent_router)
 app.include_router(domain_router)
 app.include_router(inbox_router)
 app.include_router(webhook_router)
+
+# Outcome tracking webhooks (Flywheel Architecture - Data Capture)
+app.include_router(sendgrid_router, tags=["Outcome Tracking"])
+app.include_router(crm_router, tags=["Outcome Tracking"])
 
 
 # ============================================================================

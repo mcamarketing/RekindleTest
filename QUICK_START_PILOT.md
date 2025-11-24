@@ -20,13 +20,13 @@ npm install
 
 **FastAPI Server** (`backend/crewai_agents/.env`):
 ```bash
-SUPABASE_URL=https://xxx.supabase.co
-SUPABASE_SERVICE_ROLE_KEY=xxx
-SUPABASE_JWT_SECRET=xxx
-ANTHROPIC_API_KEY=sk-ant-xxx
+SUPABASE_URL=<redacted>
+SUPABASE_SERVICE_ROLE_KEY=<redacted>
+SUPABASE_JWT_SECRET=<redacted>
+ANTHROPIC_API_KEY=<redacted>
 REDIS_HOST=127.0.0.1
 REDIS_PORT=6379
-REDIS_PASSWORD=xxx
+REDIS_PASSWORD=<redacted>
 ALLOWED_ORIGINS=http://localhost:5173,https://rekindle.ai
 PORT=8081
 ENVIRONMENT=production
@@ -34,16 +34,16 @@ ENVIRONMENT=production
 
 **Node.js Worker** (`backend/node_scheduler_worker/.env`):
 ```bash
-SUPABASE_URL=https://xxx.supabase.co
-SUPABASE_SERVICE_ROLE_KEY=xxx
+SUPABASE_URL=<redacted>
+SUPABASE_SERVICE_ROLE_KEY=<redacted>
 REDIS_HOST=127.0.0.1
 REDIS_PORT=6379
-REDIS_PASSWORD=xxx
+REDIS_PASSWORD=<redacted>
 REDIS_SCHEDULER_QUEUE=message_scheduler_queue
-SENDGRID_API_KEY=SG.xxx
+SENDGRID_API_KEY=<redacted>
 SENDGRID_FROM_EMAIL=noreply@rekindle.ai
-TWILIO_ACCOUNT_SID=ACxxx
-TWILIO_AUTH_TOKEN=xxx
+TWILIO_ACCOUNT_SID=<redacted>
+TWILIO_AUTH_TOKEN=<redacted>
 TWILIO_PHONE_NUMBER=+1234567890
 WORKER_CONCURRENCY=10
 NODE_INSTANCE_ID=worker-001
@@ -133,6 +133,7 @@ npm run dev
 - [ ] Database updates correctly
 
 **READY TO LAUNCH!** 🚀
+
 
 
 

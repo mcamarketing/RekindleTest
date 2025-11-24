@@ -136,22 +136,22 @@ async def get_billing_status(
 
 ```bash
 # Supabase Authentication
-SUPABASE_URL=https://xxxxx.supabase.co
-SUPABASE_SERVICE_ROLE_KEY=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...
-SUPABASE_JWT_SECRET=your-jwt-secret-from-supabase-dashboard
+SUPABASE_URL=<redacted>
+SUPABASE_SERVICE_ROLE_KEY=<redacted>
+SUPABASE_JWT_SECRET=<redacted>
 
 # Internal MCP Communication (Keep secret, never expose to frontend)
-TRACKER_API_TOKEN=secure-random-token-for-internal-apis
+TRACKER_API_TOKEN=<redacted>
 
 # App Configuration
 APP_URL=https://app.rekindle.com
 ENVIRONMENT=production
 
 # External Services (for MCP servers)
-ANTHROPIC_API_KEY=sk-ant-...
+ANTHROPIC_API_KEY=<redacted>
 REDIS_HOST=redis.your-hosting.com
-TWILIO_SID=ACxxxxxxxxxxxxxxxxxx
-SENDGRID_API_KEY=SG.xxxxxxxxxxxx
+TWILIO_SID=<redacted>
+SENDGRID_API_KEY=<redacted>
 ```
 
 ### Production (Supabase Edge Functions)
@@ -160,8 +160,8 @@ Set in Supabase Dashboard → Settings → Edge Functions → Environment Variab
 
 ```bash
 APP_URL=https://app.rekindle.com
-ANTHROPIC_API_KEY=sk-ant-...
-TRACKER_API_TOKEN=same-as-fastapi-token
+ANTHROPIC_API_KEY=<redacted>
+TRACKER_API_TOKEN=<redacted>
 ```
 
 ### How to Get `SUPABASE_JWT_SECRET`

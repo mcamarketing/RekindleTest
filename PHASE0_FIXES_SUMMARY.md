@@ -110,7 +110,7 @@ Co-Authored-By: Claude Code <noreply@anthropic.com>
 ```bash
 # Supabase Configuration (Fix 1)
 VITE_SUPABASE_URL=https://YOUR_PROJECT.supabase.co
-VITE_SUPABASE_ANON_KEY=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...
+VITE_SUPABASE_ANON_KEY=<redacted>
 
 # API Configuration (Fix 2)
 VITE_API_URL=https://your-api.railway.app/api  # Production only
@@ -128,10 +128,10 @@ CALENDAR_ENCRYPTION_KEY=<generate with: python -c "from cryptography.fernet impo
 SENDGRID_WEBHOOK_VERIFICATION_KEY=<from SendGrid dashboard>
 
 # Existing required vars
-OPENAI_API_KEY=sk-...
-SENDGRID_API_KEY=SG...
-TWILIO_ACCOUNT_SID=AC...
-TWILIO_AUTH_TOKEN=...
+OPENAI_API_KEY=<redacted>
+SENDGRID_API_KEY=<redacted>
+TWILIO_ACCOUNT_SID=<redacted>
+TWILIO_AUTH_TOKEN=<redacted>
 TWILIO_PHONE_NUMBER=+1234567890
 JWT_SECRET=<generate with: python -c "import secrets; print(secrets.token_urlsafe(64))">
 ```

@@ -13,24 +13,24 @@ Production-grade BullMQ worker that sends messages via SendGrid (email), Twilio 
    Create `.env` file:
    ```bash
    # Supabase
-   SUPABASE_URL=https://xxx.supabase.co
-   SUPABASE_SERVICE_ROLE_KEY=xxx
+   SUPABASE_URL=<redacted>
+   SUPABASE_SERVICE_ROLE_KEY=<redacted>
 
    # Redis
    REDIS_HOST=127.0.0.1
    REDIS_PORT=6379
-   REDIS_PASSWORD=xxx
+   REDIS_PASSWORD=<redacted>
    REDIS_SCHEDULER_QUEUE=message_scheduler_queue
 
    # SendGrid
-   SENDGRID_API_KEY=SG.xxx
+   SENDGRID_API_KEY=<redacted>
    SENDGRID_FROM_EMAIL=noreply@rekindle.ai
    SENDGRID_UNSUBSCRIBE_GROUP_ID=12345
 
    # Twilio
-   TWILIO_ACCOUNT_SID=ACxxx
-   TWILIO_AUTH_TOKEN=xxx
-   TWILIO_PHONE_NUMBER=+1234567890
+   TWILIO_ACCOUNT_SID=<redacted>
+   TWILIO_AUTH_TOKEN=<redacted>
+   TWILIO_PHONE_NUMBER=<redacted>
    TWILIO_WHATSAPP_NUMBER=whatsapp:+1234567890
 
    # Worker Config
@@ -90,6 +90,7 @@ Use PM2 or similar process manager:
 pm2 start worker.js --name rekindle-worker
 pm2 logs rekindle-worker
 ```
+
 
 
 

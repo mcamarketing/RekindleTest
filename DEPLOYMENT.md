@@ -61,8 +61,8 @@ curl https://your-app.railway.app/health
 4. **Set Environment Variables**
    ```bash
    # Option A: Set via CLI
-   railway variables set OPENAI_API_KEY=sk-...
-   railway variables set SENDGRID_API_KEY=SG....
+   railway variables set OPENAI_API_KEY=<redacted>
+   railway variables set SENDGRID_API_KEY=<redacted>
    # ... (repeat for all P0 variables)
 
    # Option B: Set via Dashboard (easier)
@@ -355,29 +355,29 @@ curl https://your-app.railway.app/health
 
 ```bash
 # Supabase
-SUPABASE_URL=https://xxxxx.supabase.co
-SUPABASE_SERVICE_ROLE_KEY=eyJ...
-SUPABASE_JWT_SECRET=xxxx
+SUPABASE_URL=<redacted>
+SUPABASE_SERVICE_ROLE_KEY=<redacted>
+SUPABASE_JWT_SECRET=<redacted>
 
 # AI APIs
-ANTHROPIC_API_KEY=sk-ant-...
-OPENAI_API_KEY=sk-...
+ANTHROPIC_API_KEY=<redacted>
+OPENAI_API_KEY=<redacted>
 
 # Email
-SENDGRID_API_KEY=SG....
+SENDGRID_API_KEY=<redacted>
 SENDGRID_FROM_EMAIL=noreply@yourdomain.com
 
 # SMS
-TWILIO_ACCOUNT_SID=ACxxxx
-TWILIO_AUTH_TOKEN=xxxx
-TWILIO_PHONE_NUMBER=+1234567890
+TWILIO_ACCOUNT_SID=<redacted>
+TWILIO_AUTH_TOKEN=<redacted>
+TWILIO_PHONE_NUMBER=<redacted>
 
 # Security
 JWT_SECRET=<64-char random string>
 
 # Optional but recommended
 REDIS_HOST=redis-12345.upstash.io
-REDIS_PASSWORD=xxxx
+REDIS_PASSWORD=<redacted>
 ```
 
 ### P1 (Recommended)
@@ -387,8 +387,8 @@ REDIS_PASSWORD=xxxx
 SENTRY_DSN=https://xxxx@sentry.io/xxxx
 
 # Billing
-STRIPE_SECRET_KEY=sk_live_...
-STRIPE_WEBHOOK_SECRET=whsec_...
+STRIPE_SECRET_KEY=<redacted>
+STRIPE_WEBHOOK_SECRET=<redacted>
 
 # Calendar
 CALENDAR_ENCRYPTION_KEY=<32-char random string>

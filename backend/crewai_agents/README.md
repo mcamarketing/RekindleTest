@@ -20,10 +20,10 @@ pip install -r requirements.txt
 Create a `.env` file:
 
 ```env
-SUPABASE_URL=your_supabase_url
-SUPABASE_SERVICE_ROLE_KEY=your_service_role_key
-ANTHROPIC_API_KEY=your_anthropic_api_key
-REDIS_URL=your_redis_url  # Optional, for caching
+SUPABASE_URL=<redacted>
+SUPABASE_SERVICE_ROLE_KEY=<redacted>
+ANTHROPIC_API_KEY=<redacted>
+REDIS_URL=<redacted>  # Optional, for caching
 ```
 
 ### Run a Crew
@@ -193,6 +193,7 @@ Set `VERBOSE=True` in environment to see detailed agent execution logs.
 ## 📝 License
 
 Proprietary - Rekindle.ai
+
 
 
 

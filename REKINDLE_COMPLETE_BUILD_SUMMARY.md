@@ -503,9 +503,9 @@ SynchronizerAgent (updates HubSpot + Slack)
 
 ```bash
 # Core
-SUPABASE_URL=https://xxx.supabase.co
-SUPABASE_SERVICE_ROLE_KEY=xxx
-ANTHROPIC_API_KEY=sk-ant-xxx
+SUPABASE_URL=<redacted>
+SUPABASE_SERVICE_ROLE_KEY=<redacted>
+ANTHROPIC_API_KEY=<redacted>
 ANTHROPIC_MODEL=claude-3-5-sonnet-20240620
 
 # MCP Servers
@@ -516,27 +516,27 @@ STRIPE_MCP_URL=http://mcp-stripe-server
 CALENDAR_MCP_URL=http://mcp-calendar-server
 
 # Authentication
-TRACKER_API_TOKEN=shared_token_for_mcp_auth
+TRACKER_API_TOKEN=<redacted>
 
 # Calendar OAuth
-GOOGLE_CLIENT_ID=xxx
-OUTLOOK_CLIENT_ID=xxx
+GOOGLE_CLIENT_ID=<redacted>
+OUTLOOK_CLIENT_ID=<redacted>
 CALENDAR_REDIRECT_URI=http://localhost:5173/calendar/callback
 
 # SendGrid
-SENDGRID_API_KEY=SG.xxx
+SENDGRID_API_KEY=<redacted>
 SENDGRID_FROM_EMAIL=noreply@rekindle.ai
 SENDGRID_FROM_NAME=Rekindle
 
 # Twilio
-TWILIO_ACCOUNT_SID=xxx
-TWILIO_AUTH_TOKEN=xxx
+TWILIO_ACCOUNT_SID=<redacted>
+TWILIO_AUTH_TOKEN=<redacted>
 TWILIO_PHONE_NUMBER=+1234567890
 
 # Redis
 REDIS_HOST=127.0.0.1
 REDIS_PORT=6379
-REDIS_PASSWORD=xxx
+REDIS_PASSWORD=<redacted>
 
 # Compliance
 COMPANY_PHYSICAL_ADDRESS="Rekindle Ltd, 123 Business St, London, UK"

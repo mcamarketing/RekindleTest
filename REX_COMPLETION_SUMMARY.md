@@ -185,23 +185,23 @@
 
 ```bash
 # OpenAI (for Decision Engine LLM Reasoner)
-OPENAI_API_KEY=sk-...
+OPENAI_API_KEY=<redacted>
 
 # Redis (for Message Bus)
 REDIS_HOST=localhost
 REDIS_PORT=6379
-REDIS_PASSWORD=...
+REDIS_PASSWORD=<redacted>
 
 # Supabase (already configured)
-SUPABASE_URL=...
-SUPABASE_SERVICE_ROLE_KEY=...
+SUPABASE_URL=<redacted>
+SUPABASE_SERVICE_ROLE_KEY=<redacted>
 
 # Twilio (for multi-channel)
-TWILIO_ACCOUNT_SID=...
-TWILIO_AUTH_TOKEN=...
+TWILIO_ACCOUNT_SID=<redacted>
+TWILIO_AUTH_TOKEN=<redacted>
 
 # SendGrid (for email)
-SENDGRID_API_KEY=...
+SENDGRID_API_KEY=<redacted>
 ```
 
 ### 2. Database Migration
