@@ -12,6 +12,7 @@ from dataclasses import dataclass
 from collections import defaultdict
 
 from .base_agent import BaseAgent, MissionContext, AgentResult
+from ...crewai_agents.tools.mcp_db_tools import get_mcp_db_tools
 
 logger = logging.getLogger(__name__)
 
@@ -55,6 +56,9 @@ class ICPIntelligenceAgent(BaseAgent):
         self.MIN_SAMPLE_SIZE = 10
         self.HIGH_VALUE_PERCENTILE = 0.75
 
+        # Initialize MCP DB Tools
+        self.mcp_db_tools = get_mcp_db_tools()
+
     async def handle_mission(self, context: MissionContext) -> AgentResult:
         """Execute ICP analysis mission"""
         logger.info(f"ICPIntelligenceAgent starting mission {context.mission_id}")
@@ -63,7 +67,10 @@ class ICPIntelligenceAgent(BaseAgent):
         leads = await self._fetch_leads(context)
         customers = await self._fetch_customers(context)
 
-        logger.info(f"Analyzing {len(leads)} leads and {len(customers)} customers")
+        # Fetch dormant leads using MCP DB Tools
+        dormant_leads = self.mcp_db_tools.get_dormant_leads(context.user_id, datetime.utcnow() - timedelta(days=30))
+
+        logger.info(f"Analyzing {len(leads)} leads, {len(customers)} customers, and {len(dormant_leads)} dormant leads")
 
         # Step 2: Analyze best customers to extract ICP
         icp_profiles = await self._extract_icp_profiles(customers)

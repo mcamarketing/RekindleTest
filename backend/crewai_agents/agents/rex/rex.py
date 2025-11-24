@@ -12,6 +12,7 @@ REX is the main orchestrator that:
 from typing import Dict, List, Optional, Any
 from crewai import Agent, LLM
 from ..tools.db_tools import SupabaseDB
+from ..tools.mcp_db_tools import get_mcp_db_tools
 from ..orchestration_service import OrchestrationService
 from ..crews.special_forces_crews import SpecialForcesCoordinator
 from .command_parser import CommandParser
@@ -55,9 +56,12 @@ class RexOrchestrator:
 
         # Initialize permissions manager
         self.permissions = PermissionsManager(self.db)
-        
+
         # Initialize Sentience Engine (persistent awareness and adaptive intelligence)
         self.sentience = SentienceEngine(self.user_id, self.db)
+
+        # Initialize MCP DB Tools
+        self.mcp_db_tools = get_mcp_db_tools()
         
         # Initialize REX components
         self.command_parser = CommandParser()
@@ -132,7 +136,25 @@ class RexOrchestrator:
             # Step 2: Parse command
             parsed_command = self.command_parser.parse(user_message)
             action = parsed_command.get("action")
-            
+
+            # Check for campaign performance query
+            if not action and self._is_campaign_performance_query(user_message):
+                if not is_logged_in:
+                    return {
+                        "response": "Please log in to view your campaign performance.",
+                        "success": False,
+                        "action": "get_campaign_performance",
+                        "requires_login": True,
+                        "execution_time": time.time() - start_time
+                    }
+                response = self.get_campaign_performance_insights(actual_user_id)
+                return {
+                    "response": response,
+                    "success": True,
+                    "action": "get_campaign_performance",
+                    "execution_time": time.time() - start_time
+                }
+
             # Step 3: Handle non-logged-in users
             if not is_logged_in:
                 if action:
@@ -301,4 +323,46 @@ class RexOrchestrator:
         
         # Filter out None values
         return {k: v for k, v in agents.items() if v is not None}
+
+    def _is_campaign_performance_query(self, message: str) -> bool:
+        """Check if the message is a campaign performance query."""
+        message_lower = message.lower()
+        return "campaign" in message_lower and any(keyword in message_lower for keyword in ["how", "performance", "doing"])
+
+    def get_campaign_performance_insights(self, user_id: str) -> str:
+        """
+        Get performance insights for all user's campaigns using MCP tools.
+
+        Args:
+            user_id: The user's ID
+
+        Returns:
+            Formatted string with campaign performance data
+        """
+        try:
+            # Get user's campaigns from database
+            campaigns = self.db.query("SELECT id, name FROM campaigns WHERE user_id = %s", (user_id,))
+
+            if not campaigns:
+                return "You don't have any active campaigns yet. Would you like me to help you launch one?"
+
+            insights = []
+            for campaign in campaigns:
+                # Use MCP tool to get performance data
+                perf = self.mcp_db_tools.get_campaign_performance(campaign['id'])
+
+                # Extract key metrics
+                open_rate = perf.get('open_rate', 0)
+                click_rate = perf.get('click_rate', 0)
+                revenue = perf.get('revenue', 0)
+
+                # Format insight
+                insight = f"📧 {campaign['name']}: {open_rate}% open rate, {click_rate}% click rate, ${revenue} revenue"
+                insights.append(insight)
+
+            return f"Here's how your campaigns are performing:\n\n" + "\n".join(insights)
+
+        except Exception as e:
+            logger.error(f"Error retrieving campaign performance for user {user_id}: {e}")
+            return "I encountered an error retrieving your campaign performance data. Please try again later."
 

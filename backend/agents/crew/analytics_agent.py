@@ -12,6 +12,7 @@ from dataclasses import dataclass
 from collections import defaultdict
 
 from .base_agent import BaseAgent, MissionContext, AgentResult
+from ...crewai_agents.tools.mcp_db_tools import get_mcp_db_tools
 
 logger = logging.getLogger(__name__)
 
@@ -81,6 +82,9 @@ class AnalyticsAgent(BaseAgent):
         }
 
         self.MIN_SAMPLE_SIZE_AB_TEST = 30  # Minimum messages for valid A/B test
+
+        # Initialize MCP DB Tools
+        self.mcp_db_tools = get_mcp_db_tools()
 
     async def handle_mission(self, context: MissionContext) -> AgentResult:
         """Execute analytics and optimization mission"""
@@ -173,40 +177,27 @@ class AnalyticsAgent(BaseAgent):
         self,
         campaign: Dict[str, Any]
     ) -> CampaignMetrics:
-        """Calculate comprehensive metrics for a campaign"""
+        """Calculate comprehensive metrics for a campaign using MCP DB Tools"""
         campaign_id = campaign['id']
 
-        # Fetch engagement events for this campaign
-        events = await self._fetch_engagement_events(campaign_id)
+        # Use MCP DB Tool for campaign performance
+        performance_data = self.mcp_db_tools.get_campaign_performance(campaign_id)
 
-        # Count events by type
-        total_sent = len([e for e in events if e['event_type'] == 'sent'])
-        total_delivered = len([e for e in events if e['event_type'] == 'delivered'])
-        total_opened = len([e for e in events if e['event_type'] == 'opened'])
-        total_clicked = len([e for e in events if e['event_type'] == 'clicked'])
-        total_replied = len([e for e in events if e['event_type'] == 'replied'])
-        total_bounced = len([e for e in events if e['event_type'] == 'bounced'])
-        total_unsubscribed = len([e for e in events if e['event_type'] == 'unsubscribed'])
-
-        # Calculate rates
-        open_rate = total_opened / total_delivered if total_delivered > 0 else 0.0
-        click_rate = total_clicked / total_delivered if total_delivered > 0 else 0.0
-        reply_rate = total_replied / total_delivered if total_delivered > 0 else 0.0
-        bounce_rate = total_bounced / total_sent if total_sent > 0 else 0.0
-
-        # Calculate conversion rate (replied + clicked as proxy)
-        conversions = len(set(
-            [e['lead_id'] for e in events if e['event_type'] in ['replied', 'clicked']]
-        ))
-        conversion_rate = conversions / total_delivered if total_delivered > 0 else 0.0
-
-        # Calculate cost metrics
-        estimated_cost = campaign.get('total_cost', 0) or (total_sent * 0.01)  # $0.01 per message
-        cost_per_lead = estimated_cost / conversions if conversions > 0 else estimated_cost
-
-        # Calculate ROI (simplified - would need revenue data in production)
-        estimated_revenue = conversions * campaign.get('avg_deal_value', 1000)
-        roi = ((estimated_revenue - estimated_cost) / estimated_cost) if estimated_cost > 0 else 0.0
+        # Extract metrics from MCP response
+        total_sent = performance_data.get('total_sent', 0)
+        total_delivered = performance_data.get('total_delivered', 0)
+        total_opened = performance_data.get('total_opened', 0)
+        total_clicked = performance_data.get('total_clicked', 0)
+        total_replied = performance_data.get('total_replied', 0)
+        total_bounced = performance_data.get('total_bounced', 0)
+        total_unsubscribed = performance_data.get('total_unsubscribed', 0)
+        open_rate = performance_data.get('open_rate', 0.0)
+        click_rate = performance_data.get('click_rate', 0.0)
+        reply_rate = performance_data.get('reply_rate', 0.0)
+        bounce_rate = performance_data.get('bounce_rate', 0.0)
+        conversion_rate = performance_data.get('conversion_rate', 0.0)
+        cost_per_lead = performance_data.get('cost_per_lead', 0.0)
+        roi = performance_data.get('roi', 0.0)
 
         return CampaignMetrics(
             campaign_id=campaign_id,

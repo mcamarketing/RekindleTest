@@ -11,6 +11,7 @@ from datetime import datetime, timedelta
 from dataclasses import dataclass
 
 from .base_agent import BaseAgent, MissionContext, AgentResult
+from ...crewai_agents.tools.mcp_db_tools import get_mcp_db_tools
 
 logger = logging.getLogger(__name__)
 
@@ -58,6 +59,9 @@ class DeliverabilityAgent(BaseAgent):
         self.SPAM_RATE_THRESHOLD = 0.001  # 0.1%
         self.MIN_DELIVERABILITY_SCORE = 0.8
 
+        # Initialize MCP DB Tools
+        self.mcp_db_tools = get_mcp_db_tools()
+
     async def handle_mission(self, context: MissionContext) -> AgentResult:
         """Execute domain health monitoring mission"""
         logger.info(f"DeliverabilityAgent starting mission {context.mission_id}")
@@ -65,6 +69,9 @@ class DeliverabilityAgent(BaseAgent):
         # Step 1: Fetch all active domains for user
         domains = await self._fetch_active_domains(context)
         logger.info(f"Monitoring {len(domains)} active domains")
+
+        # Fetch meeting stats using MCP DB Tools
+        meeting_stats = self.mcp_db_tools.get_meeting_stats(context.user_id, "30d")
 
         # Step 2: Check health of each domain
         health_reports = []
@@ -96,7 +103,8 @@ class DeliverabilityAgent(BaseAgent):
                 'fair': len([r for r in health_reports if r.health_status == 'fair']),
                 'poor': len([r for r in health_reports if r.health_status == 'poor']),
                 'critical': len([r for r in health_reports if r.health_status == 'critical']),
-            }
+            },
+            'meeting_stats': meeting_stats,
         }
 
         success = len(domains_to_rotate) == len(rotation_results['rotated'])
