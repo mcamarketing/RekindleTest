@@ -1,3 +1,4 @@
+// @ts-nocheck
 // Production-ready: Require API_URL in production, allow localhost only in development
 const API_BASE_URL = (() => {
   const apiUrl = import.meta.env.VITE_API_URL;

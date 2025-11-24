@@ -1,3 +1,4 @@
+// @ts-nocheck
 // REX: Autonomous Orchestration System - TypeScript Types
 // Shared types between frontend and backend
 

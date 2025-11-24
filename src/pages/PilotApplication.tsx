@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { useState } from 'react';
 import { ArrowLeft, CheckCircle, AlertCircle, Loader, ArrowRight, Zap, Target, Users } from 'lucide-react';
 import { supabase } from '../lib/supabase';

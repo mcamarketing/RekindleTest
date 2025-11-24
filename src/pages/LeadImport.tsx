@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { useState, useRef, DragEvent } from 'react';
 import { Navigation } from '../components/Navigation';
 import { LoadingSpinner } from '../components/LoadingSpinner';

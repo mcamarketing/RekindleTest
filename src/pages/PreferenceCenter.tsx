@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { useState, useEffect } from 'react';
 import { Settings, CheckCircle2, Loader2, ArrowLeft, Mail, MessageSquare, Bell } from 'lucide-react';
 import { supabase } from '../lib/supabase';

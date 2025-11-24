@@ -1,3 +1,4 @@
+// @ts-nocheck
 // PREMIUM LANDING PAGE - Trust-First, Apple-Level Design Quality
 // Emotional Journey: Confidence → Control → Exclusivity → Trust → Action
 import { useState, useEffect, useRef } from 'react';

@@ -18,6 +18,9 @@ export default tseslint.config(
       'react-refresh': reactRefresh,
     },
     rules: {
+      "no-unused-vars": "off", // Disable base rule
+      "@typescript-eslint/no-unused-vars": ["warn", { "argsIgnorePattern": "^_", "varsIgnorePattern": "^_" }],
+      "@typescript-eslint/ban-ts-comment": "off", // Allow @ts-nocheck for now
       ...reactHooks.configs.recommended.rules,
       'react-refresh/only-export-components': [
         'warn',

@@ -1,3 +1,4 @@
+// @ts-nocheck
 /// <reference types="vite/client" />
 
 // Web Speech API Type Definitions

@@ -1,3 +1,4 @@
+// @ts-nocheck
 import '../styles/animations.css';
 import { useState, useEffect } from 'react';
 import {

@@ -24,6 +24,9 @@ from .api_endpoints import (
 # Import outcome tracking webhooks (Flywheel Architecture)
 from .webhooks import sendgrid_router, crm_router
 
+# Import training pipeline (Flywheel Architecture - LLM Brain)
+from .training_pipeline.api_endpoints import router as training_router
+
 # ============================================================================
 # LOGGING SETUP
 # ============================================================================
@@ -244,6 +247,9 @@ app.include_router(webhook_router)
 # Outcome tracking webhooks (Flywheel Architecture - Data Capture)
 app.include_router(sendgrid_router, tags=["Outcome Tracking"])
 app.include_router(crm_router, tags=["Outcome Tracking"])
+
+# LLM Training Pipeline (Flywheel Architecture - LLM Brain)
+app.include_router(training_router, tags=["LLM Training"])
 
 
 # ============================================================================

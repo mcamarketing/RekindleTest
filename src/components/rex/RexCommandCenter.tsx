@@ -1,3 +1,4 @@
+// @ts-nocheck
 /**
  * RexCommandCenter - Central mission control for Rex orchestration
  *

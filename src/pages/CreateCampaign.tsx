@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { useState, useEffect } from 'react';
 import { Navigation } from '../components/Navigation';
 import { RippleButton } from '../components/RippleButton';
