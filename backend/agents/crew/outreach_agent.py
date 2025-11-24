@@ -12,6 +12,7 @@ from dataclasses import dataclass
 from enum import Enum
 
 from .base_agent import BaseAgent, MissionContext, AgentResult
+from .outcome_integration import OutcomeTrackingMixin
 
 logger = logging.getLogger(__name__)
 

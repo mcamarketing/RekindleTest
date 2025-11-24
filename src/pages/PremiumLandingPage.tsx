@@ -112,12 +112,26 @@ const MetricCard = ({ value, label, prefix = '', suffix = '', delay = 0 }: {
       whileInView={{ opacity: 1, scale: 1 }}
       viewport={{ once: true }}
       transition={{ duration: 0.6, delay: delay / 1000 }}
-      className="text-center group"
+      whileHover={{ scale: 1.05, y: -5 }}
+      className="text-center group cursor-pointer"
     >
-      <div className="text-4xl lg:text-5xl font-bold bg-gradient-to-r from-orange-400 to-orange-600 bg-clip-text text-transparent mb-2 tabular-nums">
-        {prefix}{Math.round(count)}{suffix}
+      <div className="relative">
+        <motion.div
+          className="text-5xl lg:text-6xl font-bold bg-gradient-to-r from-orange-400 via-orange-500 to-pink-500 bg-clip-text text-transparent mb-3 tabular-nums drop-shadow-lg"
+          animate={{
+            backgroundPosition: ['0% 50%', '100% 50%', '0% 50%'],
+          }}
+          transition={{
+            duration: 5,
+            repeat: Infinity,
+            ease: "linear"
+          }}
+        >
+          {prefix}{Math.round(count)}{suffix}
+        </motion.div>
+        <div className="absolute inset-0 bg-gradient-to-r from-orange-400 to-orange-600 blur-2xl opacity-0 group-hover:opacity-30 transition-opacity duration-300" />
       </div>
-      <div className="text-sm text-gray-400 group-hover:text-gray-300 transition-colors">{label}</div>
+      <div className="text-sm font-medium text-gray-300 group-hover:text-white transition-colors uppercase tracking-wider">{label}</div>
     </motion.div>
   );
 };
@@ -215,35 +229,79 @@ export function PremiumLandingPage() {
           style={{ opacity: heroOpacity, scale: heroScale }}
           className="relative min-h-[90vh] flex items-center justify-center px-6 py-32 overflow-hidden"
         >
-          {/* Subtle gradient background */}
-          <div className="absolute inset-0 bg-gradient-to-br from-orange-500/5 via-transparent to-transparent" />
-          <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_20%,rgba(251,146,60,0.08),transparent_50%)]" />
+          {/* Enhanced animated gradient background */}
+          <div className="absolute inset-0 bg-gradient-to-br from-orange-500/10 via-purple-500/5 to-transparent animate-gradient" />
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_20%,rgba(251,146,60,0.12),transparent_50%)]" />
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_60%,rgba(168,85,247,0.08),transparent_50%)]" />
+
+          {/* Floating orbs for depth */}
+          <motion.div
+            className="absolute top-1/4 left-1/4 w-96 h-96 bg-orange-500/20 rounded-full blur-3xl"
+            animate={{
+              scale: [1, 1.2, 1],
+              opacity: [0.3, 0.5, 0.3],
+            }}
+            transition={{
+              duration: 8,
+              repeat: Infinity,
+              ease: "easeInOut"
+            }}
+          />
+          <motion.div
+            className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-purple-500/20 rounded-full blur-3xl"
+            animate={{
+              scale: [1.2, 1, 1.2],
+              opacity: [0.5, 0.3, 0.5],
+            }}
+            transition={{
+              duration: 10,
+              repeat: Infinity,
+              ease: "easeInOut"
+            }}
+          />
 
           <div className="relative max-w-6xl mx-auto text-center">
-            {/* Trust indicator */}
+            {/* Enhanced trust indicator with glassmorphism */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.2 }}
-              className="inline-flex items-center gap-2 px-4 py-2 bg-white/5 backdrop-blur-sm rounded-full border border-white/10 mb-8"
+              whileHover={{ scale: 1.05 }}
+              className="inline-flex items-center gap-2 px-6 py-3 bg-white/10 backdrop-blur-xl rounded-full border border-white/20 mb-8 shadow-lg shadow-orange-500/10 hover:shadow-orange-500/20 transition-all duration-300"
             >
-              <Shield className="w-4 h-4 text-orange-400" />
-              <span className="text-xs text-gray-300 font-medium">Enterprise-Grade Revenue Recovery Platform</span>
+              <motion.div
+                animate={{ rotate: [0, 360] }}
+                transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
+              >
+                <Shield className="w-4 h-4 text-orange-400" />
+              </motion.div>
+              <span className="text-xs text-gray-200 font-semibold tracking-wide">Enterprise-Grade Revenue Recovery Platform</span>
+              <div className="w-2 h-2 bg-green-400 rounded-full animate-pulse" />
             </motion.div>
 
-            {/* Premium headline */}
+            {/* Enhanced premium headline with better typography */}
             <motion.h1
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.4 }}
-              className="text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight mb-6 leading-[1.1]"
+              className="text-5xl md:text-6xl lg:text-8xl font-bold tracking-tight mb-6 leading-[1.05]"
             >
-              <span className="block text-white mb-2">
+              <motion.span
+                className="block text-white mb-3 drop-shadow-2xl"
+                initial={{ opacity: 0, x: -20 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.8, delay: 0.5 }}
+              >
                 Recover Dormant Pipeline.
-              </span>
-              <span className="block bg-gradient-to-r from-orange-400 via-orange-500 to-orange-600 bg-clip-text text-transparent">
+              </motion.span>
+              <motion.span
+                className="block bg-gradient-to-r from-orange-400 via-orange-500 to-pink-500 bg-clip-text text-transparent animate-gradient-x"
+                initial={{ opacity: 0, x: 20 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.8, delay: 0.6 }}
+              >
                 Generate Revenue on Autopilot.
-              </span>
+              </motion.span>
             </motion.h1>
 
             {/* Value proposition */}

@@ -225,88 +225,120 @@ export const RexCommandCenter: React.FC = () => {
   }
 
   return (
-    <div className="p-6">
-      {/* Header */}
-      <div className="mb-6">
-        <h2 className="text-2xl font-bold text-gray-900">Rex Command Center</h2>
-        <p className="text-gray-600 mt-1">
-          Autonomous orchestration mission control
-        </p>
+    <div className="p-6 bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950 min-h-screen">
+      {/* Enhanced Header with Futuristic Design */}
+      <div className="mb-8 relative">
+        <div className="absolute inset-0 bg-gradient-to-r from-cyan-500/10 via-purple-500/10 to-pink-500/10 blur-3xl" />
+        <div className="relative">
+          <div className="flex items-center gap-3 mb-2">
+            <div className="relative">
+              <div className="w-3 h-3 bg-cyan-400 rounded-full animate-pulse" />
+              <div className="absolute inset-0 w-3 h-3 bg-cyan-400 rounded-full animate-ping" />
+            </div>
+            <h2 className="text-3xl font-bold bg-gradient-to-r from-cyan-400 via-purple-400 to-pink-400 bg-clip-text text-transparent">
+              Rex Command Center
+            </h2>
+          </div>
+          <p className="text-gray-400 mt-1 text-sm font-mono">
+            [ AUTONOMOUS ORCHESTRATION MISSION CONTROL ]
+          </p>
+        </div>
       </div>
 
-      {/* Stats Overview */}
-      <div className="grid grid-cols-1 md:grid-cols-5 gap-4 mb-6">
-        <div className="bg-white p-4 rounded-lg border border-gray-200">
-          <div className="text-sm text-gray-600">Active Missions</div>
-          <div className="text-2xl font-bold text-blue-600 mt-1">
-            {
-              missions.filter((m) =>
-                ['queued', 'assigned', 'executing'].includes(m.state)
-              ).length
-            }
+      {/* Enhanced Stats Overview with Sci-Fi Design */}
+      <div className="grid grid-cols-1 md:grid-cols-5 gap-4 mb-8">
+        <div className="relative group">
+          <div className="absolute inset-0 bg-gradient-to-r from-cyan-500/20 to-blue-500/20 rounded-xl blur-lg group-hover:blur-xl transition-all duration-300" />
+          <div className="relative bg-slate-900/80 backdrop-blur-xl p-5 rounded-xl border border-cyan-500/30 hover:border-cyan-400/50 transition-all duration-300">
+            <div className="text-xs text-cyan-400 font-mono uppercase tracking-wider mb-2">Active Missions</div>
+            <div className="text-3xl font-bold text-cyan-400 mt-1 tabular-nums font-mono">
+              {
+                missions.filter((m) =>
+                  ['queued', 'assigned', 'executing'].includes(m.state)
+                ).length
+              }
+            </div>
+            <div className="absolute top-2 right-2 w-2 h-2 bg-cyan-400 rounded-full animate-pulse" />
           </div>
         </div>
-        <div className="bg-white p-4 rounded-lg border border-gray-200">
-          <div className="text-sm text-gray-600">Completed</div>
-          <div className="text-2xl font-bold text-green-600 mt-1">
-            {missions.filter((m) => m.state === 'completed').length}
+        <div className="relative group">
+          <div className="absolute inset-0 bg-gradient-to-r from-green-500/20 to-emerald-500/20 rounded-xl blur-lg group-hover:blur-xl transition-all duration-300" />
+          <div className="relative bg-slate-900/80 backdrop-blur-xl p-5 rounded-xl border border-green-500/30 hover:border-green-400/50 transition-all duration-300">
+            <div className="text-xs text-green-400 font-mono uppercase tracking-wider mb-2">Completed</div>
+            <div className="text-3xl font-bold text-green-400 mt-1 tabular-nums font-mono">
+              {missions.filter((m) => m.state === 'completed').length}
+            </div>
           </div>
         </div>
-        <div className="bg-white p-4 rounded-lg border border-gray-200">
-          <div className="text-sm text-gray-600">Failed</div>
-          <div className="text-2xl font-bold text-red-600 mt-1">
-            {missions.filter((m) => m.state === 'failed').length}
+        <div className="relative group">
+          <div className="absolute inset-0 bg-gradient-to-r from-red-500/20 to-rose-500/20 rounded-xl blur-lg group-hover:blur-xl transition-all duration-300" />
+          <div className="relative bg-slate-900/80 backdrop-blur-xl p-5 rounded-xl border border-red-500/30 hover:border-red-400/50 transition-all duration-300">
+            <div className="text-xs text-red-400 font-mono uppercase tracking-wider mb-2">Failed</div>
+            <div className="text-3xl font-bold text-red-400 mt-1 tabular-nums font-mono">
+              {missions.filter((m) => m.state === 'failed').length}
+            </div>
           </div>
         </div>
-        <div className="bg-white p-4 rounded-lg border border-gray-200">
-          <div className="text-sm text-gray-600">Success Rate</div>
-          <div className="text-2xl font-bold text-gray-900 mt-1">
-            {missions.length > 0
-              ? (
-                  (missions.filter((m) => m.state === 'completed').length /
-                    missions.length) *
-                  100
-                ).toFixed(0)
-              : 0}
-            %
+        <div className="relative group">
+          <div className="absolute inset-0 bg-gradient-to-r from-purple-500/20 to-pink-500/20 rounded-xl blur-lg group-hover:blur-xl transition-all duration-300" />
+          <div className="relative bg-slate-900/80 backdrop-blur-xl p-5 rounded-xl border border-purple-500/30 hover:border-purple-400/50 transition-all duration-300">
+            <div className="text-xs text-purple-400 font-mono uppercase tracking-wider mb-2">Success Rate</div>
+            <div className="text-3xl font-bold text-purple-400 mt-1 tabular-nums font-mono">
+              {missions.length > 0
+                ? (
+                    (missions.filter((m) => m.state === 'completed').length /
+                      missions.length) *
+                    100
+                  ).toFixed(0)
+                : 0}
+              %
+            </div>
           </div>
         </div>
-        <div className="bg-white p-4 rounded-lg border border-gray-200">
-          <div className="text-sm text-gray-600">Active Agents</div>
-          <div className="text-2xl font-bold text-blue-600 mt-1">
-            {agents.filter((a) => a.status === 'active').length}/{agents.length}
+        <div className="relative group">
+          <div className="absolute inset-0 bg-gradient-to-r from-orange-500/20 to-yellow-500/20 rounded-xl blur-lg group-hover:blur-xl transition-all duration-300" />
+          <div className="relative bg-slate-900/80 backdrop-blur-xl p-5 rounded-xl border border-orange-500/30 hover:border-orange-400/50 transition-all duration-300">
+            <div className="text-xs text-orange-400 font-mono uppercase tracking-wider mb-2">Active Agents</div>
+            <div className="text-3xl font-bold text-orange-400 mt-1 tabular-nums font-mono">
+              {agents.filter((a) => a.status === 'active').length}/{agents.length}
+            </div>
           </div>
         </div>
       </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-        {/* Mission List */}
+        {/* Enhanced Mission List with Futuristic Design */}
         <div className="lg:col-span-2">
-          <div className="bg-white rounded-lg border border-gray-200">
-            <div className="p-4 border-b border-gray-200">
-              <div className="flex justify-between items-center">
-                <h3 className="text-lg font-semibold text-gray-900">Missions</h3>
-                <div className="flex space-x-2">
-                  <select
-                    value={filter}
-                    onChange={(e) => setFilter(e.target.value)}
-                    className="px-3 py-1 border border-gray-300 rounded text-sm"
-                  >
-                    <option value="all">All States</option>
-                    <option value="queued">Queued</option>
-                    <option value="executing">Executing</option>
-                    <option value="completed">Completed</option>
-                    <option value="failed">Failed</option>
-                  </select>
-                  <button
-                    onClick={() => createMission('lead_reactivation')}
-                    className="px-3 py-1 bg-blue-600 text-white rounded text-sm hover:bg-blue-700"
-                  >
-                    New Mission
-                  </button>
+          <div className="relative">
+            <div className="absolute inset-0 bg-gradient-to-r from-cyan-500/5 to-purple-500/5 rounded-xl blur-xl" />
+            <div className="relative bg-slate-900/80 backdrop-blur-xl rounded-xl border border-slate-700/50">
+              <div className="p-5 border-b border-slate-700/50">
+                <div className="flex justify-between items-center">
+                  <div className="flex items-center gap-3">
+                    <div className="w-1 h-6 bg-gradient-to-b from-cyan-400 to-purple-400 rounded-full" />
+                    <h3 className="text-lg font-semibold text-white font-mono">MISSIONS</h3>
+                  </div>
+                  <div className="flex space-x-2">
+                    <select
+                      value={filter}
+                      onChange={(e) => setFilter(e.target.value)}
+                      className="px-4 py-2 bg-slate-800/80 backdrop-blur-sm border border-slate-600/50 rounded-lg text-sm text-gray-300 font-mono focus:border-cyan-400/50 focus:outline-none transition-colors"
+                    >
+                      <option value="all">All States</option>
+                      <option value="queued">Queued</option>
+                      <option value="executing">Executing</option>
+                      <option value="completed">Completed</option>
+                      <option value="failed">Failed</option>
+                    </select>
+                    <button
+                      onClick={() => createMission('lead_reactivation')}
+                      className="px-4 py-2 bg-gradient-to-r from-cyan-500 to-blue-500 text-white rounded-lg text-sm font-mono hover:from-cyan-400 hover:to-blue-400 transition-all duration-300 shadow-lg shadow-cyan-500/25"
+                    >
+                      + NEW MISSION
+                    </button>
+                  </div>
                 </div>
               </div>
-            </div>
 
             <div className="divide-y divide-gray-200 max-h-[600px] overflow-y-auto">
               {missions.length === 0 ? (

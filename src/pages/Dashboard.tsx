@@ -164,52 +164,86 @@ export function Dashboard() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.1 }}
             >
-              {/* Leads Contacted */}
-              <div className="bg-white border border-[#e3e8ee] rounded-lg p-6 hover:shadow-md transition-shadow duration-200">
-                <div className="flex items-center justify-between mb-4">
-                  <span className="text-xs uppercase tracking-wider text-[#727f96] font-medium">
-                    Leads Contacted
-                  </span>
-                  <Users className="w-4 h-4 text-[#727f96]" />
+              {/* Leads Contacted - Enhanced */}
+              <motion.div
+                className="bg-white border border-[#e3e8ee] rounded-xl p-6 hover:shadow-xl hover:border-[#0a2540]/20 transition-all duration-300 group relative overflow-hidden"
+                whileHover={{ y: -4 }}
+              >
+                <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-blue-500/10 to-transparent rounded-full blur-2xl group-hover:scale-150 transition-transform duration-500" />
+                <div className="relative">
+                  <div className="flex items-center justify-between mb-4">
+                    <span className="text-xs uppercase tracking-wider text-[#727f96] font-semibold">
+                      Leads Contacted
+                    </span>
+                    <motion.div
+                      whileHover={{ rotate: 360 }}
+                      transition={{ duration: 0.6 }}
+                    >
+                      <Users className="w-5 h-5 text-blue-500" />
+                    </motion.div>
+                  </div>
+                  <div className="text-4xl font-bold text-[#0a2540] mb-2 tabular-nums">
+                    {stats.totalLeads}
+                  </div>
+                  <div className="text-sm text-[#425466] flex items-center gap-2">
+                    <span>Total pipeline leads</span>
+                    <ArrowUp className="w-3 h-3 text-green-500" />
+                  </div>
                 </div>
-                <div className="text-3xl font-bold text-[#0a2540] mb-1 tabular-nums">
-                  {stats.totalLeads}
-                </div>
-                <div className="text-sm text-[#425466]">
-                  Total pipeline leads
-                </div>
-              </div>
+              </motion.div>
 
-              {/* Meetings Booked */}
-              <div className="bg-white border border-[#e3e8ee] rounded-lg p-6 hover:shadow-md transition-shadow duration-200">
-                <div className="flex items-center justify-between mb-4">
-                  <span className="text-xs uppercase tracking-wider text-[#727f96] font-medium">
-                    Meetings Booked
-                  </span>
-                  <Activity className="w-4 h-4 text-[#727f96]" />
+              {/* Meetings Booked - Enhanced */}
+              <motion.div
+                className="bg-white border border-[#e3e8ee] rounded-xl p-6 hover:shadow-xl hover:border-[#0a2540]/20 transition-all duration-300 group relative overflow-hidden"
+                whileHover={{ y: -4 }}
+              >
+                <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-green-500/10 to-transparent rounded-full blur-2xl group-hover:scale-150 transition-transform duration-500" />
+                <div className="relative">
+                  <div className="flex items-center justify-between mb-4">
+                    <span className="text-xs uppercase tracking-wider text-[#727f96] font-semibold">
+                      Meetings Booked
+                    </span>
+                    <motion.div
+                      whileHover={{ scale: 1.2 }}
+                      transition={{ duration: 0.3 }}
+                    >
+                      <Activity className="w-5 h-5 text-green-500" />
+                    </motion.div>
+                  </div>
+                  <div className="text-4xl font-bold text-[#0a2540] mb-2 tabular-nums">
+                    {stats.meetingsBooked}
+                  </div>
+                  <div className="text-sm text-[#425466]">This month</div>
                 </div>
-                <div className="text-3xl font-bold text-[#0a2540] mb-1 tabular-nums">
-                  {stats.meetingsBooked}
-                </div>
-                <div className="text-sm text-[#425466]">This month</div>
-              </div>
+              </motion.div>
 
-              {/* Reply Rate */}
-              <div className="bg-white border border-[#e3e8ee] rounded-lg p-6 hover:shadow-md transition-shadow duration-200">
-                <div className="flex items-center justify-between mb-4">
-                  <span className="text-xs uppercase tracking-wider text-[#727f96] font-medium">
-                    Reply Rate
-                  </span>
-                  <TrendingUp className="w-4 h-4 text-[#727f96]" />
+              {/* Reply Rate - Enhanced */}
+              <motion.div
+                className="bg-white border border-[#e3e8ee] rounded-xl p-6 hover:shadow-xl hover:border-[#0a2540]/20 transition-all duration-300 group relative overflow-hidden"
+                whileHover={{ y: -4 }}
+              >
+                <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-orange-500/10 to-transparent rounded-full blur-2xl group-hover:scale-150 transition-transform duration-500" />
+                <div className="relative">
+                  <div className="flex items-center justify-between mb-4">
+                    <span className="text-xs uppercase tracking-wider text-[#727f96] font-semibold">
+                      Reply Rate
+                    </span>
+                    <motion.div
+                      animate={{ y: [0, -3, 0] }}
+                      transition={{ duration: 2, repeat: Infinity }}
+                    >
+                      <TrendingUp className="w-5 h-5 text-orange-500" />
+                    </motion.div>
+                  </div>
+                  <div className="text-4xl font-bold text-[#0a2540] mb-2 tabular-nums">
+                    {stats.responseRate}%
+                  </div>
+                  <div className="text-sm text-[#10b981] flex items-center gap-1 font-medium">
+                    <ArrowUp className="w-3 h-3" />
+                    <span>vs industry avg</span>
+                  </div>
                 </div>
-                <div className="text-3xl font-bold text-[#0a2540] mb-1 tabular-nums">
-                  {stats.responseRate}%
-                </div>
-                <div className="text-sm text-[#10b981] flex items-center gap-1">
-                  <ArrowUp className="w-3 h-3" />
-                  <span>vs industry avg</span>
-                </div>
-              </div>
+              </motion.div>
             </motion.div>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-12">
               <Chart data={chartData} title="Leads Generated" />

@@ -287,6 +287,18 @@ except ImportError as e:
 except Exception as e:
     logger.error(f"Failed to register webhook endpoints: {e}")
 
+# Import and mount outcome tracking router
+try:
+    import sys
+    sys.path.append(str(pathlib.Path(__file__).parent.parent))
+    from rex.outcome_routes import router as outcome_router
+    app.include_router(outcome_router)
+    logger.info("Outcome tracking endpoints registered: /api/outcomes/*")
+except ImportError as e:
+    logger.warning(f"Outcome tracking module not found or error importing: {e}")
+except Exception as e:
+    logger.error(f"Failed to register outcome tracking endpoints: {e}")
+
 @app.get("/api")
 async def root():
     """API status endpoint - moved from / to /api to allow SPA at root."""
