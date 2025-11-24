@@ -226,7 +226,7 @@ const ROICalculator = ({
   profit: number;
 }) => {
   return (
-    <div className="max-w-4xl mx-auto bg-[#242938] rounded-2xl p-8 border border-gray-700">
+    <div className="max-w-4xl mx-auto glass-premium rounded-3xl p-8 border-2 border-white/10 shadow-[0_20px_80px_rgba(0,0,0,0.3)] hover:border-orange-500/30 transition-all duration-500">
       <h3 className="text-2xl font-bold text-center mb-8 text-white">
         Calculate Your ROI in 30 Seconds
       </h3>
@@ -269,7 +269,7 @@ const ROICalculator = ({
         </div>
       </div>
 
-      <div className="bg-green-900/20 border border-green-700 rounded-xl p-6">
+      <div className="glass-premium bg-gradient-to-br from-green-900/20 to-emerald-900/10 border-2 border-green-500/30 rounded-2xl p-6 shadow-[0_0_40px_rgba(16,185,129,0.2)] animate-spring-in">
         <div className="grid md:grid-cols-3 gap-6 text-center">
           <div>
             <div className="text-sm text-gray-400 mb-1">Monthly Cost</div>
@@ -443,12 +443,16 @@ export function LandingPage() {
 
         {/* SECTION 1: STRIPE-QUALITY HERO - Maximum Conversion Impact */}
         <section className="relative min-h-screen flex items-center justify-center px-4 py-20 overflow-hidden">
-          {/* Premium background */}
+          {/* Premium background with Linear grid */}
           <div className="absolute inset-0 bg-gradient-to-br from-[#1A1F2E] via-[#242938] to-[#1A1F2E]" />
-          
-          {/* Aurora orbs */}
+          <div className="absolute inset-0 linear-grid opacity-30" />
+
+          {/* Aurora orbs - Apple-inspired */}
           <div className="absolute top-20 right-10 w-[500px] h-[500px] bg-gradient-to-br from-orange-500/20 via-orange-600/10 to-transparent rounded-full blur-[120px] animate-aurora" />
           <div className="absolute bottom-20 left-10 w-[400px] h-[400px] bg-gradient-to-br from-blue-500/20 via-blue-600/10 to-transparent rounded-full blur-[100px] animate-aurora" style={{ animationDelay: '3s' }} />
+
+          {/* Stripe-inspired radial accent */}
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-[radial-gradient(circle_at_center,rgba(255,107,53,0.1),transparent_70%)]" />
 
           <div className="max-w-7xl mx-auto relative z-10">
             <div className="grid lg:grid-cols-2 gap-16 items-center">
@@ -456,8 +460,8 @@ export function LandingPage() {
               {/* LEFT SIDE: HERO CONTENT */}
               <div className="text-center lg:text-left">
                 
-                {/* PILOT BADGE */}
-                <div className="inline-flex items-center gap-2 px-6 py-3 glass-card rounded-full mb-8 border-2 border-orange-500/40 hover:scale-105 transition-all duration-300">
+                {/* PILOT BADGE - Enhanced with premium styling */}
+                <div className="inline-flex items-center gap-2 px-6 py-3 glass-premium rounded-full mb-8 border-2 border-orange-500/40 hover:scale-105 transition-all duration-300 animate-spring-in shadow-[0_8px_30px_rgba(255,107,53,0.3)]">
                   <span className="relative flex h-2 w-2">
                     <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-orange-400 opacity-75"></span>
                     <span className="relative inline-flex rounded-full h-2 w-2 bg-orange-500"></span>
@@ -493,8 +497,8 @@ export function LandingPage() {
                   FREE 72-Hour Analysis → Zero Platform Fee First 30 Days → Pay Only 2.5% ACV Per Meeting
                 </p>
 
-                {/* KEY OFFER */}
-                <div className="glass-card rounded-3xl p-8 border-2 border-orange-500/30 mb-8 max-w-md mx-auto lg:mx-0">
+                {/* KEY OFFER - Enhanced with glass-premium */}
+                <div className="glass-premium rounded-3xl p-8 border-2 border-orange-500/30 mb-8 max-w-md mx-auto lg:mx-0 animate-spring-in shadow-[0_20px_60px_rgba(255,107,53,0.4)] hover:scale-[1.02] transition-all duration-500">
                   <div className="text-center">
                     <div className="text-2xl font-bold text-white mb-4">
                       FREE 72-Hour CRM Analysis
@@ -803,13 +807,14 @@ export function LandingPage() {
 
         {/* SECTION 2: STRIPE-QUALITY PROBLEM - Maximum Emotional Impact */}
         <section className="relative py-32 px-4 overflow-hidden">
-          {/* Premium background */}
+          {/* Premium background with Linear grid */}
           <div className="absolute inset-0 bg-gradient-to-b from-[#1A1F2E] via-[#242938] to-[#1A1F2E]" />
+          <div className="absolute inset-0 linear-grid opacity-20" />
           <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(239,68,68,0.1),transparent_70%)]" />
 
           <div className="max-w-7xl mx-auto relative z-10">
             <div className="text-center mb-20">
-              <div className="inline-flex items-center gap-2 px-6 py-3 glass-card rounded-full mb-8 border-2 border-orange-500/40 hover:scale-105 transition-all duration-300">
+              <div className="inline-flex items-center gap-2 px-6 py-3 glass-premium rounded-full mb-8 border-2 border-orange-500/40 hover:scale-105 transition-all duration-300 animate-spring-in shadow-[0_8px_30px_rgba(239,68,68,0.3)]">
                 <svg className="w-6 h-6 text-red-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
                 </svg>
@@ -824,7 +829,7 @@ export function LandingPage() {
 
               {/* EMOTIONAL HOOK - COMPETITOR THREAT & FEAR OF LOSS */}
               <div className="max-w-5xl mx-auto mb-12">
-                <div className="glass-card rounded-3xl p-12 border-2 border-red-500/30 bg-red-500/5">
+                <div className="glass-premium rounded-3xl p-12 border-2 border-red-500/30 bg-gradient-to-br from-red-500/10 to-red-900/5 animate-spring-in shadow-[0_20px_60px_rgba(239,68,68,0.3)]">
                   <p className="text-2xl md:text-3xl text-white leading-tight font-bold mb-6">
                     Every day you wait, your competitors are stealing YOUR customers.
                   </p>
@@ -891,10 +896,11 @@ export function LandingPage() {
             </div>
 
             <div className="grid md:grid-cols-3 gap-8">
-              {/* Card 1 - Investment */}
-              <div className="group relative glass-card-hover rounded-3xl p-10 overflow-hidden border-2 border-red-500/30 hover:border-red-500/60">
+              {/* Card 1 - Investment - Enhanced with glass-premium */}
+              <div className="group relative glass-premium rounded-3xl p-10 overflow-hidden border-2 border-red-500/30 hover:border-red-500/60 animate-spring-in shadow-[0_20px_60px_rgba(239,68,68,0.2)] hover:shadow-[0_30px_80px_rgba(239,68,68,0.4)] transition-all duration-500" style={{ animationDelay: '100ms' }}>
                 <div className="absolute inset-0 bg-gradient-to-br from-red-900/20 via-red-800/10 to-transparent opacity-50 group-hover:opacity-80 transition-opacity duration-500" />
                 <div className="absolute top-0 right-0 w-40 h-40 bg-red-500/20 rounded-full blur-3xl group-hover:scale-150 transition-transform duration-700" />
+                <div className="absolute inset-0 linear-grid opacity-10 group-hover:opacity-20 transition-opacity duration-500" />
 
                 <div className="relative">
                   {/* Icon */}
@@ -927,10 +933,11 @@ export function LandingPage() {
                 </div>
               </div>
 
-              {/* Card 2 - Dormant Leads */}
-              <div className="group relative glass-card-hover rounded-3xl p-10 overflow-hidden border-2 border-orange-500/30 hover:border-orange-500/60">
+              {/* Card 2 - Dormant Leads - Enhanced with glass-premium */}
+              <div className="group relative glass-premium rounded-3xl p-10 overflow-hidden border-2 border-orange-500/30 hover:border-orange-500/60 animate-spring-in shadow-[0_20px_60px_rgba(255,107,53,0.2)] hover:shadow-[0_30px_80px_rgba(255,107,53,0.4)] transition-all duration-500" style={{ animationDelay: '200ms' }}>
                 <div className="absolute inset-0 bg-gradient-to-br from-orange-900/20 via-orange-800/10 to-transparent opacity-50 group-hover:opacity-80 transition-opacity duration-500" />
                 <div className="absolute top-0 left-0 w-40 h-40 bg-orange-500/20 rounded-full blur-3xl group-hover:scale-150 transition-transform duration-700" />
+                <div className="absolute inset-0 linear-grid opacity-10 group-hover:opacity-20 transition-opacity duration-500" />
 
                 <div className="relative">
                   <div className="inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-gradient-to-br from-orange-500/30 to-orange-600/20 border border-orange-500/40 mb-6 group-hover:scale-110 transition-transform duration-300">
@@ -962,10 +969,11 @@ export function LandingPage() {
                 </div>
               </div>
 
-              {/* Card 3 - Lost Opportunity */}
-              <div className="group relative glass-card-hover rounded-3xl p-10 overflow-hidden border-2 border-emerald-500/30 hover:border-emerald-500/60">
+              {/* Card 3 - Lost Opportunity - Enhanced with glass-premium */}
+              <div className="group relative glass-premium rounded-3xl p-10 overflow-hidden border-2 border-emerald-500/30 hover:border-emerald-500/60 animate-spring-in shadow-[0_20px_60px_rgba(16,185,129,0.2)] hover:shadow-[0_30px_80px_rgba(16,185,129,0.4)] transition-all duration-500" style={{ animationDelay: '300ms' }}>
                 <div className="absolute inset-0 bg-gradient-to-br from-emerald-900/20 via-emerald-800/10 to-transparent opacity-50 group-hover:opacity-80 transition-opacity duration-500" />
                 <div className="absolute bottom-0 right-0 w-40 h-40 bg-emerald-500/20 rounded-full blur-3xl group-hover:scale-150 transition-transform duration-700" />
+                <div className="absolute inset-0 linear-grid opacity-10 group-hover:opacity-20 transition-opacity duration-500" />
 
                 <div className="relative">
                   <div className="inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-gradient-to-br from-emerald-500/30 to-emerald-600/20 border border-emerald-500/40 mb-6 group-hover:scale-110 transition-transform duration-300">
@@ -998,8 +1006,8 @@ export function LandingPage() {
               </div>
             </div>
 
-            {/* Call-out box */}
-            <div className="mt-16 max-w-4xl mx-auto glass-card rounded-3xl p-10 border-2 border-orange-500/30">
+            {/* Call-out box - Enhanced */}
+            <div className="mt-16 max-w-4xl mx-auto glass-premium rounded-3xl p-10 border-2 border-orange-500/30 animate-spring-in shadow-[0_20px_60px_rgba(255,107,53,0.3)]" style={{ animationDelay: '400ms' }}>
               <div className="flex items-start gap-6">
                 <div className="flex-shrink-0">
                   <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-orange-500/30 to-orange-600/20 border border-orange-500/40 flex items-center justify-center">
@@ -1022,11 +1030,12 @@ export function LandingPage() {
         {/* SECTION 3: STRIPE-QUALITY SOLUTION - Apple Style Simplicity */}
         <section className="relative py-32 px-4 overflow-hidden" id="how-it-works">
           <div className="absolute inset-0 bg-gradient-to-b from-[#1F2430] via-[#242938] to-[#1F2430]" />
+          <div className="absolute inset-0 linear-grid opacity-20" />
           <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(255,107,53,0.08),transparent_70%)]" />
 
           <div className="max-w-7xl mx-auto relative z-10">
             <div className="text-center mb-24">
-              <div className="inline-flex items-center gap-2 px-6 py-3 glass-card rounded-full mb-8 border-2 border-orange-500/40 hover:scale-105 transition-all duration-300">
+              <div className="inline-flex items-center gap-2 px-6 py-3 glass-premium rounded-full mb-8 border-2 border-orange-500/40 hover:scale-105 transition-all duration-300 animate-spring-in shadow-[0_8px_30px_rgba(255,107,53,0.3)]">
                 <svg className="w-6 h-6 text-orange-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
                 </svg>
@@ -1041,7 +1050,7 @@ export function LandingPage() {
               </h2>
 
               <div className="max-w-5xl mx-auto space-y-8 mb-12">
-                <div className="glass-card rounded-3xl p-12 border-2 border-green-500/30 bg-green-500/5">
+                <div className="glass-premium rounded-3xl p-12 border-2 border-green-500/30 bg-gradient-to-br from-green-500/10 to-emerald-900/5 animate-spring-in shadow-[0_20px_60px_rgba(16,185,129,0.3)]">
                   <p className="text-2xl md:text-3xl text-white leading-tight font-bold mb-6">
                     That's <span className="text-green-400">2.3x better</span> than the industry average.
                   </p>
@@ -1406,17 +1415,18 @@ export function LandingPage() {
 
         {/* SECTION 4: PREMIUM MULTI-CHANNEL */}
         <section className="relative py-32 px-4 overflow-hidden">
-          {/* Premium background */}
+          {/* Premium background with Linear grid */}
           <div className="absolute inset-0 bg-gradient-to-b from-slate-950 via-slate-900 to-slate-950" />
+          <div className="absolute inset-0 linear-grid opacity-20" />
 
-          {/* Aurora orbs */}
+          {/* Aurora orbs - Apple-inspired */}
           <div className="absolute top-20 right-10 w-[500px] h-[500px] bg-gradient-to-br from-blue-500/20 via-blue-600/10 to-transparent rounded-full blur-[120px] animate-aurora" />
           <div className="absolute bottom-20 left-10 w-[400px] h-[400px] bg-gradient-to-br from-orange-500/20 via-orange-600/10 to-transparent rounded-full blur-[100px] animate-aurora" style={{ animationDelay: '3s' }} />
 
           <div className="max-w-7xl mx-auto relative z-10">
             {/* Premium header */}
             <div className="text-center mb-20">
-              <div className="inline-flex items-center gap-2 px-5 py-2.5 glass-card rounded-full mb-8 hover:scale-105 transition-all duration-300">
+              <div className="inline-flex items-center gap-2 px-5 py-2.5 glass-premium rounded-full mb-8 hover:scale-105 transition-all duration-300 animate-spring-in shadow-[0_8px_30px_rgba(59,130,246,0.3)]">
                 <svg className="w-5 h-5 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
                 </svg>

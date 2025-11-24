@@ -4,6 +4,7 @@ import { ToastProvider } from './components/Toast';
 import { ErrorBoundary } from './components/ErrorBoundary';
 import { LandingPage } from './pages/LandingPage';
 import { TrustLandingPage } from './pages/TrustLandingPage';
+import LandingPageElite from './pages/LandingPageElite';
 import { SignUp } from './pages/SignUp';
 import { Login } from './pages/Login';
 import { Dashboard } from './pages/Dashboard';
@@ -168,8 +169,8 @@ function App() {
     return <Login />;
   }
 
-  // Default: Landing page with enhanced styling
-  return <LandingPage />;
+  // Default: Elite landing page (Stripe/Linear/Apple quality)
+  return <LandingPageElite />;
   })();
 
   // Chat widget message handler
