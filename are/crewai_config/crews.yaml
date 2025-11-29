@@ -1,0 +1,18 @@
+revenue_intelligence_orchestration:
+  agents:
+    - rex
+    - brain
+    - critic
+    - planner
+    - services
+    - social_listener
+  tasks:
+    - social_listening_task
+    - plan_task
+    - research_task
+    - synthesis_task
+    - critique_task
+    - refine_answer_task
+    - service_integration_task
+  process: sequential
+  verbose: true

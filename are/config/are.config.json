@@ -1,0 +1,88 @@
+{
+  "enabled": true,
+  "defaultAutonomyLevel": "L1",
+  "maxAutonomyPerOrg": {
+    "default": "L2"
+  },
+  "anomalyThresholds": {
+    "spamRate": 0.03,
+    "unsubscribeRate": 0.05,
+    "replyDropPct": 0.3
+  },
+  "bandit": {
+    "minSamplesPerVariant": 50,
+    "promotionLiftThreshold": 0.1
+  },
+  "telemetry": {
+    "tracePrefix": "are",
+    "metricsNamespace": "rekindle_are"
+  },
+  "agents": {
+    "core": {
+      "enabled": ["PLANNER", "EXECUTOR", "CRITIC", "GUARDRAIL", "RAG_SERVICE"],
+      "timeouts": {
+        "planning": 300,
+        "execution": 600,
+        "evaluation": 180
+      }
+    },
+    "revenue": {
+      "enabled": ["REVIVAL", "SEQUENCING", "COPY", "RESEARCH", "PERSONALIZATION", "MULTI_TOUCH"],
+      "defaults": {
+        "maxLeadsPerBatch": 50,
+        "maxSequenceLength": 10,
+        "contentQualityThreshold": 0.7
+      }
+    },
+    "optimization": {
+      "enabled": ["SEND_TIME_BANDIT", "COPY_BANDIT", "COHORT_BANDIT", "AUTONOMY_CALIBRATOR", "ANOMALY_DETECTOR"],
+      "bandits": {
+        "explorationRate": 0.1,
+        "minTrials": 30,
+        "maxVariants": 5
+      }
+    },
+    "strategic": {
+      "enabled": ["ICP_BUILDER", "FORECASTER", "LEAKAGE_DETECTOR", "RISK_SENTINEL", "CHURN_PREDICTOR"],
+      "forecasting": {
+        "horizonDays": 90,
+        "confidenceThreshold": 0.8
+      }
+    }
+  },
+  "safety": {
+    "contentFiltering": true,
+    "piiDetection": true,
+    "rateLimiting": {
+      "emailsPerHour": 100,
+      "linkedInPerDay": 50
+    },
+    "approvalRequired": {
+      "highValueDeals": 50000,
+      "newChannels": true,
+      "contentChanges": false
+    }
+  },
+  "learning": {
+    "weeklyRetraining": true,
+    "outcomeTracking": true,
+    "performanceThresholds": {
+      "minSuccessRate": 0.6,
+      "maxAnomalyRate": 0.05
+    }
+  },
+  "integrations": {
+    "crewai": {
+      "enabled": true,
+      "fallbackTimeout": 30
+    },
+    "rex": {
+      "enabled": true,
+      "queueConcurrency": 5
+    },
+    "telemetry": {
+      "enabled": true,
+      "samplingRate": 1.0
+    }
+  }
+}

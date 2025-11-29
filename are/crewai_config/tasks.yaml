@@ -1,0 +1,40 @@
+social_listening_task:
+  agent: social_listener
+  expected_output: JSON with 10 pain points, competitor insights, sentiment
+  description: Monitor recent discourse and extract market intel
+
+plan_task:
+  agent: planner
+  expected_output: Markdown GTM strategy with KPIs, risks, and confidence scores
+  context: [social_listening_task]
+  description: Translate intel into actionable revenue strategy
+
+research_task:
+  agent: rex
+  expected_output: Real-time feasibility and risk report
+  context: [plan_task]
+  description: Validate assumptions from the planner using real-time data
+
+synthesis_task:
+  agent: brain
+  expected_output: Conversion-optimized messaging and creative
+  context: [plan_task, research_task]
+  description: Craft strategic messaging for target personas
+
+critique_task:
+  agent: critic
+  expected_output: Quality, success probability, and ROI scoring
+  context: [synthesis_task]
+  description: Evaluate outputs for quality, performance, and risk
+
+refine_answer_task:
+  agent: planner
+  expected_output: Final refined plan with updated risk mitigation
+  context: [critique_task]
+  description: Integrate critique and improve the execution plan
+
+service_integration_task:
+  agent: services
+  expected_output: Workflow-ready automation commands or CRM payload
+  context: [refine_answer_task]
+  description: Deploy results into operational systems or APIs

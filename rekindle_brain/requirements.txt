@@ -1,0 +1,52 @@
+# Core dependencies for Rekindle Brain
+torch>=2.0.0
+transformers>=4.30.0
+accelerate>=0.20.0
+bitsandbytes>=0.41.0  # For 4-bit quantization
+peft>=0.4.0  # For LoRA fine-tuning
+datasets>=2.10.0  # For training data handling
+
+# Vector database options
+weaviate-client>=3.25.0
+qdrant-client>=1.5.0
+
+# Embeddings (choose one)
+openai>=1.0.0  # For OpenAI Ada embeddings
+sentence-transformers>=2.2.0  # For local embeddings
+
+# CPU inference optimization
+llama-cpp-python>=0.2.0  # For GGUF models
+exllama>=0.0.7  # Alternative CPU inference
+
+# GPU inference optimization
+vllm>=0.2.0  # For high-throughput GPU serving
+flash-attn>=2.0.0  # Attention optimization
+
+# Data processing
+pandas>=1.5.0
+numpy>=1.24.0
+scikit-learn>=1.3.0
+
+# Web framework for API
+fastapi>=0.100.0
+uvicorn>=0.23.0
+pydantic>=2.0.0
+
+# Async HTTP client
+aiohttp>=3.8.0
+
+# Logging and monitoring
+structlog>=23.1.0
+
+# Development and testing
+pytest>=7.4.0
+pytest-asyncio>=0.21.0
+black>=23.0.0
+isort>=5.12.0
+mypy>=1.5.0
+
+# Optional: GPU monitoring
+pynvml>=11.5.0  # NVIDIA GPU monitoring
+
+# Optional: Model compression
+optimum>=1.12.0  # For additional quantization options

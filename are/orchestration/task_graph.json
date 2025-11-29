@@ -1,0 +1,244 @@
+{
+  "are_graph": {
+    "version": "1.0.0",
+    "description": "ARE-Led Hierarchical Control Architecture - Executable DAG",
+    "nodes": [
+      {
+        "id": "input",
+        "type": "user_goal",
+        "description": "User-defined business objectives and revenue targets",
+        "schema": {
+          "type": "object",
+          "properties": {
+            "goal_type": {"type": "string", "enum": ["REVIVE_PIPELINE", "INCREASE_MEETINGS", "OPTIMIZE_SEQUENCE", "BUILD_ICP"]},
+            "description": {"type": "string"},
+            "target_metrics": {"type": "object"},
+            "constraints": {"type": "object"},
+            "org_id": {"type": "string"},
+            "user_id": {"type": "string"}
+          },
+          "required": ["goal_type", "description", "org_id"]
+        }
+      },
+      {
+        "id": "planner",
+        "type": "ARE.PlannerAgent",
+        "description": "Hierarchical goal decomposition and task planning",
+        "capabilities": ["goal_analysis", "task_decomposition", "agent_selection", "plan_generation"],
+        "inputs": ["user_goal"],
+        "outputs": ["execution_plan"],
+        "timeout_seconds": 300,
+        "retry_policy": {"max_attempts": 3, "backoff_seconds": 60}
+      },
+      {
+        "id": "rag",
+        "type": "ARE.RagServiceAgent",
+        "description": "Context retrieval and memory management",
+        "capabilities": ["context_retrieval", "memory_search", "pattern_matching"],
+        "inputs": ["execution_plan"],
+        "outputs": ["enriched_plan"],
+        "timeout_seconds": 60,
+        "retry_policy": {"max_attempts": 2, "backoff_seconds": 30}
+      },
+      {
+        "id": "executor",
+        "type": "ARE.ExecutorAgent",
+        "description": "Task routing and workflow orchestration",
+        "capabilities": ["task_execution", "agent_coordination", "result_aggregation", "error_handling"],
+        "inputs": ["enriched_plan"],
+        "outputs": ["execution_results"],
+        "timeout_seconds": 1800,
+        "retry_policy": {"max_attempts": 5, "backoff_seconds": 120}
+      },
+      {
+        "id": "crew_agents",
+        "type": "CrewAI.AgentCluster",
+        "description": "28 specialized CrewAI agents for research, content, and operations",
+        "capabilities": ["lead_research", "content_generation", "meeting_booking", "compliance_checking"],
+        "agents": [
+          "ResearcherAgent", "ICPAnalyzerAgent", "LeadScorerAgent", "LeadSourcerAgent",
+          "WriterAgent", "SubjectLineOptimizerAgent", "FollowUpAgent", "ObjectionHandlerAgent",
+          "MeetingBookerAgent", "BillingAgent", "DeadLeadReactivationAgent",
+          "ComplianceAgent", "QualityControlAgent", "RateLimitAgent",
+          "ABTestingAgent", "DomainReputationAgent", "CalendarIntelligenceAgent"
+        ],
+        "inputs": ["task_assignments"],
+        "outputs": ["crew_results"],
+        "timeout_seconds": 900,
+        "parallel_execution": true
+      },
+      {
+        "id": "rex",
+        "type": "REX.Cluster",
+        "description": "Real-time intelligence and decision engine",
+        "capabilities": ["state_machine", "rule_engine", "llm_reasoning", "outcome_tracking"],
+        "components": ["DecisionEngine", "AnalyticsEngine", "ResourceAllocator", "Scheduler"],
+        "inputs": ["task_assignments"],
+        "outputs": ["rex_results"],
+        "timeout_seconds": 300,
+        "real_time": true
+      },
+      {
+        "id": "services",
+        "type": "Autonomous.Services",
+        "description": "ML-driven autonomous services",
+        "capabilities": ["revival_engine", "leakage_detection", "revenue_forecasting", "icp_generation"],
+        "services": ["RevivalEngine", "LeakageDetector", "RevenueForecaster", "ICPGenerator"],
+        "inputs": ["task_assignments"],
+        "outputs": ["service_results"],
+        "timeout_seconds": 600,
+        "batch_processing": true
+      },
+      {
+        "id": "brain",
+        "type": "Rekindle.Brain",
+        "description": "Fine-tuned LLM for content generation and strategic analysis",
+        "capabilities": ["message_generation", "sequence_optimization", "persona_inference", "campaign_planning"],
+        "models": ["message_generator", "action_planner", "sequence_optimizer"],
+        "inputs": ["task_assignments"],
+        "outputs": ["brain_results"],
+        "timeout_seconds": 120,
+        "llm_calls": true
+      },
+      {
+        "id": "critic",
+        "type": "ARE.CriticAgent",
+        "description": "Outcome evaluation and learning signal generation",
+        "capabilities": ["performance_analysis", "anomaly_detection", "quality_assessment", "learning_signals"],
+        "inputs": ["execution_results", "crew_results", "rex_results", "service_results", "brain_results"],
+        "outputs": ["evaluation_report", "learning_signals"],
+        "timeout_seconds": 180,
+        "retry_policy": {"max_attempts": 2, "backoff_seconds": 30}
+      },
+      {
+        "id": "social",
+        "type": "ARE.SocialListeningAgent",
+        "description": "Continuous market intelligence gathering from social platforms",
+        "capabilities": ["sentiment_analysis", "topic_modeling", "pain_point_extraction", "market_intelligence"],
+        "inputs": ["collection_trigger"],
+        "outputs": ["market_insights"],
+        "timeout_seconds": 300,
+        "continuous": true
+      },
+      {
+        "id": "guard",
+        "type": "ARE.GuardrailAgent",
+        "description": "Safety validation and compliance enforcement",
+        "capabilities": ["content_filtering", "compliance_checking", "risk_assessment", "action_approval"],
+        "inputs": ["evaluation_report"],
+        "outputs": ["approval_decision", "safety_report"],
+        "timeout_seconds": 90,
+        "fail_closed": true
+      }
+    ],
+    "edges": [
+      {
+        "from": "input",
+        "to": "planner",
+        "condition": "goal_received",
+        "data_flow": "user_goal"
+      },
+      {
+        "from": "planner",
+        "to": "rag",
+        "condition": "plan_generated",
+        "data_flow": "execution_plan"
+      },
+      {
+        "from": "rag",
+        "to": "executor",
+        "condition": "context_enriched",
+        "data_flow": "enriched_plan"
+      },
+      {
+        "from": "executor",
+        "to": "brain",
+        "condition": "brain_task_assigned",
+        "data_flow": "task_assignments"
+      },
+      {
+        "from": "executor",
+        "to": "crew_agents",
+        "condition": "crew_task_assigned",
+        "data_flow": "task_assignments"
+      },
+      {
+        "from": "executor",
+        "to": "rex",
+        "condition": "rex_task_assigned",
+        "data_flow": "task_assignments"
+      },
+      {
+        "from": "executor",
+        "to": "services",
+        "condition": "service_task_assigned",
+        "data_flow": "task_assignments"
+      },
+      {
+        "from": "crew_agents",
+        "to": "critic",
+        "condition": "crew_task_completed",
+        "data_flow": "crew_results"
+      },
+      {
+        "from": "brain",
+        "to": "critic",
+        "condition": "brain_task_completed",
+        "data_flow": "brain_results"
+      },
+      {
+        "from": "rex",
+        "to": "critic",
+        "condition": "rex_task_completed",
+        "data_flow": "rex_results"
+      },
+      {
+        "from": "services",
+        "to": "critic",
+        "condition": "service_task_completed",
+        "data_flow": "service_results"
+      },
+      {
+        "from": "critic",
+        "to": "guard",
+        "condition": "evaluation_complete",
+        "data_flow": "evaluation_report"
+      },
+      {
+        "from": "social",
+        "to": "rag",
+        "condition": "insights_available",
+        "data_flow": "market_insights"
+      },
+      {
+        "from": "social",
+        "to": "critic",
+        "condition": "insights_available",
+        "data_flow": "market_insights"
+      },
+      {
+        "from": "guard",
+        "to": "executor",
+        "condition": "approved",
+        "data_flow": "approval_decision"
+      }
+    ],
+    "execution_rules": {
+      "parallel_execution": ["brain", "crew_agents", "rex", "services", "social"],
+      "sequential_dependencies": ["input → planner → rag → executor"],
+      "aggregation_point": "critic",
+      "feedback_loop": "critic → guard → executor",
+      "continuous_agents": ["social"],
+      "error_handling": {
+        "node_failure": "retry_with_backoff",
+        "system_failure": "fail_closed",
+        "timeout": "escalate_to_guard"
+      }
+    },
+    "monitoring": {
+      "metrics": ["execution_time", "success_rate", "error_rate", "resource_usage"],
+      "alerts": ["node_timeout", "high_error_rate", "resource_exhaustion"],
+      "logging": ["all_node_transitions", "data_flow", "performance_metrics"]
+    }
+  }
+}
