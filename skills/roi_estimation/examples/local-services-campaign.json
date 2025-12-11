@@ -1,0 +1,53 @@
+{
+  "campaign_input": {
+    "campaignName": "Summer HVAC Lead Reactivation",
+    "leadCount": 2000,
+    "industryVertical": "local-services",
+    "averageDealValue": 1200,
+    "campaignCost": 8000,
+    "targetSegment": "dormant service inquiries and quote requests",
+    "expectedDuration": "30 days"
+  },
+  "roi_estimation_output": {
+    "low_scenario": {
+      "conversionRate": 0.16,
+      "estimatedMeetings": 320,
+      "estimatedDeals": 160,
+      "estimatedRevenue": 192000,
+      "roiMultiple": 24,
+      "confidence": "pessimistic"
+    },
+    "base_scenario": {
+      "conversionRate": 0.275,
+      "estimatedMeetings": 550,
+      "estimatedDeals": 275,
+      "estimatedRevenue": 330000,
+      "roiMultiple": 41,
+      "confidence": "realistic"
+    },
+    "strong_scenario": {
+      "conversionRate": 0.425,
+      "estimatedMeetings": 850,
+      "estimatedDeals": 425,
+      "estimatedRevenue": 510000,
+      "roiMultiple": 64,
+      "confidence": "optimistic"
+    },
+    "recommendation": "Excellent opportunity for summer season. Base scenario: $330K revenue from $8K investment (41x ROI). Local services see highest conversion rates due to immediate need + seasonal timing."
+  },
+  "context": {
+    "industryBenchmarks": {
+      "localServicesRevivalRate": "20-35%",
+      "meetingToJobRate": "50%",
+      "typicalJobCycle": "7-30 days"
+    },
+    "assumptions": [
+      "50% of callbacks/appointments convert to booked jobs",
+      "$1,200 average job value (typical HVAC service/repair)",
+      "$8K campaign cost (call center, SMS, follow-up labor)",
+      "30-day summer revival window (peak HVAC season)",
+      "High urgency factor boosts conversion rates"
+    ],
+    "seasonal_note": "Summer timing creates natural urgency (heat waves, AC failures) which significantly boosts revival conversion rates vs. off-season campaigns."
+  }
+}

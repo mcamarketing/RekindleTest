@@ -1,0 +1,37 @@
+{
+  "lead_data": {
+    "id": "lead_003",
+    "name": "John Smith",
+    "company": "Generic Services LLC",
+    "lastInteractionDate": "2023-06-01T09:00:00Z",
+    "interactionCount": 1,
+    "estimatedDealValue": 800,
+    "leadSource": "purchased-list",
+    "industryVertical": "Unknown",
+    "companySize": "Unknown"
+  },
+  "scoring_output": {
+    "recencyScore": 1,
+    "frequencyScore": 1,
+    "valueScore": 1,
+    "sourceScore": 1,
+    "totalScore": 4,
+    "segment": "low",
+    "revivalPriority": 17,
+    "recommendedApproach": "Include in bulk reactivation campaign or consider archiving. Low probability of conversion.",
+    "estimatedRevivalRate": 0.08
+  },
+  "context": {
+    "daysSinceLastInteraction": 558,
+    "interactionTypes": ["email_sent"],
+    "lastInteractionNote": "Cold email sent, no response",
+    "engagementHistory": "Never opened email"
+  },
+  "recommended_actions": [
+    "Include in yearly bulk reactivation campaign",
+    "Consider moving to archive/suppression",
+    "Do not invest individual effort",
+    "Useful only for list-wide experiments",
+    "Monitor for organic re-engagement signals"
+  ]
+}

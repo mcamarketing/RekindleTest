@@ -1,0 +1,51 @@
+{
+  "campaign_input": {
+    "campaignName": "Q1 2025 SaaS Dormant Lead Revival",
+    "leadCount": 1000,
+    "industryVertical": "saas",
+    "averageDealValue": 8000,
+    "campaignCost": 5000,
+    "targetSegment": "medium-to-high priority dormant leads",
+    "expectedDuration": "60 days"
+  },
+  "roi_estimation_output": {
+    "low_scenario": {
+      "conversionRate": 0.05,
+      "estimatedMeetings": 50,
+      "estimatedDeals": 25,
+      "estimatedRevenue": 200000,
+      "roiMultiple": 40,
+      "confidence": "pessimistic"
+    },
+    "base_scenario": {
+      "conversionRate": 0.11,
+      "estimatedMeetings": 110,
+      "estimatedDeals": 55,
+      "estimatedRevenue": 440000,
+      "roiMultiple": 88,
+      "confidence": "realistic"
+    },
+    "strong_scenario": {
+      "conversionRate": 0.20,
+      "estimatedMeetings": 200,
+      "estimatedDeals": 100,
+      "estimatedRevenue": 800000,
+      "roiMultiple": 160,
+      "confidence": "optimistic"
+    },
+    "recommendation": "Strong business case. Base scenario shows 88x ROI ($440K revenue on $5K investment). Even in low scenario, returns 40x. Proceed with campaign."
+  },
+  "context": {
+    "industryBenchmarks": {
+      "saasAverageRevivalRate": "7-15%",
+      "meetingToCloseRate": "50%",
+      "typicalSalesCycle": "45-90 days"
+    },
+    "assumptions": [
+      "50% of meetings convert to closed deals",
+      "$8K average contract value (typical mid-market SaaS ACV)",
+      "$5K campaign cost includes tooling, labor, and messaging",
+      "60-day revival window with trigger-based outreach"
+    ]
+  }
+}

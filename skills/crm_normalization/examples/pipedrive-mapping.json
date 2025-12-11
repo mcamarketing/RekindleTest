@@ -1,0 +1,71 @@
+{
+  "source_record": {
+    "id": 789,
+    "name": "Jennifer Lopez",
+    "email": [
+      {
+        "value": "jennifer@coastalproperties.com",
+        "primary": true
+      }
+    ],
+    "phone": [
+      {
+        "value": "(858) 555-7890",
+        "primary": true
+      }
+    ],
+    "org_id": {
+      "name": "Coastal Properties Group",
+      "people_count": 12
+    },
+    "value": 10000,
+    "update_time": "2024-10-20 15:45:00",
+    "status": "open"
+  },
+  "normalized_record": {
+    "canonical_record": {
+      "email": "jennifer@coastalproperties.com",
+      "first_name": "Jennifer",
+      "last_name": "Lopez",
+      "company": "Coastal Properties Group",
+      "phone": "+18585557890",
+      "title": null,
+      "industry": "real-estate",
+      "company_size": "11-50",
+      "deal_value": 10000,
+      "last_interaction_date": "2024-10-20T15:45:00Z",
+      "interaction_count": null,
+      "lead_source": "unknown",
+      "tags": ["pipedrive-import"]
+    },
+    "metadata": {
+      "source_crm": "pipedrive",
+      "source_record_id": "789",
+      "normalized_at": "2025-01-15T14:30:00Z",
+      "quality_score": 75,
+      "needs_enrichment": true,
+      "duplicate_risk": false,
+      "validation_warnings": [
+        "missing_title",
+        "missing_interaction_count",
+        "unknown_lead_source",
+        "inferred_industry_from_company_name"
+      ]
+    }
+  },
+  "field_mappings_applied": {
+    "email[0].value → email": "Extracted primary email",
+    "name 'Jennifer Lopez' → first_name, last_name": "Split full name",
+    "org_id.name → company": "Direct mapping",
+    "phone[0].value → phone": "Converted to E.164 format",
+    "org_id.people_count '12' → company_size": "Mapped to '11-50' range",
+    "value → deal_value": "Direct mapping",
+    "update_time → last_interaction_date": "Converted to ISO 8601",
+    "industry": "Inferred 'real-estate' from company name pattern"
+  },
+  "notes": [
+    "Pipedrive doesn't provide explicit industry field - inferred from company name 'Properties'",
+    "No lead source available in Pipedrive data - marked as 'unknown'",
+    "Job title not present in person record"
+  ]
+}

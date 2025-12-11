@@ -1,0 +1,37 @@
+{
+  "lead_data": {
+    "id": "lead_001",
+    "name": "Sarah Chen",
+    "company": "DataPulse Analytics",
+    "lastInteractionDate": "2024-12-01T10:00:00Z",
+    "interactionCount": 8,
+    "estimatedDealValue": 25000,
+    "leadSource": "referral",
+    "industryVertical": "SaaS",
+    "companySize": "40 employees"
+  },
+  "scoring_output": {
+    "recencyScore": 3,
+    "frequencyScore": 3,
+    "valueScore": 3,
+    "sourceScore": 3,
+    "totalScore": 12,
+    "segment": "high",
+    "revivalPriority": 100,
+    "recommendedApproach": "Immediate outreach with personalized message referencing previous interactions and mutual connection",
+    "estimatedRevivalRate": 0.55
+  },
+  "context": {
+    "daysSinceLastInteraction": 10,
+    "interactionTypes": ["email", "demo", "call", "proposal_sent"],
+    "lastInteractionNote": "Requested proposal for Q1 2025 budget",
+    "referralSource": "Marcus Kim, existing customer"
+  },
+  "recommended_actions": [
+    "Send personalized email within 24 hours",
+    "Reference previous demo and proposal",
+    "Mention mutual connection (Marcus Kim)",
+    "Highlight Q1 budget timing",
+    "Offer 15-minute catch-up call"
+  ]
+}

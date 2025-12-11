@@ -1,0 +1,51 @@
+{
+  "campaign_input": {
+    "campaignName": "Agency Pipeline Reactivation - Spring 2025",
+    "leadCount": 500,
+    "industryVertical": "agency",
+    "averageDealValue": 5000,
+    "campaignCost": 3000,
+    "targetSegment": "dormant project inquiries from past 6 months",
+    "expectedDuration": "45 days"
+  },
+  "roi_estimation_output": {
+    "low_scenario": {
+      "conversionRate": 0.075,
+      "estimatedMeetings": 37,
+      "estimatedDeals": 19,
+      "estimatedRevenue": 95000,
+      "roiMultiple": 32,
+      "confidence": "pessimistic"
+    },
+    "base_scenario": {
+      "conversionRate": 0.15,
+      "estimatedMeetings": 75,
+      "estimatedDeals": 38,
+      "estimatedRevenue": 190000,
+      "roiMultiple": 63,
+      "confidence": "realistic"
+    },
+    "strong_scenario": {
+      "conversionRate": 0.25,
+      "estimatedMeetings": 125,
+      "estimatedDeals": 63,
+      "estimatedRevenue": 315000,
+      "roiMultiple": 105,
+      "confidence": "optimistic"
+    },
+    "recommendation": "Solid opportunity. Base scenario projects $190K in project revenue from $3K investment (63x ROI). Agencies typically see higher conversion rates due to project-based buying cycles."
+  },
+  "context": {
+    "industryBenchmarks": {
+      "agencyAverageRevivalRate": "10-20%",
+      "meetingToProjectRate": "50%",
+      "typicalProjectCycle": "30-60 days"
+    },
+    "assumptions": [
+      "50% of meetings convert to booked projects",
+      "$5K average project value (typical small-to-mid agency engagement)",
+      "$3K campaign cost (messaging, outreach labor, follow-up)",
+      "45-day revival window targeting recent dormant inquiries"
+    ]
+  }
+}

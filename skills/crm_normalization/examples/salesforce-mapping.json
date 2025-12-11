@@ -1,0 +1,52 @@
+{
+  "source_record": {
+    "Id": "00Q5e00000ABC123",
+    "Email": "sarah.chen@DATAPULSE.IO  ",
+    "FirstName": "Sarah",
+    "LastName": "Chen",
+    "Company": "DataPulse Analytics, Inc.",
+    "Phone": "(415) 555-1234",
+    "Title": "VP of Sales",
+    "Industry": "Software",
+    "NumberOfEmployees": "40",
+    "LeadSource": "Partner Referral",
+    "LastActivityDate": "2024-12-01",
+    "Status": "Open"
+  },
+  "normalized_record": {
+    "canonical_record": {
+      "email": "sarah.chen@datapulse.io",
+      "first_name": "Sarah",
+      "last_name": "Chen",
+      "company": "DataPulse Analytics",
+      "phone": "+14155551234",
+      "title": "VP of Sales",
+      "industry": "saas",
+      "company_size": "11-50",
+      "deal_value": null,
+      "last_interaction_date": "2024-12-01T00:00:00Z",
+      "interaction_count": null,
+      "lead_source": "referral",
+      "tags": ["salesforce-import", "partner-lead"]
+    },
+    "metadata": {
+      "source_crm": "salesforce",
+      "source_record_id": "00Q5e00000ABC123",
+      "normalized_at": "2025-01-15T14:30:00Z",
+      "quality_score": 95,
+      "needs_enrichment": true,
+      "duplicate_risk": false,
+      "validation_warnings": ["missing_deal_value", "missing_interaction_count"]
+    }
+  },
+  "field_mappings_applied": {
+    "Email → email": "Lowercased, trimmed whitespace",
+    "FirstName + LastName → first_name, last_name": "Split",
+    "Company → company": "Removed 'Inc.' suffix",
+    "Phone → phone": "Converted to E.164 format",
+    "Industry 'Software' → industry": "Mapped to 'saas'",
+    "NumberOfEmployees '40' → company_size": "Mapped to '11-50' range",
+    "LeadSource 'Partner Referral' → lead_source": "Mapped to 'referral'",
+    "LastActivityDate → last_interaction_date": "Converted to ISO 8601"
+  }
+}

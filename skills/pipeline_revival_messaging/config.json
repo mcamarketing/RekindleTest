@@ -1,0 +1,53 @@
+{
+  "skill_name": "pipeline_revival_messaging",
+  "version": "1.0.0",
+  "description": "Generate warm, human, trigger-aware revival messages for dormant leads",
+  "owners": ["rex_team", "revenue_intelligence"],
+  "created_at": "2025-01-15",
+  "last_updated": "2025-01-15",
+  "tags": ["messaging", "revival", "copywriting", "engagement", "sales"],
+  "dependencies": {
+    "required_data": [
+      "lead_name",
+      "company_name",
+      "business_type",
+      "last_engagement_date",
+      "trigger_events"
+    ],
+    "optional_data": [
+      "industry_vertical",
+      "company_size",
+      "previous_conversation_summary",
+      "mutual_connections",
+      "recent_company_news",
+      "deal_value_range"
+    ]
+  },
+  "outputs": {
+    "message_components": {
+      "subject_line": "string (30-50 chars)",
+      "opening": "string (1-2 sentences)",
+      "body": "string (2-3 sentences)",
+      "cta": "string (1 sentence)",
+      "full_message": "string (60-100 words)"
+    },
+    "metadata": {
+      "tone_category": "hot|warm|cold",
+      "trigger_type": "string",
+      "estimated_open_rate": "percentage",
+      "estimated_response_rate": "percentage"
+    }
+  },
+  "success_criteria": {
+    "open_rate": ">40%",
+    "response_rate": ">15%",
+    "meeting_booking_rate": ">8%",
+    "unsubscribe_rate": "<2%",
+    "message_length": "60-100 words",
+    "readability_score": ">70 (Flesch Reading Ease)"
+  },
+  "usage_frequency": "high",
+  "execution_mode": "synchronous",
+  "estimated_runtime_ms": 500,
+  "cost_per_execution": 0.002
+}

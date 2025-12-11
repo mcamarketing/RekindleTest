@@ -1,0 +1,62 @@
+{
+  "source_record": {
+    "id": "123456",
+    "properties": {
+      "email": "marcus@velocity.com",
+      "firstname": "Marcus",
+      "lastname": "Rivera",
+      "company": "Velocity Creative Group",
+      "phone": "555-0100",
+      "jobtitle": "Creative Director",
+      "industry": "Marketing and Advertising",
+      "numberofemployees": "25",
+      "hs_analytics_source": "ORGANIC_SEARCH",
+      "notes_last_updated": "2024-09-15T14:30:00.000Z"
+    },
+    "associations": {
+      "deals": [
+        {
+          "id": "78910",
+          "amount": "5000"
+        }
+      ]
+    }
+  },
+  "normalized_record": {
+    "canonical_record": {
+      "email": "marcus@velocity.com",
+      "first_name": "Marcus",
+      "last_name": "Rivera",
+      "company": "Velocity Creative Group",
+      "phone": "+1555010",
+      "title": "Creative Director",
+      "industry": "agency",
+      "company_size": "11-50",
+      "deal_value": 5000,
+      "last_interaction_date": "2024-09-15T14:30:00Z",
+      "interaction_count": null,
+      "lead_source": "inbound-inquiry",
+      "tags": ["hubspot-import", "organic"]
+    },
+    "metadata": {
+      "source_crm": "hubspot",
+      "source_record_id": "123456",
+      "normalized_at": "2025-01-15T14:30:00Z",
+      "quality_score": 90,
+      "needs_enrichment": true,
+      "duplicate_risk": false,
+      "validation_warnings": ["missing_interaction_count"]
+    }
+  },
+  "field_mappings_applied": {
+    "properties.email → email": "No transformation needed",
+    "properties.firstname + properties.lastname → first_name, last_name": "Direct mapping",
+    "properties.company → company": "No transformation needed",
+    "properties.phone '555-0100' → phone": "Converted to E.164 (assumed US)",
+    "properties.industry 'Marketing and Advertising' → industry": "Mapped to 'agency'",
+    "properties.numberofemployees '25' → company_size": "Mapped to '11-50' range",
+    "properties.hs_analytics_source 'ORGANIC_SEARCH' → lead_source": "Mapped to 'inbound-inquiry'",
+    "associations.deals[0].amount → deal_value": "Extracted first deal amount",
+    "properties.notes_last_updated → last_interaction_date": "Direct mapping"
+  }
+}

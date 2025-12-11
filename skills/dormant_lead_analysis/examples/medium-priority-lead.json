@@ -1,0 +1,37 @@
+{
+  "lead_data": {
+    "id": "lead_002",
+    "name": "Marcus Rivera",
+    "company": "Velocity Creative Group",
+    "lastInteractionDate": "2024-09-15T14:30:00Z",
+    "interactionCount": 3,
+    "estimatedDealValue": 5000,
+    "leadSource": "content-download",
+    "industryVertical": "Agency",
+    "companySize": "25 employees"
+  },
+  "scoring_output": {
+    "recencyScore": 2,
+    "frequencyScore": 2,
+    "valueScore": 2,
+    "sourceScore": 2,
+    "totalScore": 8,
+    "segment": "medium",
+    "revivalPriority": 67,
+    "recommendedApproach": "Trigger-based outreach when company news detected, or include in nurture sequence with industry-specific content",
+    "estimatedRevivalRate": 0.28
+  },
+  "context": {
+    "daysSinceLastInteraction": 87,
+    "interactionTypes": ["whitepaper_download", "email_open", "website_visit"],
+    "lastInteractionNote": "Downloaded 'Agency Pipeline Management' guide",
+    "contentEngaged": ["pipeline", "client_acquisition", "automation"]
+  },
+  "recommended_actions": [
+    "Monitor for trigger events (hiring, new service launch, case study)",
+    "Add to quarterly nurture sequence",
+    "Send industry-specific content about agency scaling",
+    "Wait for trigger before direct outreach",
+    "Include in webinar invite list"
+  ]
+}

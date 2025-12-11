@@ -1,0 +1,46 @@
+{
+  "skill_name": "dormant_lead_analysis",
+  "version": "1.0.0",
+  "description": "Score and segment dormant leads based on recency, frequency, value, and source to prioritize revival efforts",
+  "owners": ["revenue_intelligence", "data_team"],
+  "created_at": "2025-01-15",
+  "last_updated": "2025-01-15",
+  "tags": ["scoring", "segmentation", "prioritization", "lead-analysis", "rfvs"],
+  "dependencies": {
+    "required_data": [
+      "last_interaction_date",
+      "interaction_count",
+      "estimated_deal_value",
+      "lead_source"
+    ],
+    "optional_data": [
+      "industry_vertical",
+      "company_size",
+      "previous_purchase_history",
+      "engagement_quality_score"
+    ]
+  },
+  "outputs": {
+    "lead_score": {
+      "total_score": "number (1-12)",
+      "recency_score": "number (1-3)",
+      "frequency_score": "number (1-3)",
+      "value_score": "number (1-3)",
+      "source_score": "number (1-3)"
+    },
+    "segment": {
+      "category": "high | medium | low",
+      "revival_priority": "number (1-100)",
+      "recommended_approach": "string"
+    }
+  },
+  "success_criteria": {
+    "high_segment_accuracy": ">85% (correctly identifies high-potential leads)",
+    "revival_rate_correlation": ">0.7 (score correlates with actual revival success)",
+    "processing_speed": "<100ms per lead"
+  },
+  "usage_frequency": "high",
+  "execution_mode": "synchronous",
+  "estimated_runtime_ms": 50,
+  "cost_per_execution": 0.0001
+}

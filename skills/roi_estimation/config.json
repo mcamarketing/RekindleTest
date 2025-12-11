@@ -1,0 +1,53 @@
+{
+  "skill_name": "roi_estimation",
+  "version": "1.0.0",
+  "description": "Calculate revenue upside from revival campaigns across low, base, and strong scenarios with industry-specific conversion rates",
+  "owners": ["revenue_intelligence", "finance_team"],
+  "created_at": "2025-01-15",
+  "last_updated": "2025-01-15",
+  "tags": ["roi", "revenue", "forecasting", "conversion", "scenarios"],
+  "dependencies": {
+    "required_data": [
+      "lead_count",
+      "industry_vertical",
+      "average_deal_value"
+    ],
+    "optional_data": [
+      "historical_conversion_rate",
+      "sales_cycle_days",
+      "campaign_cost"
+    ]
+  },
+  "outputs": {
+    "scenarios": {
+      "low": {
+        "conversion_rate": "percentage",
+        "estimated_meetings": "number",
+        "estimated_revenue": "number (USD)",
+        "roi_multiple": "number"
+      },
+      "base": {
+        "conversion_rate": "percentage",
+        "estimated_meetings": "number",
+        "estimated_revenue": "number (USD)",
+        "roi_multiple": "number"
+      },
+      "strong": {
+        "conversion_rate": "percentage",
+        "estimated_meetings": "number",
+        "estimated_revenue": "number (USD)",
+        "roi_multiple": "number"
+      }
+    },
+    "recommendation": "string"
+  },
+  "success_criteria": {
+    "forecast_accuracy": ">75% (actual results within 25% of base scenario)",
+    "processing_speed": "<50ms per calculation",
+    "scenario_coverage": "covers 95% confidence interval"
+  },
+  "usage_frequency": "high",
+  "execution_mode": "synchronous",
+  "estimated_runtime_ms": 30,
+  "cost_per_execution": 0.00005
+}

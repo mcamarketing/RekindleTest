@@ -1,0 +1,37 @@
+{
+  "objection_context": {
+    "type": "timing",
+    "lead_name": "Sarah Chen",
+    "company": "DataPulse Analytics",
+    "industry_vertical": "saas",
+    "lead_temperature": "hot",
+    "deal_value": 25000,
+    "objection_text": "This sounds great, but now's just not a good time. We're slammed with Q4 priorities."
+  },
+  "recommended_response": {
+    "message_text": "Totally get it – Q4 is always crazy. The reason I'm reaching out now is we've seen SaaS companies leave 25-30% of pipeline on the table during busy periods. Worth a 15-min async overview so it's on your radar when bandwidth opens up?",
+    "tone": "empathetic",
+    "next_step": "Send async overview video or deck for later review",
+    "word_count": 52,
+    "objection_addressed": true
+  },
+  "alternative_responses": [
+    {
+      "message_text": "Makes sense. Quick thought: most teams wait until they have time, but that's exactly when dormant leads go coldest. What if I sent you a 2-min overview you can review when convenient, and we connect in Jan if it's relevant?",
+      "use_case": "Softer approach for warm leads, offers January calendar hold",
+      "word_count": 48
+    },
+    {
+      "message_text": "Fair. Question: what's the typical value of one reactivated deal for you? If it's $20K+, even in a busy quarter, 15 minutes to potentially unlock $200K-$500K in dormant ARR seems worth it. Want to find a quick 15 min this week or next?",
+      "use_case": "More direct ROI framing for hot leads, includes specific numbers",
+      "word_count": 54
+    }
+  ],
+  "why_this_works": [
+    "Validates their busy schedule ('Q4 is always crazy')",
+    "Reframes timing: busy periods = when pipeline gets neglected",
+    "Uses SaaS-specific metrics (25-30% pipeline, ARR)",
+    "Offers async option to respect their time",
+    "Gives easy out ('when bandwidth opens up') while planting seed"
+  ]
+}

@@ -1,0 +1,15 @@
+{
+  "input": {
+    "lead": {
+      "name": "Mike Chen",
+      "company": "TechStart Solutions",
+      "industry": "Software",
+      "lastInteractionTopic": "workflow automation",
+      "leadState": "cold"
+    },
+    "businessType": {
+      "type": "saas"
+    }
+  },
+  "output": "Subject: Following up on workflow automation\n\nHi Mike at TechStart Solutions,\n\nI hope this email finds you well. I wanted to follow up on our previous discussion about workflow automation.\n\nOur platform integrates seamlessly and can automate workflows, saving your team 20 hours per week. Companies in your space have scaled 3x faster with our tools.\n\nWould you be open to a quick 15-minute call to discuss how we can help?\n\nBest regards,\n[Your Name]\nRekindle Pro\n[Contact Info]"
+}

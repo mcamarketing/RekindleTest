@@ -1,0 +1,52 @@
+{
+  "skill_name": "objection_handling",
+  "version": "1.0.0",
+  "description": "Provide tactical, empathetic responses to common objections during lead revival outreach",
+  "owners": ["sales_enablement", "rex_team"],
+  "created_at": "2025-01-15",
+  "last_updated": "2025-01-15",
+  "tags": ["objections", "sales", "responses", "enablement", "messaging"],
+  "dependencies": {
+    "required_data": [
+      "objection_type",
+      "lead_temperature"
+    ],
+    "optional_data": [
+      "industry_vertical",
+      "previous_objections",
+      "deal_value"
+    ]
+  },
+  "objection_types": [
+    "timing",
+    "budget",
+    "skepticism",
+    "authority",
+    "status_quo",
+    "competition",
+    "data_privacy"
+  ],
+  "outputs": {
+    "response": {
+      "message_text": "string (under 75 words)",
+      "tone": "empathetic|consultative|direct",
+      "next_step": "string",
+      "objection_addressed": "boolean"
+    },
+    "alternatives": [
+      {
+        "message_text": "string",
+        "use_case": "string"
+      }
+    ]
+  },
+  "success_criteria": {
+    "engagement_rate": ">40% (lead responds after objection handling)",
+    "unsubscribe_rate": "<5%",
+    "conversion_to_next_step": ">20%"
+  },
+  "usage_frequency": "medium",
+  "execution_mode": "synchronous",
+  "estimated_runtime_ms": 100,
+  "cost_per_execution": 0.0003
+}

@@ -1,0 +1,39 @@
+{
+  "objection_context": {
+    "type": "skepticism",
+    "lead_name": "Tom Bradley",
+    "company": "ProTech HVAC Solutions",
+    "industry_vertical": "local-services",
+    "lead_temperature": "cold",
+    "deal_value": 1200,
+    "objection_text": "We've tried stuff like this before. It never works. Our leads are too cold.",
+    "previous_attempts": ["email blast campaign", "cold calling service"]
+  },
+  "recommended_response": {
+    "message_text": "I totally understand the skepticism – most revival attempts are just generic blasts. We're different: trigger-based outreach (weather events, season changes, searches). HVAC companies like ProTech typically recover 8-12 jobs per month from old leads. Want to see a quick case study?",
+    "tone": "empathetic",
+    "next_step": "Send local services case study (HVAC specific)",
+    "word_count": 51,
+    "objection_addressed": true
+  },
+  "alternative_responses": [
+    {
+      "message_text": "Yeah, most 'reactivation' is just spam. Fair to be skeptical. Our approach is trigger-based: we monitor weather events, seasonal patterns, and search behavior. Proven to work for HVAC/home services. Can I share how we'd tackle your specific list?",
+      "use_case": "More casual tone, emphasizes local services specialization",
+      "word_count": 45
+    },
+    {
+      "message_text": "Understand the hesitation. The difference: we don't blast your list. We wait for trigger events (AC searches in summer, furnace failures in winter) and reach out at the perfect moment. That's why we see 20-35% revival rates vs. 2-5% for generic campaigns. Worth a pilot test?",
+      "use_case": "Educational, explains the methodology clearly with specific triggers",
+      "word_count": 56
+    }
+  ],
+  "why_this_works": [
+    "Validates past bad experiences without dismissing them",
+    "Explicitly differentiates from 'generic blasts' they've tried",
+    "Uses local services-specific language ('jobs per month' not 'deals')",
+    "Mentions concrete triggers (weather events, season changes) that are relevant to HVAC",
+    "Provides social proof with specific numbers (8-12 jobs/month)",
+    "Offers case study as low-friction next step (no commitment)"
+  ]
+}

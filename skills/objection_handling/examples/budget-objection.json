@@ -1,0 +1,37 @@
+{
+  "objection_context": {
+    "type": "budget",
+    "lead_name": "Marcus Rivera",
+    "company": "Velocity Creative Group",
+    "industry_vertical": "agency",
+    "lead_temperature": "warm",
+    "deal_value": 5000,
+    "objection_text": "Sounds interesting, but we don't have budget allocated for this right now."
+  },
+  "recommended_response": {
+    "message_text": "Budget constraints are real – I hear you. The thing is, most agencies we work with recover 3-5x their investment in month one through reactivated projects, and we only charge for confirmed meetings. Want to see a quick ROI estimate based on your dormant leads?",
+    "tone": "empathetic",
+    "next_step": "Send ROI calculator or case study",
+    "word_count": 53,
+    "objection_addressed": true
+  },
+  "alternative_responses": [
+    {
+      "message_text": "Fair concern. We're not an expense – we're a revenue channel. Most agency clients 10x their investment through reactivated projects. We also offer pilot terms where you only pay for results. Worth exploring?",
+      "use_case": "More direct, emphasizes performance-based pricing",
+      "word_count": 42
+    },
+    {
+      "message_text": "Understood. Quick question: what if we could help you recover $15K-$25K in project revenue from your dormant pipeline this quarter? That's what similar agencies typically see. Would budget constraints still be a blocker if the ROI is that strong?",
+      "use_case": "Reframes with specific numbers, more consultative",
+      "word_count": 46
+    }
+  ],
+  "why_this_works": [
+    "Validates the budget concern without being defensive",
+    "Reframes as revenue generator (3-5x ROI) not cost",
+    "Uses agency-specific language ('reactivated projects' not 'closed deals')",
+    "Offers concrete next step (ROI estimate) with low friction",
+    "Mentions performance-based pricing to reduce risk perception"
+  ]
+}
