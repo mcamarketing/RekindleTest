@@ -18,6 +18,19 @@ export default defineConfig(({ mode }) => {
     optimizeDeps: {
       exclude: ['lucide-react'],
     },
+    resolve: {
+      alias: {
+        '@': '/src',
+      },
+    },
+    server: {
+      proxy: {
+        '/api/mvp': {
+          target: 'http://localhost:3002',
+          changeOrigin: true,
+        },
+      },
+    },
     // Explicitly define environment variables for production builds
     define: {
       'import.meta.env.VITE_SUPABASE_URL': JSON.stringify(env.VITE_SUPABASE_URL),
