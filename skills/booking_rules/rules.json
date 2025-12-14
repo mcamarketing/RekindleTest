@@ -1,0 +1,30 @@
+{
+  "meeting_types": {
+    "discovery": {
+      "duration": 15,
+      "description": "Quick intro call to understand needs",
+      "qualification_required": 50
+    },
+    "demo": {
+      "duration": 30,
+      "description": "Product walkthrough and Q&A",
+      "qualification_required": 70
+    },
+    "consultation": {
+      "duration": 60,
+      "description": "Deep dive strategy session",
+      "qualification_required": 85
+    }
+  },
+  "blocking_rules": {
+    "no_show_limit": 2,
+    "booking_cooldown_days": 7,
+    "max_reschedules": 3
+  },
+  "manual_booking_instructions": {
+    "step1": "Verify lead qualification score is >= 70",
+    "step2": "Send Calendly link via email or SMS",
+    "step3": "Record booking attempt in system",
+    "step4": "Follow up if no booking within 48 hours"
+  }
+}

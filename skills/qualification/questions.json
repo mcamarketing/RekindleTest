@@ -1,0 +1,22 @@
+{
+  "authority": [
+    "Are you the one who makes this decision, or do you need to loop someone else in?",
+    "Who else needs to sign off on this?"
+  ],
+  "budget": [
+    "Do you have budget allocated for this, or would this need approval?",
+    "If this paid for itself in {timeframe}, could you move forward?"
+  ],
+  "timeline": [
+    "When do you need this solved by?",
+    "Is this urgent, or are you just exploring options?"
+  ],
+  "pain_point": [
+    "Is {pain_point} actively costing you money/time right now?",
+    "What happens if you don't solve this in the next 30 days?"
+  ],
+  "fit": [
+    "What are you using currently to handle this?",
+    "Have you looked at other solutions?"
+  ]
+}

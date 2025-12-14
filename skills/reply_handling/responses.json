@@ -1,0 +1,26 @@
+{
+  "interested": {
+    "send_qualifier": {
+      "message": "Great! Quick question: if this solved {pain_point} and paid for itself in {timeframe}, would you want to move forward?",
+      "placeholders": ["pain_point", "timeframe"],
+      "default_timeframe": "30 days"
+    },
+    "send_booking": {
+      "message": "Perfect. Grab a 15 min slot here: {calendar_link}",
+      "placeholders": ["calendar_link"]
+    }
+  },
+  "not_interested": {
+    "acknowledge": {
+      "message": "No problem {name}. If anything changes, feel free to reach out. Best of luck!",
+      "placeholders": ["name"]
+    }
+  },
+  "unclear": {
+    "clarify": {
+      "message": "No worries. Should I check back in {months} months, or are you all set?",
+      "placeholders": ["months"],
+      "default_months": "3"
+    }
+  }
+}

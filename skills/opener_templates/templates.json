@@ -1,0 +1,65 @@
+{
+  "agency": {
+    "variants": [
+      {
+        "subject": "Quick question {name}",
+        "body": "Hey {name}, did you end up solving {pain_point}? We helped {similar_client} cut their {metric} by 40% last month. Worth a quick call?",
+        "placeholders": ["name", "pain_point", "similar_client", "metric"]
+      },
+      {
+        "subject": "Still struggling with {pain_point}?",
+        "body": "{name}, checking in. If {pain_point} is still an issue, I have a quick fix that worked for {similar_client}. 15 min call?",
+        "placeholders": ["name", "pain_point", "similar_client"]
+      }
+    ],
+    "default_pain_point": "lead generation",
+    "default_metric": "cost per lead"
+  },
+  "real_estate": {
+    "variants": [
+      {
+        "subject": "Market update for you",
+        "body": "Hi {name}, saw {company} might be looking at space. We just closed a deal nearby that saved the tenant 20%. Quick chat?",
+        "placeholders": ["name", "company"]
+      },
+      {
+        "subject": "Still searching {name}?",
+        "body": "{name}, are you still looking for {property_type}? Market shifted. Might have something perfect. Call this week?",
+        "placeholders": ["name", "property_type"]
+      }
+    ],
+    "default_property_type": "office space"
+  },
+  "saas": {
+    "variants": [
+      {
+        "subject": "Did you solve {pain_point}?",
+        "body": "Hey {name}, following up from {months} months ago. Did you end up fixing {pain_point}? We just shipped something that might help. Quick demo?",
+        "placeholders": ["name", "pain_point", "months"]
+      },
+      {
+        "subject": "{name}, quick question",
+        "body": "{name}, is {pain_point} still on your radar? {similar_client} went live last week and saw results in 48 hours. Worth 15 min?",
+        "placeholders": ["name", "pain_point", "similar_client"]
+      }
+    ],
+    "default_pain_point": "onboarding speed",
+    "default_months": "6"
+  },
+  "generic": {
+    "variants": [
+      {
+        "subject": "Following up {name}",
+        "body": "Hi {name}, checking in from {months} months back. Did you solve what we discussed? Happy to jump on a call if helpful.",
+        "placeholders": ["name", "months"]
+      },
+      {
+        "subject": "Quick question",
+        "body": "{name}, we spoke {months} months ago about {topic}. Still relevant? Or did you go another direction?",
+        "placeholders": ["name", "months", "topic"]
+      }
+    ],
+    "default_topic": "your project",
+    "default_months": "6"
+  }
+}

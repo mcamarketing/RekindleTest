@@ -1,0 +1,47 @@
+{
+  "performance_pricing": {
+    "revived_lead_fee": 0.10,
+    "booked_meeting_fee": 25.00,
+    "qualified_meeting_bonus": 0.00,
+    "currency": "GBP"
+  },
+  "definitions": {
+    "revived_lead": {
+      "criteria": [
+        "Lead replied to outreach",
+        "Reply indicates interest (not OOO/bounce)",
+        "Reply is not unsubscribe/complaint"
+      ],
+      "excludes": [
+        "Automated replies",
+        "Bounces",
+        "Unsubscribe requests",
+        "Complaints"
+      ]
+    },
+    "booked_meeting": {
+      "criteria": [
+        "Calendar invite sent and accepted",
+        "Meeting >= 15 minutes",
+        "Lead confirmed attendance",
+        "Meeting has not been cancelled"
+      ],
+      "excludes": [
+        "No-shows",
+        "Cancelled meetings",
+        "Rescheduled but not rebooked"
+      ]
+    }
+  },
+  "reporting": {
+    "invoice_frequency": "monthly",
+    "payment_terms": "net_7",
+    "invoice_items": [
+      "revived_leads_count",
+      "revived_leads_fee",
+      "booked_meetings_count",
+      "booked_meetings_fee",
+      "total"
+    ]
+  }
+}
