@@ -151,14 +151,10 @@ function App() {
   }
 
   if (user) {
-    // Redirect root/login/signup to dashboard for authenticated users
+    // Redirect root/login/signup to MVP console for authenticated users
     if (route === '/' || route === '/login' || route === '/signup') {
-      window.history.pushState({}, '', '/dashboard');
-      return (
-        <AppShell>
-          <Dashboard />
-        </AppShell>
-      );
+      window.history.pushState({}, '', '/mvp');
+      return <MVPConsole />;
     }
 
     // Dashboard routes with AppShell
